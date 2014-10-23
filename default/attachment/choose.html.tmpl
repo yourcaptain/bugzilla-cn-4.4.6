@@ -1,0 +1,29 @@
+[%# This Source Code Form is subject to the terms of the Mozilla Public
+  # License, v. 2.0. If a copy of the MPL was not distributed with this
+  # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+  #
+  # This Source Code Form is "Incompatible With Secondary Licenses", as
+  # defined by the Mozilla Public License, v. 2.0.
+  #%]
+
+[% PROCESS global/header.html.tmpl
+   title = "定位附件所在處",
+   onload = "document.forms['choose-id'].id.focus()"
+ %]
+
+<form name="choose-id" method="get" action="attachment.cgi">
+  <p>以在下方表格輸入附件編號的方式，瀏覽一個附件：</p>
+  <p>附件編號：<input name="id" size="6">
+  <button name="action" value="edit" id="edit">詳細資料</button>
+  <button name="action" value="view" id="view">瀏覽</button>
+  </p>
+</form>
+
+<form method="get" action="show_bug.cgi">
+  <p>或者以和其相關的 [% terms.bug %] 回報來瀏覽附件清單：</p>
+  <p>[% terms.Bug %] 編號：<input name="id" size="6">
+  <input type="submit" name="action" value="瀏覽" id="action">
+  </p>
+</form>
+
+[% PROCESS global/footer.html.tmpl %]

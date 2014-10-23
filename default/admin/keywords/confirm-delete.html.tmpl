@@ -1,0 +1,33 @@
+[%# This Source Code Form is subject to the terms of the Mozilla Public
+  # License, v. 2.0. If a copy of the MPL was not distributed with this
+  # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+  #
+  # This Source Code Form is "Incompatible With Secondary Licenses", as
+  # defined by the Mozilla Public License, v. 2.0.
+  #%]
+
+[%# INTERFACE:
+  # keyword: A Bugzilla::Keyword object.
+  #%]
+
+[% PROCESS global/header.html.tmpl
+  title = "刪除關鍵字"
+%]
+
+<p>
+  在此組關鍵字中還有 [% keyword.bug_count FILTER html %] 個 [% terms.bugs %] 。
+
+  你<b>確定</b>要刪除 <code>[% keyword.name FILTER html %]</code> 此關鍵字嗎？
+</p>
+
+<form method="post" action="editkeywords.cgi">
+  <input type="hidden" name="id" value="[% keyword.id FILTER html %]">
+  <input type="hidden" name="action" value="delete">
+  <input type="hidden" name="token" value="[% token FILTER html %]">
+  <input type="submit" id="delete"
+         value="是的，確認刪除該關鍵字">
+</form>
+
+<p><a href="editkeywords.cgi">編輯其他關鍵字</a>。</p>
+
+[% PROCESS global/footer.html.tmpl %]

@@ -1,0 +1,71 @@
+[%# This Source Code Form is subject to the terms of the Mozilla Public
+  # License, v. 2.0. If a copy of the MPL was not distributed with this
+  # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+  #
+  # This Source Code Form is "Incompatible With Secondary Licenses", as
+  # defined by the Mozilla Public License, v. 2.0.
+  #%]
+
+[%# INTERFACE:
+  # keywords: array keyword objects. May be empty. Each has has four members:
+  #   id: id of the keyword
+  #   name: the name of the keyword
+  #   description: keyword description. Can contain some limited HTML code.
+  #   bug_count: number of bugs with that keyword
+  # caneditkeywords: boolean. True if this user can edit keywords
+ %]
+
+[% PROCESS global/header.html.tmpl
+  title = "$terms.Bugzilla 關鍵字描述"
+%]
+
+[% FOREACH keyword = keywords %]
+  [% IF loop.index % 50 == 0 %]
+    [% IF loop.index != 0 %]
+       </table>
+    [% END %]
+
+    <table border="1" cellpadding="4" cellspacing="0">
+      <tr bgcolor="#6666FF">
+        <th align="left">名稱</th>
+        <th align="left">描述</th>
+        <th align="left">開啟的 [% terms.Bugs %]</th>
+        <th align="left">全部的 [% terms.Bugs %]</th>
+      </tr>
+  [% END %]
+
+  <tr id="[% keyword.name FILTER html %]">
+    <th>
+        [% keyword.name FILTER html %]
+    </th>
+    <td>[% keyword.description FILTER html_light %]</td>
+    <td align="center">
+      [% IF keyword.bug_count > 0 %]
+        <a href="buglist.cgi?keywords=[% keyword.name FILTER uri %]&amp;resolution=---">
+          搜尋</a>
+      [% ELSE %]
+        無
+      [% END %]
+    </td>
+    <td align="right">
+      [% IF keyword.bug_count > 0 %]
+        <a href="buglist.cgi?keywords=[% keyword.name FILTER uri %]">
+          [% keyword.bug_count %]</a>
+      [% ELSE %]
+        無
+      [% END %]
+    </td>
+  </tr>
+[% END %]
+
+[% IF keywords.size > 0 %]
+  </table>
+[% END %]
+
+[% IF caneditkeywords %]
+  <p>
+    <a href="editkeywords.cgi">編輯關鍵字</a>。
+  </p>
+[% END %]
+
+[% PROCESS global/footer.html.tmpl %]

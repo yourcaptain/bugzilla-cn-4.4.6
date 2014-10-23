@@ -1,0 +1,165 @@
+[%# This Source Code Form is subject to the terms of the Mozilla Public
+  # License, v. 2.0. If a copy of the MPL was not distributed with this
+  # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+  #
+  # This Source Code Form is "Incompatible With Secondary Licenses", as
+  # defined by the Mozilla Public License, v. 2.0.
+  #%]
+
+[%# INTERFACE:
+  # release: a hash containing data about new releases, if any.
+  #%]
+
+[% PROCESS global/header.html.tmpl
+   title = "$terms.Bugzilla 首页"
+   header = "首页"
+   header_addl_info = "版本 $constants.BUGZILLA_VERSION"
+   style_urls = [ 'skins/standard/index.css' ]
+%]
+
+
+<script type="text/javascript">
+<!--
+function onLoadActions() {
+  quicksearchHelpText('quicksearch_main', 'show');
+  if( window.external.AddSearchProvider ){
+    YAHOO.util.Dom.removeClass('quicksearch_plugin', 'bz_default_hidden');
+  }
+  document.getElementById('quicksearch_top').focus();
+}
+var quicksearch_message = "输入 [% terms.bug %] 的编号或字符串进行搜索";
+
+function checkQuicksearch( form ) {
+  if (form.quicksearch.value == '' || form.quicksearch.value == quicksearch_message ) {
+    alert('请至少先输入一个以上的字符串进行搜索。');
+    return false;
+  }
+  return true;
+}
+
+function quicksearchHelpText(el_id, action){
+  var el = document.getElementById(el_id);
+  if ( action == "show") {
+    if( el.value == "" ) {
+      el.value = quicksearch_message
+      YAHOO.util.Dom.addClass(el, "quicksearch_help_text");
+    }
+  } else {
+    if( el.value == quicksearch_message ) {
+      el.value = "";
+      YAHOO.util.Dom.removeClass(el, "quicksearch_help_text");
+    }
+  }
+}
+    YAHOO.util.Event.onDOMReady(onLoadActions);
+//-->
+</script>
+
+[% IF release %]
+  <div id="new_release">
+    [% IF release.data %]
+      [% IF release.deprecated %]
+        <p>已不再支持 [% terms.Bugzilla %] [%+ release.deprecated FILTER html %] 。
+        建议你升级，以确保系统安全。</p>
+      [% END %]
+
+      <p>新的 [% terms.Bugzilla %] (版本 [% release.data.latest_ver FILTER html %]) 可从
+      <a href="[% release.data.url FILTER html %]">[% release.data.url FILTER html %]</a> 下载。<br>
+      新版本发布日期： [% release.data.date FILTER html %] 。</p>
+
+      <p class="notice">此消息仅有管理权限的使用者可见。
+      你可以在<a href="editparams.cgi?section=general#upgrade_notification_desc">参数设定</a>页设定此消息。</p>
+    [% ELSIF release.error == "cannot_download" %]
+      <p>无法下载远程文件 <a href="[% constants.REMOTE_FILE FILTER html %]">
+      [%~ constants.REMOTE_FILE FILTER html %]</a> （原因：
+      [% release.reason FILTER html %] ）。<br>
+	  可能是远程服务器暂时无法使用，或是你的电脑无法连接网络。如果你在使用代理服务器，请正确设定
+      <a href="editparams.cgi?section=advanced#proxy_url">proxy_url</a> 参数。</p>
+
+    [% ELSIF release.error == "no_write" %]
+      <p>无法新建本地XML文件 '[% constants.LOCAL_FILE FILTER html %]' （原因：
+      [% release.reason FILTER html %] ）。<br>
+      请确认网站服务器可以在此目录下新建此文件。
+    [% ELSIF release.error == "no_update" %]
+      <p>无法更新本地XML文件 '[% constants.LOCAL_FILE FILTER html %]' 。请确认网站服务器可以编辑此文件。</p>
+    [% ELSIF release.error == "no_access" %]
+      <p>无法读取本地XML文件 '[% constants.LOCAL_FILE FILTER html %]' 。请确认此文件已设定了正确的读写权限</p>
+    [% ELSIF release.error == "corrupted" %]
+      <p>本地XML文件 '[% constants.LOCAL_FILE FILTER html %]' 并非有效的XML格式。请删除它，并尝试重新浏览此页面。</p>
+    [% ELSIF release.error == "unknown_parameter" %]
+      <p>'[% Param("upgrade_notification") FILTER html %]' 并非有效的通知参数。请选择<a
+      href="editparams.cgi?section=general#upgrade_notification_desc">参数设定</a>页面，检查此参数的设定。</p>
+    [% END %]
+  </div>
+[% END %]
+
+<div id="page-index">
+  <table>
+    <tr>
+      <td>
+        <h1 id="welcome">欢迎来到 [% terms.Bugzilla %]</h1>
+        <div class="intro">[% Hook.process('intro') %]</div>
+
+        <div class="bz_common_actions">
+          <ul>
+            <li>
+              <a id="enter_bug" href="enter_bug.cgi"><span>提交 [% terms.Bug %]</span></a>
+            </li>
+            <li>
+              <a id="query" href="query.cgi"><span>搜索</span></a>
+            </li>
+            <li>
+              <a id="account"
+                 [% IF user.id %]
+                   href="userprefs.cgi"><span>使用者偏好设定</span></a>
+                 [% ELSIF Param('createemailregexp')
+                          && user.authorizer.user_can_create_account
+                 %]
+                   href="createaccount.cgi"><span>新建账号</span></a>
+                 [% ELSE %]
+                   href="?GoAheadAndLogIn=1"><span>登录</span></a>
+                 [% END %]
+            </li>
+          </ul>
+        </div>
+
+        <form id="quicksearchForm" name="quicksearchForm" action="buglist.cgi"
+              onsubmit="return checkQuicksearch(this);">
+          <div>
+            <input id="quicksearch_main" type="text" name="quicksearch"
+              title="快速搜索"
+              onfocus="quicksearchHelpText(this.id, 'hide');"
+              onblur="quicksearchHelpText(this.id, 'show');"
+            >
+            <input id="find" type="submit" value="快速搜索">
+            <ul class="additional_links" id="quicksearch_links">
+              <li>
+                <a href="page.cgi?id=quicksearch.html">快速搜索说明</a>
+              </li>
+              <li class="bz_default_hidden" id="quicksearch_plugin">
+                |
+                <a href="javascript:window.external.AddSearchProvider('[% urlbase FILTER html %]search_plugin.cgi')">
+                 安装快速搜索插件
+                </a>
+              </li>
+            </ul>
+            <ul class="additional_links">
+              <li>
+                <a href="[% docs_urlbase FILTER html %]using.html">
+                  [%- terms.Bugzilla %] 使用说明</a>
+              </li>
+              <li>
+                |
+                <a href="page.cgi?id=release-notes.html">版本信息</a>
+              </li>
+              [% Hook.process('additional_links') %]
+            </ul>
+          </div>
+        </form>
+        <div class="outro">[% Hook.process('outro') %]</div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+[% PROCESS global/footer.html.tmpl %]

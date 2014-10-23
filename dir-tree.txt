@@ -1,0 +1,364 @@
+文件夹 PATH 列表
+卷序列号为 00610079 ECBD:ACF2
+E:.
+│  .gitattributes
+│  .gitignore
+│  dir-tree.txt
+│  术语对照表-台湾繁体中文与简体中文.txt
+│  
+└─default
+    │  config.js.tmpl
+    │  config.rdf.tmpl
+    │  filterexceptions.pl
+    │  index.html.tmpl
+    │  welcome-admin.html.tmpl
+    │  
+    ├─account
+    │  │  cancel-token.txt.tmpl
+    │  │  create.html.tmpl
+    │  │  created.html.tmpl
+    │  │  profile-activity.html.tmpl
+    │  │  
+    │  ├─auth
+    │  │      login-small.html.tmpl
+    │  │      login.html.tmpl
+    │  │      
+    │  ├─email
+    │  │      change-new.txt.tmpl
+    │  │      change-old.txt.tmpl
+    │  │      confirm-new.html.tmpl
+    │  │      confirm.html.tmpl
+    │  │      request-new.txt.tmpl
+    │  │      
+    │  ├─password
+    │  │      forgotten-password.txt.tmpl
+    │  │      set-forgotten-password.html.tmpl
+    │  │      
+    │  └─prefs
+    │          account.html.tmpl
+    │          email.html.tmpl
+    │          permissions.html.tmpl
+    │          prefs.html.tmpl
+    │          saved-searches.html.tmpl
+    │          settings.html.tmpl
+    │          
+    ├─admin
+    │  │  admin.html.tmpl
+    │  │  confirm-action.html.tmpl
+    │  │  sudo.html.tmpl
+    │  │  table.html.tmpl
+    │  │  
+    │  ├─classifications
+    │  │      add.html.tmpl
+    │  │      del.html.tmpl
+    │  │      edit-common.html.tmpl
+    │  │      edit.html.tmpl
+    │  │      footer.html.tmpl
+    │  │      reclassify.html.tmpl
+    │  │      select.html.tmpl
+    │  │      
+    │  ├─components
+    │  │      confirm-delete.html.tmpl
+    │  │      create.html.tmpl
+    │  │      edit-common.html.tmpl
+    │  │      edit.html.tmpl
+    │  │      footer.html.tmpl
+    │  │      list.html.tmpl
+    │  │      select-product.html.tmpl
+    │  │      
+    │  ├─custom_fields
+    │  │      cf-js.js.tmpl
+    │  │      confirm-delete.html.tmpl
+    │  │      create.html.tmpl
+    │  │      edit.html.tmpl
+    │  │      list.html.tmpl
+    │  │      
+    │  ├─fieldvalues
+    │  │      confirm-delete.html.tmpl
+    │  │      create.html.tmpl
+    │  │      edit.html.tmpl
+    │  │      footer.html.tmpl
+    │  │      list.html.tmpl
+    │  │      select-field.html.tmpl
+    │  │      
+    │  ├─flag-type
+    │  │      confirm-delete.html.tmpl
+    │  │      edit.html.tmpl
+    │  │      list.html.tmpl
+    │  │      
+    │  ├─groups
+    │  │      confirm-remove.html.tmpl
+    │  │      create.html.tmpl
+    │  │      delete.html.tmpl
+    │  │      edit.html.tmpl
+    │  │      list.html.tmpl
+    │  │      
+    │  ├─keywords
+    │  │      confirm-delete.html.tmpl
+    │  │      create.html.tmpl
+    │  │      edit.html.tmpl
+    │  │      list.html.tmpl
+    │  │      
+    │  ├─milestones
+    │  │      confirm-delete.html.tmpl
+    │  │      create.html.tmpl
+    │  │      edit.html.tmpl
+    │  │      footer.html.tmpl
+    │  │      list.html.tmpl
+    │  │      select-product.html.tmpl
+    │  │      
+    │  ├─params
+    │  │      admin.html.tmpl
+    │  │      advanced.html.tmpl
+    │  │      attachment.html.tmpl
+    │  │      auth.html.tmpl
+    │  │      bugchange.html.tmpl
+    │  │      bugfields.html.tmpl
+    │  │      common.html.tmpl
+    │  │      core.html.tmpl
+    │  │      dependencygraph.html.tmpl
+    │  │      editparams.html.tmpl
+    │  │      general.html.tmpl
+    │  │      groupsecurity.html.tmpl
+    │  │      index.html.tmpl
+    │  │      ldap.html.tmpl
+    │  │      mta.html.tmpl
+    │  │      patchviewer.html.tmpl
+    │  │      query.html.tmpl
+    │  │      radius.html.tmpl
+    │  │      shadowdb.html.tmpl
+    │  │      usermatch.html.tmpl
+    │  │      
+    │  ├─products
+    │  │  │  confirm-delete.html.tmpl
+    │  │  │  create.html.tmpl
+    │  │  │  edit-common.html.tmpl
+    │  │  │  edit.html.tmpl
+    │  │  │  footer.html.tmpl
+    │  │  │  list-classifications.html.tmpl
+    │  │  │  list.html.tmpl
+    │  │  │  updated.html.tmpl
+    │  │  │  
+    │  │  └─groupcontrol
+    │  │          confirm-edit.html.tmpl
+    │  │          edit.html.tmpl
+    │  │          updated.html.tmpl
+    │  │          
+    │  ├─sanitycheck
+    │  │      list.html.tmpl
+    │  │      messages.html.tmpl
+    │  │      
+    │  ├─settings
+    │  │      edit.html.tmpl
+    │  │      
+    │  ├─users
+    │  │      confirm-delete.html.tmpl
+    │  │      create.html.tmpl
+    │  │      edit.html.tmpl
+    │  │      list.html.tmpl
+    │  │      listselectvars.html.tmpl
+    │  │      responsibilities.html.tmpl
+    │  │      search.html.tmpl
+    │  │      userdata.html.tmpl
+    │  │      
+    │  ├─versions
+    │  │      confirm-delete.html.tmpl
+    │  │      create.html.tmpl
+    │  │      edit.html.tmpl
+    │  │      footer.html.tmpl
+    │  │      list.html.tmpl
+    │  │      select-product.html.tmpl
+    │  │      
+    │  └─workflow
+    │          comment.html.tmpl
+    │          edit.html.tmpl
+    │          
+    ├─attachment
+    │      choose.html.tmpl
+    │      confirm-delete.html.tmpl
+    │      create.html.tmpl
+    │      created.html.tmpl
+    │      createformcontents.html.tmpl
+    │      delete_reason.txt.tmpl
+    │      diff-file.html.tmpl
+    │      diff-footer.html.tmpl
+    │      diff-header.html.tmpl
+    │      edit.html.tmpl
+    │      list.html.tmpl
+    │      midair.html.tmpl
+    │      show-multiple.html.tmpl
+    │      updated.html.tmpl
+    │      
+    ├─bug
+    │  │  choose.html.tmpl
+    │  │  comments.html.tmpl
+    │  │  dependency-graph.html.tmpl
+    │  │  dependency-tree.html.tmpl
+    │  │  edit.html.tmpl
+    │  │  field-events.js.tmpl
+    │  │  field-help.none.tmpl
+    │  │  field-label.html.tmpl
+    │  │  field.html.tmpl
+    │  │  format_comment.txt.tmpl
+    │  │  knob.html.tmpl
+    │  │  link.html.tmpl
+    │  │  navigate.html.tmpl
+    │  │  show-header.html.tmpl
+    │  │  show-multiple.html.tmpl
+    │  │  show.html.tmpl
+    │  │  show.xml.tmpl
+    │  │  summarize-time.html.tmpl
+    │  │  time.html.tmpl
+    │  │  
+    │  ├─activity
+    │  │      show.html.tmpl
+    │  │      table.html.tmpl
+    │  │      
+    │  ├─create
+    │  │      comment-guided.txt.tmpl
+    │  │      comment.txt.tmpl
+    │  │      create-guided.html.tmpl
+    │  │      create.html.tmpl
+    │  │      created.html.tmpl
+    │  │      make-template.html.tmpl
+    │  │      user-message.html.tmpl
+    │  │      
+    │  └─process
+    │          bugmail.html.tmpl
+    │          confirm-duplicate.html.tmpl
+    │          header.html.tmpl
+    │          midair.html.tmpl
+    │          results.html.tmpl
+    │          verify-new-product.html.tmpl
+    │          
+    ├─email
+    │      bugmail-common.txt.tmpl
+    │      bugmail-header.txt.tmpl
+    │      bugmail.html.tmpl
+    │      bugmail.txt.tmpl
+    │      flagmail.txt.tmpl
+    │      lockout.txt.tmpl
+    │      sanitycheck.txt.tmpl
+    │      sudo.txt.tmpl
+    │      whine.txt.tmpl
+    │      
+    ├─extensions
+    │      config.pm.tmpl
+    │      extension.pm.tmpl
+    │      hook-readme.txt.tmpl
+    │      license.txt.tmpl
+    │      name-readme.txt.tmpl
+    │      util.pm.tmpl
+    │      web-readme.txt.tmpl
+    │      
+    ├─flag
+    │      list.html.tmpl
+    │      
+    ├─global
+    │      banner.html.tmpl
+    │      calendar.js.tmpl
+    │      choose-classification.html.tmpl
+    │      choose-product.html.tmpl
+    │      code-error.html.tmpl
+    │      common-links.html.tmpl
+    │      confirm-action.html.tmpl
+    │      confirm-user-match.html.tmpl
+    │      docslinks.html.tmpl
+    │      field-descs.none.tmpl
+    │      footer.html.tmpl
+    │      header.html.tmpl
+    │      hidden-fields.html.tmpl
+    │      js-products.html.tmpl
+    │      message.html.tmpl
+    │      message.txt.tmpl
+    │      messages.html.tmpl
+    │      reason-descs.none.tmpl
+    │      select-menu.html.tmpl
+    │      setting-descs.none.tmpl
+    │      site-navigation.html.tmpl
+    │      tabs.html.tmpl
+    │      textarea.html.tmpl
+    │      useful-links.html.tmpl
+    │      user-error.html.tmpl
+    │      user.html.tmpl
+    │      userselect.html.tmpl
+    │      value-descs.js.tmpl
+    │      value-descs.none.tmpl
+    │      variables.none.tmpl
+    │      
+    ├─list
+    │      change-columns.html.tmpl
+    │      edit-multiple.html.tmpl
+    │      list-simple.html.tmpl
+    │      list.atom.tmpl
+    │      list.csv.tmpl
+    │      list.html.tmpl
+    │      list.ics.tmpl
+    │      list.rdf.tmpl
+    │      quips.html.tmpl
+    │      server-push.html.tmpl
+    │      table.html.tmpl
+    │      
+    ├─pages
+    │      bug-writing.html.tmpl
+    │      bugzilla.dtd.tmpl
+    │      fields.html.tmpl
+    │      linked.html.tmpl
+    │      linkify.html.tmpl
+    │      quicksearch.html.tmpl
+    │      release-notes.html.tmpl
+    │      release-notes3.html.tmpl
+    │      sudo.html.tmpl
+    │      
+    ├─reports
+    │      chart.csv.tmpl
+    │      chart.html.tmpl
+    │      chart.png.tmpl
+    │      components.html.tmpl
+    │      create-chart.html.tmpl
+    │      delete-series.html.tmpl
+    │      duplicates-simple.html.tmpl
+    │      duplicates-table.html.tmpl
+    │      duplicates.html.tmpl
+    │      edit-series.html.tmpl
+    │      keywords.html.tmpl
+    │      menu.html.tmpl
+    │      old-charts.html.tmpl
+    │      report-bar.png.tmpl
+    │      report-line.png.tmpl
+    │      report-pie.png.tmpl
+    │      report-simple.html.tmpl
+    │      report-table.csv.tmpl
+    │      report-table.html.tmpl
+    │      report.csv.tmpl
+    │      report.html.tmpl
+    │      series-common.html.tmpl
+    │      series.html.tmpl
+    │      
+    ├─request
+    │      queue.html.tmpl
+    │      
+    ├─search
+    │      boolean-charts.html.tmpl
+    │      field.html.tmpl
+    │      form.html.tmpl
+    │      knob.html.tmpl
+    │      search-advanced.html.tmpl
+    │      search-create-series.html.tmpl
+    │      search-plugin.xml.tmpl
+    │      search-report-graph.html.tmpl
+    │      search-report-select.html.tmpl
+    │      search-report-table.html.tmpl
+    │      search-specific.html.tmpl
+    │      tabs.html.tmpl
+    │      type-select.html.tmpl
+    │      
+    ├─setup
+    │      strings.txt.pl
+    │      
+    └─whine
+            mail.html.tmpl
+            mail.txt.tmpl
+            multipart-mime.txt.tmpl
+            schedule.html.tmpl
+            
