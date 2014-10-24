@@ -14,7 +14,7 @@
   #%]
 
 [% title = BLOCK %]
-  建立一個新的 [% terms.Bugzilla %] 帳號
+  创建一个新的 [% terms.Bugzilla %] 账号
 [% END %]
 
 [% PROCESS global/header.html.tmpl
@@ -22,31 +22,31 @@
            onload = "document.forms['account_creation_form'].login.focus();" %]
 
 <p>
-  要建立一個[% terms.Bugzilla %]帳號，你只要輸入：<br>
+  要创建一个[% terms.Bugzilla %]账号，你只要输入：<br>
 [% IF Param('emailsuffix') == '' %]
-  一個有效的電子郵件地址。
+  一个有效的电子邮件地址。
 [% ELSE %]
-  一個帳號名稱。此一帳號名稱後面加上 [% Param('emailsuffix') %] 時可以對應到你的電子郵件地址。
+  一个账号名称。此一账号后面加上 [% Param('emailsuffix') %] 时可以对应到你的电子邮件地址。
 [% END %]
-  會寄一封用來建立帳號的認證信到此一電子郵件地址。
-  <br><b>在你收到電子郵件之前，你將無法登入。</b>
-  <br>如果沒有在合理的時間範圍內收到，你可以用電子郵件連絡此一 [% terms.Bugzilla %] 的管理者： <a
+  会发送一封用来创建账号的认证邮件到该电子邮件地址。
+  <br><b>在你收到电子邮件之前，你将无法登录。</b>
+  <br>如果没有在合理的时间范围内受到，你可以用电子邮件联络该 [% terms.Bugzilla %] 的管理员： <a
   href="mailto:[% Param("maintainer") %]">[% Param("maintainer") %]</a> 。
 </p>
 
 <p>
-  當需要回報一個新的 [% terms.bug %] ，或者對現有的 [% terms.bug %] 留下意見時，需要一個帳號。
-  當後續有需要更多資訊時，可以聯絡上你。
-  這也讓其他使用者可以清楚了解是誰對 [%terms.bug %] 做了改變或留下意見。
-  <b>注意：你的電子郵件地址將<u>不會</u>顯示給訪客。只有註冊使用者才能看見它。</b>
+  当需要提交一个新的 [% terms.bug %] ，或者对现有的 [% terms.bug %] 留下意见时，需要一个账号。
+  当后续需要更多信息资料时，可以联络上你。
+  这也让其他使用者可以清楚了解是谁对 [%terms.bug %] 做了更改或留下留言。
+  <b>注意：你的电子邮件地址将<u>不会</u>显示给访客。只有注册用户才能看见它。</b>
 </p>
 
 [% IF Param('createemailregexp') == '.*' && Param('emailsuffix') == '' %]
 <p>
-  <b>隱私權提醒：</b>
-  <br>[% terms.Bugzilla %] 是一個開放的 [% terms.bug %] 追蹤系統。
-  <br>在大多數 [% terms.bugs %] 的活動，包括電子郵件地址，都是可被註冊使用者瀏覽的。
-  <br>我們<b>建議</b>使用次要的電子郵件，或者使用免費的網路電子郵件服務（例如 Gmail、Yahoo、Hotmail 等等），以避免你的主要電子郵件收到垃圾郵件。
+  <b>隐私权提醒：</b>
+  <br>[% terms.Bugzilla %] 是一个开放的 [% terms.bug %] 追踪系统。
+  <br>在大多数 [% terms.bugs %] 的活动，包括电子邮件地址，都是可被注册用户看到的。
+  <br>我们<b>建议</b>使用次要额电子邮件，或者使用免费的网络电子邮件服务（例如 Gmail、Yahoo、Hotmail 等等），以避免你的主要电子邮箱收到垃圾邮件。
 </p>
 [% END %]
 
@@ -54,7 +54,7 @@
   <table>
     <tr>
       <td align="right">
-        <b>電子郵件：</b>
+        <b>电子邮件：</b>
       </td>
       <td>
         <input size="35" id="login" name="login">
@@ -64,7 +64,7 @@
   </table>
   <br>
   <input type="hidden" id="token" name="token" value="[% issue_hash_token(['create_account']) FILTER html %]">
-  <input type="submit" id="send" value="送出">
+  <input type="submit" id="send" value="发送">
 </form>
 
 [% PROCESS global/footer.html.tmpl %]

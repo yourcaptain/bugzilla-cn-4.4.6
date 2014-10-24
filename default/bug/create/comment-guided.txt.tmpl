@@ -9,26 +9,26 @@
 [% USE Bugzilla %]
 [% cgi = Bugzilla.cgi %]
 User-Agent ： [%+ cgi.user_agent() %]
-Build 編號： [%+ cgi.param("buildid") %]
+Build 编号： [%+ cgi.param("buildid") %]
 
 [%+ cgi.param("comment") IF cgi.param("comment") %]
 
-[%+ IF cgi.param("reproducible") != "選擇一項..." -%]
-是否可重製： [%+ cgi.param("reproducible") %]
+[%+ IF cgi.param("reproducible") != "选择一项..." -%]
+是否可重置： [%+ cgi.param("reproducible") %]
 [% END %]
 
 [% IF !(cgi.param("reproduce_steps").match('^1\.\s*2\.\s*3\.\s*$') || cgi.param("reproduce_steps").match('^\s*$')) %]
-重製步驟：
+重置步骤：
 [%+ cgi.param("reproduce_steps") %]
 [% END %]
 
 [% IF cgi.param("actual_results") -%]
-實際的結果：
+实际的结果：
 [%+ cgi.param("actual_results") %]
 [% END %]
 
 [% IF cgi.param("expected_results") %]
-預期的結果：
+预期的结果：
 [%+ cgi.param("expected_results") %]
 [% END %]
 

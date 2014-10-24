@@ -737,7 +737,7 @@
                    IF user.settings.state_addselfcc.value == 'always'
                       || (!bug.user.has_any_role
                           && user.settings.state_addselfcc.value == 'cc_unless_role') %]>
-            <label for="addselfcc">把自己加入邮件副本清单</label>
+            <label for="addselfcc">把自己加入抄送清单</label>
             <br>
           [% END %]
         [% END %]
@@ -782,9 +782,9 @@
               <input type="checkbox" id="removecc" name="removecc">
               <label for="removecc">
                 [% IF bug.user.canedit %]
-                  删除选择的邮件副本清单
+                  删除选择的抄送清单
                 [% ELSE %]
-                  将我从邮件副本清单中删除
+                  将我从抄送清单中删除
                 [% END %]
               </label>
               <br>

@@ -28,25 +28,25 @@
   </script>
 [% END %]
 
-<p>你已儲存的搜尋如下：</p>
+<p>你已保存的查询如下：</p>
 
 <blockquote>
   <table border="1" cellpadding="3">
     <tr>
       <th>
-        搜尋
+        查询
       </th>
       <th>
-        執行
+        执行
       </th>
       <th>
-        編輯
+        编辑
       </th>
       <th>
         刪除
       </th>
       <th>
-        於頁尾顯示
+        于尾页显示
       </th>
       [% may_share = user.in_group(Param('querysharegroup')) && queryshare_groups.size %]
       [% IF may_share %]
@@ -59,7 +59,7 @@
       <td>我的 [% terms.Bugs %]</td>
       <td>
         [% filtered_username = user.login FILTER uri %]
-        <a href="[% Param('mybugstemplate').replace('%userid%', filtered_username) %]">執行</a>
+        <a href="[% Param('mybugstemplate').replace('%userid%', filtered_username) %]">执行</a>
       </td>
       <td>
         &nbsp;
@@ -84,15 +84,15 @@
         <td>[% q.name FILTER html %]</td>
         <td>
           <a href="buglist.cgi?cmdtype=dorem&amp;remaction=run&amp;namedcmd=[% q.name FILTER uri %]
-                   [% IF q.shared_with_group.id %]&amp;sharer_id=[% user.id FILTER uri %][% END %]">執行</a>
+                   [% IF q.shared_with_group.id %]&amp;sharer_id=[% user.id FILTER uri %][% END %]">执行</a>
         </td>
         <td>
           <a href="query.cgi?[% q.edit_link FILTER html %]&amp;known_name=
-                   [% q.name FILTER uri %]">編輯</a>
+                   [% q.name FILTER uri %]">编辑</a>
         </td>
         <td>
           [% IF q.used_in_whine %]
-            先從<a href="editwhines.cgi">訂閱</a>中刪除
+            先从<a href="editwhines.cgi">订阅</a>中刪除
           [% ELSE %]
             <a href="buglist.cgi?cmdtype=dorem&amp;remaction=forget&amp;namedcmd=
                      [% q.name FILTER uri %]&amp;token=
@@ -123,11 +123,11 @@
                      %]class="bz_default_hidden"[% END %]>
                 <input type="checkbox" id="force_[% q.id FILTER html %]"
                        name="force_[% q.id FILTER html %]" value="1">
-                <label for="force_[% q.id FILTER html %]">加到頁尾</label>
+                <label for="force_[% q.id FILTER html %]">加到页尾</label>
               </span>
             [% END %]
             [% IF q.shared_with_users %]
-              （已和 [% q.shared_with_users FILTER html %] 位使用者分享）
+              （已和 [% q.shared_with_users FILTER html %] 位用户分享）
             [% END %]
           </td>
         [% END %]
@@ -135,32 +135,32 @@
     [% END %]
   </table>
 [% IF user.can_bless %]
-  <p>注意：對於每個選擇「加到頁尾」的搜尋，在你按下「儲存設定」鍵之後，將會把選擇分享的搜尋加到群組中的每一位成員的頁尾。</p>
+  <p>注意：对于每个选择「加到页尾」的查询，在你按下「保存设定」按钮之后，将会把选择分享的搜索加到群组中的每一位成员的页尾。</p>
 [% END %]
 </blockquote>
 
 [% IF user.queries_available.size %]
-  <p>你可以使用這些已存並由他人分享的搜尋：</p>
+  <p>你可以使用这些已存并由他人分享的搜索：</p>
 
   <table border="1" cellpadding="3">
     <tr>
       <th>
-        搜尋
+        搜索
       </th>
       <th>
         分享者
       </th>
       <th>
-        分享給
+        分享给
       </th>
       <th>
-        執行
+        执行
       </th>
       <th>
-        編輯
+        编辑
       </th>
       <th>
-        顯示於頁尾
+        显示于页尾
       </th>
     </tr>
     [% FOREACH q = user.queries_available %]
@@ -171,11 +171,11 @@
         <td>
           <a href="buglist.cgi?cmdtype=dorem&amp;remaction=run&amp;namedcmd=
                    [% q.name FILTER uri %]&amp;sharer_id=
-                   [% q.user.id FILTER uri %]">執行</a>
+                   [% q.user.id FILTER uri %]">执行</a>
         </td>
         <td>
           <a href="query.cgi?[% q.edit_link FILTER html %]&amp;known_name=
-                   [% q.name FILTER uri %]">編輯</a>
+                   [% q.name FILTER uri %]">编辑</a>
         </td>
         <td align="center">
           <input type="checkbox"
@@ -188,5 +188,5 @@
     [% END %]
   </table>
 [% ELSE %]
-  <p>其他人並未和你分享搜尋。</p>
+  <p>其他人并未和你分享搜索。</p>
 [% END %]

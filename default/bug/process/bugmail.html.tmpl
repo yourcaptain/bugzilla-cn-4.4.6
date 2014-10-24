@@ -13,7 +13,7 @@
 
 <dl>
 [% PROCESS emails
-   description = "寄發電子郵件到"
+   description = "发送电子邮件到"
    names = sent_bugmail.sent
 %]
 
@@ -36,10 +36,10 @@
         <code>[% name FILTER html %]</code>[% ", " UNLESS loop.last() %]
       [% END %]
     [% ELSE %]
-      沒有人
+      没有人
     [% END %]
   [% ELSE %]
-    (無法取得電子郵件列表)
+    (无法取得电子邮家列表)
   [% END %]
   </dd>
 [% END %]

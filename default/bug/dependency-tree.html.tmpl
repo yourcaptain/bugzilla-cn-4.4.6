@@ -8,8 +8,8 @@
 
 [% filtered_desc = blocked_tree.$bugid.short_desc FILTER html %]
 [% PROCESS global/header.html.tmpl
-   title           = "$terms.Bug $bugid 的依賴關係樹"
-   header          = "<a href=\"show_bug.cgi?id=$bugid\">$terms.Bug $bugid</a> 的依賴關係樹"
+   title           = "$terms.Bug $bugid 的依赖关系树"
+   header          = "<a href=\"show_bug.cgi?id=$bugid\">$terms.Bug $bugid</a> 的依赖关系树"
    javascript_urls = ["js/expanding-tree.js"]
    style_urls      = ["skins/standard/dependency-tree.css"]
    subheader      = filtered_desc
@@ -44,21 +44,21 @@
     [% IF type == 1 %]
         [% tree_name = "dependson_tree" %]
         [% IF ids.size %]
-            依賴於
+            依赖于
         [% ELSE %]
-            並未依賴任何[% '開啟的' IF hide_resolved %][% terms.bugs %] 。
+            并未依赖任何[% '开启的' IF hide_resolved %][% terms.bugs %] 。
         [% END %]
     [% ELSIF type == 2 %]
         [% tree_name = "blocked_tree" %]
         [% IF ids.size %]
-            阻擋
+            阻挡
         [% ELSE %]
-            並未阻擋任何[% '開啟的' IF hide_resolved %][% terms.bugs %] 。
+            并未阻挡任何[% '开启的' IF hide_resolved %][% terms.bugs %] 。
         [% END %]
     [% END %]
     [% IF ids.size %]
-        [%+ ids.size _ " 個" %]
-        [%+ IF hide_resolved %]開啟的[% END %]
+        [%+ ids.size _ " 个" %]
+        [%+ IF hide_resolved %]开启的[% END %]
         [%+ terms.bugs %] ：
     [% END %]
   </h3>
@@ -70,17 +70,17 @@
       <input type="hidden" name="bug_id" value="[% ids.join(",") %]">
     [% END %]
 
-    [% IF maxdepth -%]最多到 [% maxdepth %] 層 | [% END -%]
+    [% IF maxdepth -%]最多到 [% maxdepth %] 层 | [% END -%]
     [% IF use_post %]
-      <button>以 [% terms.bug %] 清單方式瀏覽</button>
+      <button>以 [% terms.bug %] 清单方式浏览</button>
       [% IF user.in_group('editbugs') && ids.size > 1 %]
-        | <button type="submit" name="tweak" value="1">變更多個</button>
+        | <button type="submit" name="tweak" value="1">变更多个</button>
       [% END %]
       </form>
     [% ELSE %]
-      <a href="buglist.cgi?bug_id=[% ids.join(",") %]">以 [% terms.bug %] 清單方式瀏覽</a>
+      <a href="buglist.cgi?bug_id=[% ids.join(",") %]">以 [% terms.bug %] 清单方式浏览</a>
       [% IF user.in_group('editbugs') && ids.size > 1 %]
-        | <a href="buglist.cgi?bug_id=[% ids.join(",") %]&amp;tweak=1">變更多個</a>
+        | <a href="buglist.cgi?bug_id=[% ids.join(",") %]&amp;tweak=1">变更多个</a>
       [% END %]
     [% END %]
 
@@ -108,7 +108,7 @@
       [%- INCLUDE buglink bug=bug bugid=bugid %]
     </span>
     [% IF global.seen.$bugid %]
-      <b><a title="已在上方顯示；點選進入"
+      <b><a title="已在上方显示；点选进入"
             onclick="duplicated('[% bugid FILTER html %]')"
             href="#b[% bugid %]">(*)</a></b>
     [% ELSIF tree.dependencies.$bugid.size %]
@@ -129,7 +129,7 @@
   [% END %]
   <a id="b[% bugid %]"
      class="b [%+ extra_class FILTER none %]"
-     title="點選以展開或縮短此關係樹。按 Ctrl 點選展開或縮短所有子關係樹。"
+     title="点选以展开或缩短此关系树。按 Ctrl 点击展开或缩短所有子关系树。"
      [% extra_args FILTER none %]>&nbsp;&nbsp;</a>
 [% END %]
 
@@ -145,15 +145,15 @@
     <a href="showdependencytree.cgi?id=[% bugid FILTER uri %]"
        class="tree_link">
       <img src="skins/standard/dependency-tree/tree.png"
-           title="顯示 [% terms.bug %] [%+ bugid FILTER html %] 的依賴關係樹">
+           title="显示 [% terms.bug %] [%+ bugid FILTER html %] 的依赖关系树">
     </a>
   [% END %]
 [% END %]
 
 [% BLOCK buginfo %]
   [% display_value("bug_status", bug.bug_status) FILTER html -%] [%+ display_value("resolution", bug.resolution) FILTER html %] ；
-  [%-%] 分配給 [% bug.assigned_to.login FILTER email FILTER html %] 負責
-  [%-%][% "；目標里程碑： " _ bug.target_milestone IF bug.target_milestone %]
+  [%-%] 分配给 [% bug.assigned_to.login FILTER email FILTER html %] 负责
+  [%-%][% "；目标里程碑： " _ bug.target_milestone IF bug.target_milestone %]
 [% END %]
 
 [%###########################################################################%]
@@ -174,7 +174,7 @@
      [% END %]
      <input type="hidden" name="hide_resolved" value="[% hide_resolved ? 0 : 1 %]">
      <input type="submit" id="toggle_visibility"
-            value="[% IF hide_resolved %]顯示[% ELSE %]隱藏[% END %]已解決的">
+            value="[% IF hide_resolved %]显示[% ELSE %]隐藏[% END %]已解决的">
    </form>
    </td>
 
@@ -226,7 +226,7 @@
      <input name="id" type="hidden" value="[% bugid %]">
      <input name="hide_resolved" type="hidden" value="[% hide_resolved %]">
      <noscript>
-       <input type="submit" id="change_depth" value="變更"
+       <input type="submit" id="change_depth" value="变更"
               [% "disabled" IF realdepth < 2 %]>
      </noscript>
    </form>

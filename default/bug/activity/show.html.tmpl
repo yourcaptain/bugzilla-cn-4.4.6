@@ -16,8 +16,8 @@
 
 [% filtered_desc = bug.short_desc FILTER html %]
 [% PROCESS global/header.html.tmpl
-  title = "已對 $terms.bug $bug.bug_id 做出的變更"
-  header = "$terms.bug $bug.bug_id 的活動記錄： $filtered_desc"
+  title = "已对 $terms.bug $bug.bug_id 做出的变更"
+  header = "$terms.bug $bug.bug_id 的活动记录： $filtered_desc"
  %]
 
 <p>

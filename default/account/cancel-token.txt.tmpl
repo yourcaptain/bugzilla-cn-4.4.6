@@ -11,26 +11,26 @@ To: [% emailaddress %]
 Subject: [% PROCESS subject %]
 X-Bugzilla-Type: admin
 
-請求已被 [% remoteaddress %] 取消。
+请求已被 [% remoteaddress %] 取消。
 
-如果你沒有做出此項請求，可能是單純的操作錯誤，或是有人正嘗試破解你的 [% terms.Bugzilla %] 帳號。
+如果你没有做出此项请求，可能是单纯的操作错误，或是有人正尝试破解你的 [% terms.Bugzilla %] 账号。
 
-檢視以下資訊，必要時將此信件轉寄給[% Param('maintainer') %]。
+检查以下信息，必要时将此邮件转发给[% Param('maintainer') %]。
 
            Token： [% token %]
-      Token 類型： [% tokentype %]
-          使用者： [% emailaddress %]
-        發布日期： [% issuedate FILTER time("%Y-%m-%d %H:%M:%S %Z", timezone) %]
-        事件資料： [% eventdata %]
+      Token 类型： [% tokentype %]
+            用户： [% emailaddress %]
+        发布日期： [% issuedate FILTER time("%Y-%m-%d %H:%M:%S %Z", timezone) %]
+        相关资料： [% eventdata %]
         取消原因： [% PROCESS cancelactionmessage %]
 
 [% BLOCK subject %]
   [% IF tokentype == 'new_account' %]
-    已取消建立使用者帳號
+    已取消创建用户账号
   [% ELSIF tokentype == 'password' %]
-    已取消密碼變更的要求
+    已取消密码变更要求
   [% ELSIF tokentype == 'emailnew' OR tokentype == 'emailold' %]
-    已取消變更電子郵件的要求
+    已取消变更电子邮件要求
   [% ELSE %]
     已取消[% tokentype %]的 token
   [% END %]
@@ -38,45 +38,45 @@ X-Bugzilla-Type: admin
 
 [% BLOCK cancelactionmessage %]
   [% IF    cancelaction == 'account_exists' %]
-    帳號 [% email %] 已存在。
+    账号 [% email %] 已存在。
 
   [% ELSIF cancelaction == 'email_change_canceled' %]
-    將 [% old_email %] 帳號的電子郵件地址變更為 [% new_email %] 的請求已被取消。
+    将 [% old_email %] 账号的电子邮件地址变更为 [% new_email %] 的要求已被取消。
 
   [% ELSIF cancelaction == 'email_change_canceled_reinstated' %]
-    將你的帳號的電子郵件地址變更為 [% new_email %] 的請求已被取消。已恢復原帳號的舊有設定。
+    将你的账号的电子邮箱地址变更为 [% new_email %] 的要求已被取消。已恢复原账号的旧有设定。
 
   [% ELSIF cancelaction == 'emailold_change_canceled' %]
-    將你的帳號的電子郵件地址變更為 [% new_email %] 的請求已被取消。
+    将你的账号的电子邮箱地址变更为 [% new_email %] 的要求已被取消。
 
   [% ELSIF cancelaction == 'password_change_canceled' %]
     你要求取消。
 
   [% ELSIF cancelaction == 'account_creation_canceled' %]
-    已取消建立使用者帳號 [% emailaddress %] 。
+    已取小创建用户账号 [% emailaddress %] 。
 
   [% ELSIF cancelaction == 'user_logged_in' %]
-    你已登入。
+    你已登录。
 
   [% ELSIF cancelaction == 'wrong_token_for_changing_passwd' %]
-    你已經使用 token 來變更密碼。
+    你已经使用 token 来变更密码。
 
   [% ELSIF cancelaction == 'wrong_token_for_cancelling_email_change' %]
-    你已經使用 token 來取消電子郵件的變更。
+    你已经使用 token 来取笑电子邮件的变更。
 
   [% ELSIF cancelaction == 'wrong_token_for_confirming_email_change' %]
-    你已經使用 token 來確認電子郵件的變更。
+    你已经使用 token 来确认电子邮件的变更。
 
   [% ELSIF cancelaction == 'wrong_token_for_creating_account' %]
-    你已經使用 token 來建立一個新的帳號。
+    你已经使用 token 来创建一个新的账号。
 
   [% ELSE %]
     [%# Give sensible error if the cancel-token function is used incorrectly.
       #%]
-    你不正確的使用 [% terms.Bugzilla %] 功能。
-    你輸入了字串 '[% cancelaction %]' 。
-    正確的用法是輸入一個標籤，並且在 <kbd>cancel-token.txt.tmpl</kbd> 檔案中定義該標籤。
+    你没有正确使用 [% terms.Bugzilla %] 功能。
+    你输入了字符串 '[% cancelaction %]' 。
+    正确的用法是输入一个标签，并且在 <kbd>cancel-token.txt.tmpl</kbd> 文件中定义该标签。
 
-    如果你是一個 [% terms.Bugzilla %] 的使用者，但卻看到此一訊息時，請將它轉寄給 [% Param('maintainer') %] 。
+    如果你是一个 [% terms.Bugzilla %] 的使用者，但却看到本消息的话，请将它转发给 [% Param('maintainer') %] 。
   [% END %]
 [% END %]

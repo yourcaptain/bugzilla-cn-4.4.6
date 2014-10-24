@@ -23,7 +23,7 @@
 [% IF settings.size %]
   [% UNLESS has_settings_enabled %]
     <p class="criticalmessages">
-      在此一安裝中所有使用者的偏好設定功能已被<a href="mailto:[% Param("maintainer") %]">網站維護者</a>關閉，因此你無法自行設定。
+      在此一安裝中所有使用者的偏好設定功能已被<a href="mailto:[% Param("maintainer") %]">网站管理员</a>关闭，因此你无法自行设定。
     </p>
   [% END %]
 
@@ -40,7 +40,7 @@
             <select name="[% name FILTER html %]" id="[% name FILTER html %]">
               <option value="[% default_name FILTER html %]"
                 [% ' selected="selected"' IF settings.${name}.is_default %]>
-                站台預設值 ([% setting_descs.${default_val} OR default_val FILTER html %])
+                站台预设值 ([% setting_descs.${default_val} OR default_val FILTER html %])
               </option>
               [% FOREACH x = settings.${name}.legal_values %]
                 <option value="[% x FILTER html %]"
@@ -54,7 +54,7 @@
           [% ELSE %]
             <select name="[% name FILTER html %]" id="[% name FILTER html %]" disabled="disabled">
               <option value="[% default_name FILTER html %]">
-                站台預設值 ([% setting_descs.${default_val} OR default_val FILTER html %])
+                站台预设值 ([% setting_descs.${default_val} OR default_val FILTER html %])
               </option>
             </select>
           [% END %]

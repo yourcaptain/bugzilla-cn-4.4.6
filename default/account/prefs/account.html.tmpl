@@ -17,11 +17,11 @@
         || (user.authorizer.can_change_email && Param('allowemailchange')) %]
     <tr>
       <td colspan="3">
-        請輸入你的密碼以確認帳號設定的變更。
+        请输入你的密码以确认账号设定的变更。
       </td>
     </tr>
     <tr>
-      <th align="right">密碼：</th>
+      <th align="right">密码：</th>
       <td>
         <input type="hidden" name="old_login" value="[% user.login FILTER html %]">
         <input type="password" name="old_password">
@@ -33,14 +33,14 @@
   [% END %]
   [% IF user.authorizer.can_change_password %]
     <tr>
-      <th align="right">新的密碼：</th>
+      <th align="right">新的密码：</th>
       <td>
         <input type="password" name="new_password1">
       </td>
     </tr>
 
     <tr>
-      <th align="right">確認新的密碼：</th>
+      <th align="right">确认新的密码：</th>
       <td>
         <input type="password" name="new_password2">
       </td>
@@ -48,7 +48,7 @@
   [% END %]
 
   <tr>
-    <th align="right">真實姓名（選填，但鼓勵填寫）：</th>
+    <th align="right">真实姓名（选填，但鼓励填写）：</th>
     <td>
       <input size="35" name="realname" value="[% realname FILTER html %]">
     </td>
@@ -58,16 +58,16 @@
     [% IF login_change_date %]
       [% IF new_login_name %]
         <tr>
-          <th align="right">未決定的電子郵件地址：</th>
+          <th align="right">未决定的电子邮件地址：</th>
           <td>[% new_login_name FILTER html %]</td>
         </tr>
         <tr>
-          <th align="right">變更的要求將在此時間過期：</th>
+          <th align="right">变更的要求将在此期间过期：</th>
           <td>[% login_change_date FILTER time %]</td>
         </tr>
       [% ELSE %]
         <tr>
-          <th align="right">確認的電子郵件地址：</th>
+          <th align="right">确认的电子邮件地址：</th>
           <td>[% user.login FILTER html %]</td>
         </tr>
         <tr>
@@ -77,7 +77,7 @@
       [% END %]
     [% ELSE %]
       <tr>
-        <th align="right">新的電子郵件地址：</th>
+        <th align="right">新的电子邮件地址：</th>
         <td>
           <input size="35" name="new_login_name">
         </td>

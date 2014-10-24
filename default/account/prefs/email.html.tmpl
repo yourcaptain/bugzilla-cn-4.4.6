@@ -22,19 +22,19 @@
 [%# If the user's bugmail has been disabled by admins, show a warning. %]
 [% IF user.email_disabled %]
   <div class="warningmessages">
-    你的 [% terms.bug %] 變更狀態通知信已被管理員停用。請聯絡
-    [% Param('maintainer') %] 以啟用 [% terms.bug %] 變更狀態通知信。
+    你的 [% terms.bug %] 变更状态通知信已被管理员停用。请联络
+    [% Param('maintainer') %] 以启用 [% terms.bug %] 变更状态通知信。
   </div>
 [% END %]
 
 <p>
-如果你不想要收到 [% terms.bug %] 變更狀態的通知信，你可以用以下設定來過濾部份或全部的通知信。
+如果你不想要收到 [% terms.bug %] 变更状态通知信，你可以用以下设定来过滤部分或全部的通知信。
 </p>
 
 [% IF user.authorizer.can_change_email && Param('allowemailchange') %]
   <p>
-    如果你想要變更 [% terms.Bugzilla %] 發送通知信的電子郵件
-    <b>[% user.email FILTER html %]</b> ，點擊上方的「帳號資訊」頁籤。
+    如果你想要变更 [% terms.Bugzilla %] 发送通知信的电子邮件
+    <b>[% user.email FILTER html %]</b> ，点击上面的「账号信息」标签。
   </p>
 [% END %]
 
@@ -54,8 +54,8 @@ function SetCheckboxes(setting) {
   }
 }
 
-document.write('<input type="button" value="全選" onclick="SetCheckboxes(true); return false;">\n');
-document.write('<input type="button" value="全不選" onclick="SetCheckboxes(false); return false;">\n');
+document.write('<input type="button" value="全选" onclick="SetCheckboxes(true); return false;">\n');
+document.write('<input type="button" value="全不选" onclick="SetCheckboxes(false); return false;">\n');
 // -->
 </script>
 
@@ -64,7 +64,7 @@ document.write('<input type="button" value="全不選" onclick="SetCheckboxes(fa
 <table>
   <tr>
     <td colspan="2">
-      <b>整體設定選項：</b>
+      <b>整体设定选项：</b>
     </td>
   </tr>
 
@@ -76,7 +76,7 @@ document.write('<input type="button" value="全不選" onclick="SetCheckboxes(fa
         value="1"
         [% " checked"
            IF user.mail_settings.${constants.REL_ANY}.${constants.EVT_FLAG_REQUESTED} %]>
-      <label for="[% prefname %]">當有人要求我設定一項旗標時，寄發電子郵件給我</label>
+      <label for="[% prefname %]">当有人要求我设定这一项旗标时，发送电子邮件给我</label>
       <br>
     </td>
   </tr>
@@ -88,7 +88,7 @@ document.write('<input type="button" value="全不選" onclick="SetCheckboxes(fa
         value="1"
         [% " checked"
            IF user.mail_settings.${constants.REL_ANY}.${constants.EVT_REQUESTED_FLAG} %]>
-      <label for="[% prefname %]">當有人應允我的要求，設定一項旗標時，寄發電子郵件給我</label>
+      <label for="[% prefname %]">当有人应允我的要求，设定一项旗标，发送电子邮件给我</label>
       <br>
     </td>
   </tr>
@@ -96,63 +96,63 @@ document.write('<input type="button" value="全不選" onclick="SetCheckboxes(fa
   <tr>
     <td width="150"></td>
     <td>
-      你在監控所有的 [% terms.bugs %] 。若要刪除此一設定，請洽 <a href="mailto:[% Param("maintainer") %]">[% Param("maintainer") %]</a> 。
+      你在监控所有的 [% terms.bugs %] 。若要删除此设定，请联系 <a href="mailto:[% Param("maintainer") %]">[% Param("maintainer") %]</a> 。
     </td>
   </tr>
 [% END %]
 </table>
 
 <hr>
-<b>欄位及收信人個別設定選項：</b>
+<b>栏位及收件人个别设定选项：</b>
 <br>
 <br>
 
 [% events = [
     { id = constants.EVT_ADDED_REMOVED,
-      description = "被加入某個 $terms.bug ，或自某個 $terms.bug 中刪除" },
+      description = "被加入某个 $terms.bug ，或自某个 $terms.bug 中刪除" },
     { id = constants.EVT_BUG_CREATED,
-      description = "建立了一個新的 $terms.bug " },
+      description = "建立一个新的 $terms.bug " },
     { id = constants.EVT_OPENED_CLOSED,
-      description = " $terms.bug 已解決或再開啟 (REOPENED)" },
+      description = " $terms.bug 已解决或再开启 (REOPENED)" },
     { id = constants.EVT_COMPONENT,
-      description = "產品或子產品變更" },
+      description = "产品或子产品变更" },
     { id = constants.EVT_PROJ_MANAGEMENT,
-      description = "優先程度、狀態、等級，或是里程碑變更" },
+      description = "优先程度、状态、等级，或是里程碑变更" },
     { id = constants.EVT_COMMENT,
-      description = "新增意見" },
+      description = "新增留言" },
     { id = constants.EVT_ATTACHMENT,
       description = "新增附件" },
     { id = constants.EVT_ATTACHMENT_DATA,
-      description = "部份附件內容變更" },
+      description = "部分附件内容变更" },
     { id = constants.EVT_KEYWORD,
-      description = "關鍵字欄位變更" },
+      description = "关键字栏位变更" },
     { id = constants.EVT_CC,
-      description = "寄件副本欄位變更" },
+      description = "抄送栏位变更" },
     { id = constants.EVT_DEPEND_BLOCK,
-      description = "依賴關係變更" },
+      description = "依赖关系变更" },
     { id = constants.EVT_OTHER,
-      description = "其他變更" },
+      description = "其他变更" },
 ] %]
 
 [% neg_events = [
     { id = constants.EVT_UNCONFIRMED,
-      description = " $terms.bug 仍然處於未確認 (UNCONFIRMED)狀態" },
+      description = " $terms.bug 仍然处于未确认 (UNCONFIRMED)状态" },
     { id = constants.EVT_CHANGED_BY_ME,
-      description = "我做的變更" },
+      description = "我做的变更" },
 ] %]
 
 [% relationships = [
     { id = constants.REL_ASSIGNEE,
-      description = "負責人" },
+      description = "负责人" },
     { id = constants.REL_REPORTER,
-      description = "回報者" },
+      description = "提交者" },
     { id = constants.REL_CC,
-      description = "被加入寄件副本的人" },
+      description = "被加入抄送对象的人" },
 ] %]
 
 [% IF Param('useqacontact') %]
   [% relationships.push({ id = constants.REL_QA,
-                          description = "QA 連絡人" }) %]
+                          description = "QA 联络人" }) %]
 [% END %]
 
 
@@ -166,10 +166,10 @@ document.write('<input type="button" value="全不選" onclick="SetCheckboxes(fa
 <table class="bz_emailprefs" border="1">
   <tr>
     <td colspan="[% num_columns FILTER html %]" align="center" width="50%">
-      <b>當我和這個 [% terms.bug %] 的關係是：</b>
+      <b>当我和这个 [% terms.bug %] 的关系是</b>
     </td>
     <td rowspan="2" width="40%">
-      <b>當…的時候，我想要收到信：</b>
+      <b>当…的时候，我想要收到信：</b>
     </td>
   </tr>
 
@@ -211,7 +211,7 @@ document.write('<input type="button" value="全不選" onclick="SetCheckboxes(fa
       &nbsp;
     </td>
     <td width="40%">
-      <b>但當…的時候，我不想要收到信（覆寫以上設定值）：</b>
+      <b>但当…的时候，我不想要收到信（覆盖以上设定值）：</b>
     </td>
   </tr>
 
@@ -235,15 +235,15 @@ document.write('<input type="button" value="全不選" onclick="SetCheckboxes(fa
 </table>
 
 <hr>
-<b>監控使用者</b>
+<b>监控用户</b>
 
 <p>
-如果你監控一位使用者，那麼就會根據<u>你的</u>偏好設定以及<u>他和 [% terms.bug %] </u>的關係（例如：負責人）來決定是否收到電子郵件。
+如果你监控一位用户，那么就会根据<u>你的</u>偏好设定以及<u>他和 [% terms.bug %] </u>的关系（例如：负责人）来决定是否收到电子邮件。
 </p>
 
 <p>
 [% IF watchedusers.size %]
-你正在監控以下使用者：
+你正在监控以下用户：
   </p>
   <p>
     <select id="watched_by_you" name="watched_by_you" multiple="multiple" size="5">
@@ -252,13 +252,13 @@ document.write('<input type="button" value="全不選" onclick="SetCheckboxes(fa
         [% END %]
     </select> <br />
     <input type="checkbox" id="remove_watched_users" name="remove_watched_users">
-    <label for="remove_watched_users">將選擇的使用者自監控清單中刪除</label>
+    <label for="remove_watched_users">将选择的用户从监控清单中删除</label>
 [% ELSE %]
-你現在並未監控任何使用者。
+你现在并未监控任何用户。
 [% END %]
 </p>
 
-<p id="new_watched_by_you">將使用者加入監控清單〔以半形逗號 (,) 分隔多個使用者〕：
+<p id="new_watched_by_you">将用户加入监控清单〔以半角逗号 (,) 分隔多个使用者〕：
   [% INCLUDE global/userselect.html.tmpl
      id => "new_watchedusers"
      name => "new_watchedusers"
@@ -268,13 +268,13 @@ document.write('<input type="button" value="全不選" onclick="SetCheckboxes(fa
   %]
 </p>
 
-<p id="watching_you">正在監控你的使用者：<br>
+<p id="watching_you">正在监控你的用户：<br>
   [% IF watchers.size %]
     [% FOREACH watcher = watchers %]
       [% watcher FILTER html %] <br>
     [% END %]
   [% ELSE %]
-    <i>無</i>
+    <i>无</i>
   [% END %]
 </p>
 

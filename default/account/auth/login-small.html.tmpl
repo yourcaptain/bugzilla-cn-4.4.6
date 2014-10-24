@@ -22,7 +22,7 @@
   [% END %]
   [% script_url = login_target _ connector _ "GoAheadAndLogIn=1" %]
   <a id="login_link[% qs_suffix %]" href="[% script_url FILTER html %]"
-     onclick="return show_mini_login_form('[% qs_suffix %]')">登入</a>
+     onclick="return show_mini_login_form('[% qs_suffix %]')">登录</a>
 
   [% Hook.process('additional_methods') %]
 
@@ -34,18 +34,18 @@
     <input id="Bugzilla_login[% qs_suffix FILTER html %]"
            class="bz_login"
            name="Bugzilla_login"
-           title="帳號"
+           title="账号"
            onfocus="mini_login_on_focus('[% qs_suffix FILTER js %]')"
     >
     <input class="bz_password"
            id="Bugzilla_password[% qs_suffix FILTER html %]"
            name="Bugzilla_password"
            type="password"
-           title="密碼"
+           title="密码"
     >
     <input class="bz_password bz_default_hidden bz_mini_login_help" type="text"
-           id="Bugzilla_password_dummy[% qs_suffix %]" value="密碼"
-           title="密碼"
+           id="Bugzilla_password_dummy[% qs_suffix %]" value="密码"
+           title="密码"
            onfocus="mini_login_on_focus('[% qs_suffix FILTER js %]')"
     >
     [% IF Param('rememberlogin') == 'defaulton' ||
@@ -54,16 +54,16 @@
       <input type="checkbox" id="Bugzilla_remember[% qs_suffix %]"
              name="Bugzilla_remember" value="on" class="bz_remember"
                  [%+ "checked" IF Param('rememberlogin') == "defaulton" %]>
-      <label for="Bugzilla_remember[% qs_suffix %]">記住</label>
+      <label for="Bugzilla_remember[% qs_suffix %]">记住</label>
     [% END %]
     <input type="hidden" name="Bugzilla_login_token"
            value="[% get_login_request_token() FILTER html %]">
-    <input type="submit" name="GoAheadAndLogIn" value="登入"
+    <input type="submit" name="GoAheadAndLogIn" value="登录"
             id="log_in[% qs_suffix %]">
     <script type="text/javascript">
       mini_login_constants = {
-          "login" : "帳號",
-          "warning" : "你必須輸入帳號密碼才能登入。"
+          "login" : "账号",
+          "warning" : "你必须输入账号密码才能登录。"
       };
       [%# We need this event to fire after autocomplete, because it does
         # something different depending on whether or not there's already
@@ -101,12 +101,12 @@
 <li id="forgot_container[% qs_suffix %]">
   <span class="separator">| </span>
   <a id="forgot_link[% qs_suffix %]" href="[% script_url FILTER html %]#forgot"
-     onclick="return show_forgot_form('[% qs_suffix %]')">忘記密碼</a>
+     onclick="return show_forgot_form('[% qs_suffix %]')">忘记密码</a>
   <form action="token.cgi" method="post" id="forgot_form[% qs_suffix %]"
         class="mini_forgot bz_default_hidden">
-    <label for="login[% qs_suffix FILTER html %]">帳號：</label>
+    <label for="login[% qs_suffix FILTER html %]">账号：</label>
     <input type="text" name="loginname" size="20" id="login[% qs_suffix FILTER html %]">
-    <input id="forgot_button[% qs_suffix %]" value="重設密碼"
+    <input id="forgot_button[% qs_suffix %]" value="重置密码"
            type="submit">
     <input type="hidden" name="a" value="reqpw">
     <input type="hidden" id="token[% qs_suffix FILTER html %]" name="token" value="[% issue_hash_token(['reqpw']) FILTER html %]">

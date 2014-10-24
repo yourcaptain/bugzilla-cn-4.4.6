@@ -7,14 +7,14 @@
   #%]
 
 [% PROCESS global/header.html.tmpl
-   title = "以 $terms.bug 編號搜尋"
+   title = "以 $terms.bug 编号搜索"
  %]
 
 <form method="get" action="show_bug.cgi">
   <p>
-    你可以輸入 [% terms.bug %] 編號，來尋找特定的 [% terms.bug %] ：
+    你可以输入 [% terms.bug %] 编号，来查询特定的 [% terms.bug %] ：
     <input name="id" size="6">
-    <input type="submit" id="show" value="我要看這個 [% terms.Bug %]">
+    <input type="submit" id="show" value="我要看这个 [% terms.Bug %]">
   </p>
 </form>
 

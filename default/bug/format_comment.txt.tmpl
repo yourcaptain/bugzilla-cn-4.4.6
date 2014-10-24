@@ -24,11 +24,11 @@
 [% IF comment.type == constants.CMT_DUPE_OF %]
 X[% comment_body %]
 
-*** 此 [% terms.bug %] 被標記為和 [% terms.bug %] [%+ comment.extra_data %] 重複。 ***
+*** 此 [% terms.bug %] 被标记为和 [% terms.bug %] [%+ comment.extra_data %] 重复。 ***
 [% ELSIF comment.type == constants.CMT_HAS_DUPE %]
-*** [% terms.Bug %] [%+ comment.extra_data %] 被標記為和此 [% terms.bug %] 重複。 ***
+*** [% terms.Bug %] [%+ comment.extra_data %] 被标记为和此 [% terms.bug %] 重复。 ***
 [% ELSIF comment.type == constants.CMT_ATTACHMENT_CREATED %]
-已建立附件 [% comment.extra_data %]
+已添加附件 [% comment.extra_data %]
 [% IF is_bugmail %]
   --> [% urlbase _ "attachment.cgi?id=" _ comment.extra_data _ "&action=edit" %]
 [% END %]
@@ -36,7 +36,7 @@ X[% comment_body %]
 
 [%+ comment.body %]
 [% ELSIF comment.type == constants.CMT_ATTACHMENT_UPDATED %]
-對附件 [% comment.extra_data %] 的意見
+对附件 [% comment.extra_data %] 的留言
 [% IF is_bugmail %]
   --> [% urlbase _ "attachment.cgi?id=" _ comment.extra_data %]
 [% END %]

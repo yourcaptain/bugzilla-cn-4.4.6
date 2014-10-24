@@ -24,16 +24,16 @@
 
 [% IF incomplete_data %]
   <p>
-    在 <a href="http://www.bugzilla.org/">Bugzilla</a> 裡，曾經有過這樣的問題：如果有大量的寄件副本清單或依賴性關係，會造成活動歷史資料遺失。這已經修復了，但是已無法再次出現在你的活動歷史表格中。無法確定的變更會以 '?' 字元做為開頭。
+    在 <a href="http://www.bugzilla.org/">Bugzilla</a> 里，曾经有过这样的问题：如果有大量的抄送或依赖性关系，会造成活动履历信息丢失。这已经修复了，但是已无法再次出现在你的活动履历表格中。无法确定的变更会以 '?' 文字作为开头。
   </p>
 [% END %]
 
 [% IF operations.size > 0 %]
   <table border cellpadding="4">
     <tr>
-      <th>變更者</th>
-      <th>變更時間</th>
-      <th>變更內容</th>
+      <th>变更者</th>
+      <th>变更时间</th>
+      <th>变更内容</th>
       <th>刪除</th>
       <th>新增</th>
     </tr>
@@ -55,8 +55,8 @@
               [% END %]
               [% IF change.comment.defined %]
                  [% comment_desc = field_descs.${change.fieldname} %]
-                 [% comment_num = "意見 $change.comment.count" FILTER bug_link(bug.bug_id, comment_num => change.comment.count) %]
-                 [% comment_desc.replace('^(意見 )?', "$comment_num ") FILTER none %]
+                 [% comment_num = "留言 $change.comment.count" FILTER bug_link(bug.bug_id, comment_num => change.comment.count) %]
+                 [% comment_desc.replace('^(留言 )?', "$comment_num ") FILTER none %]
               [% ELSE %]
                 [%+ field_descs.${change.fieldname} FILTER html %]
               [% END %]
@@ -85,7 +85,7 @@
   </table>
 [% ELSE %]
   <p>
-    尚未對此 [% terms.bug %] 做出變更。
+    尚未对此 [% terms.bug %] 做出变更。
   </p>
 [% END %]
 

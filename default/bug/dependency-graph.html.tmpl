@@ -18,7 +18,7 @@
                        dependencies. (Optional)
   #%]
 
-[% title = "依賴關係圖"
+[% title = "依赖关系图"
    header = title
  %]
 
@@ -35,14 +35,14 @@
 [% image_map %]
 
 <p>
-  綠色的圓圈代表開啟的 [% terms.bugs %] 。
+  绿色的圆圈代表开启的 [% terms.bugs %] 。
 </p>
 
 [% IF image_map %]
-  <img src="[% image_url %]" alt="依賴關係圖" usemap="#imagemap">
+  <img src="[% image_url %]" alt="依赖关系图" usemap="#imagemap">
 [% ELSE %]
   <a href="[% map_url %]">
-    <img src="[% image_url %]" alt="依賴關係圖" ismap="ismap">
+    <img src="[% image_url %]" alt="依赖关系图" ismap="ismap">
   </a>
 [% END %]
 
@@ -51,22 +51,22 @@
 <form action="showdependencygraph.cgi" method="GET">
   <table>
     <tr>
-      <th align="left"><label for="id">[% terms.Bug %] 編號</label>：</th>
+      <th align="left"><label for="id">[% terms.Bug %] 编号</label>：</th>
       <td><input id="id" name="id" value="[% bug_id %]"></td>
       <td>
         <input type="checkbox" id="showsummary" name="showsummary" [% " checked" IF showsummary %]>
-        <label for="showsummary">顯示所有已呈現的 [% terms.bugs %] 的摘要</label>
+        <label for="showsummary">显示所有已呈现的 [% terms.bugs %] 的摘要</label>
       </td>
     </tr>
 
     <tr>
-      <th align="left"><label for="display">呈現：</label></th>
+      <th align="left"><label for="display">呈现：</label></th>
       <td colspan="2">
         <select id="display" name="display">
           <option value="tree"[% 'selected="selected"' IF (!display || display == "tree") %]>
-            將 [% terms.bugs %] 限制在和輸入的 [% terms.bugs %] 有直接關係</option>
+            将 [% terms.bugs %] 限制在和输入的 [% terms.bugs %] 有直接关系</option>
           <option value="web" [% 'selected="selected"' IF display == "web" %]>
-            顯示和輸入的 [% terms.bugs %] 有任何關係的 [% terms.bugs %]</option>
+            显示和输入的 [% terms.bugs %] 有任何关系的 [% terms.bugs %]</option>
         </select>
       </td>
     </tr>
@@ -83,7 +83,7 @@
       </td>
     </tr>
   </table>
-  <input type="submit" id="change" value="變更參數">
+  <input type="submit" id="change" value="变更参数">
 </form>
 
 [% PROCESS global/footer.html.tmpl %]

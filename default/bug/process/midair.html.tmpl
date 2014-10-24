@@ -27,13 +27,13 @@
   [% PROCESS bug/process/header.html.tmpl %]
 [% END %]
 
-<h1>偵測到發生衝突！</h1>
+<h1>探测到发生冲突！</h1>
 
 <p>
-  在你嘗試對
+  在你尝试对
   [%+ "$terms.bug $bug.id" FILTER bug_link(bug) FILTER none %]
-  做變更的同時，有其他人已做出變更。
-  已做出的變更為：
+  做变更的同时，有其他人已做出变更。
+  已作出的变更为：
 </p>
 
 <p>
@@ -42,7 +42,7 @@
 
 [% IF comments.size > start_at %]
 <p>
-  已加入的意見：
+  已加入的留言：
   <blockquote>
     [% PROCESS "bug/comments.html.tmpl" %]
   </blockquote>
@@ -51,7 +51,7 @@
 
 [% IF cgi.param("comment") %]
 <p>
-  你原本的意見是：<br>
+  你原本的留言是：<br>
   <blockquote><pre class="bz_comment_text">
     [% cgi.param("comment") FILTER html %]
   </pre></blockquote>
@@ -59,7 +59,7 @@
 [% END %]
 
 <p>
-你有下列選擇可以選：
+你有下列选择可以选：
 </p>
 
 <ul>
@@ -70,7 +70,7 @@
       [% PROCESS "global/hidden-fields.html.tmpl"
           exclude="^Bugzilla_login|Bugzilla_password|delta_ts$" %]
       <input type="submit" id="process" value="仍舊送出我做的變更">
-        [% "除了已加入的意見之外，" IF comments.size > start_at %]這將會覆寫以上的變更。
+        [% "除了已加入的留言之外，" IF comments.size > start_at %]这将会覆盖以上的变更。
     </form>
   </li>
       [% IF cgi.param("comment") %]
@@ -83,12 +83,12 @@
                value="[% cgi.param("comment_is_private") FILTER html %]">
         <input type="hidden" name="longdesclength" value="[% bug.comments.size %]">
 	<input type="hidden" name="token" value="[% cgi.param("token") FILTER html %]">
-        <input type="submit" id="process_comment" value="只送出我所留下的意見">
+        <input type="submit" id="process_comment" value="只提交我所留下的留言">
       </form>
     </li>
   [% END %]
   <li>
-    刪除我做的變更，並[% "重新瀏覽 $terms.bug $bug.id 。" FILTER bug_link(bug) FILTER none %]
+    删除我做的变更，并[% "重新浏览 $terms.bug $bug.id 。" FILTER bug_link(bug) FILTER none %]
   </li>
 </ul>
 

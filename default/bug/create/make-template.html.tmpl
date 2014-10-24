@@ -12,18 +12,18 @@
   #%]
 
 [% PROCESS global/header.html.tmpl
-  title = "書籤是很好用的"
+  title = "书签是很好用的"
   header = "已建立模版"
 %]
 
 <p>
-  你可以將此連結加入書籤：
+  你可以将此链接加入书签：
   &ldquo;<a href="enter_bug.cgi?[% url FILTER html %]">
   [% IF short_desc %]
     [% short_desc FILTER html %]
   [% ELSE %]
-    [% terms.Bug %] 輸入模版
-  [% END %]</a>&rdquo;。此書籤將會以你要求的初始化欄位，載入<em>輸入 [% terms.Bug %] </em>的頁面。
+    [% terms.Bug %] 输入模板
+  [% END %]</a>&rdquo;。此书签将会以你要求的初始化栏位，加载<em>录入 [% terms.Bug %] </em>的页面。
 </p>
 
 [% PROCESS global/footer.html.tmpl %]

@@ -7,7 +7,7 @@
   #%]
 
 [% PROCESS global/header.html.tmpl
-  title = "純文字 $terms.Bug 清單"
+  title = "纯文字 $terms.Bug 清单"
   h1 = ""
   style_urls = ["skins/standard/show_multiple.css",
                 "skins/standard/buglist.css"]
@@ -30,7 +30,7 @@
   [% END %]
 [% ELSE %]
   <p>
-    輸入 [% terms.bug %] 編號找尋特定的 [% terms.bug %] 。
+    输入 [% terms.bug %] 编号查询特定的 [% terms.bug %] 。
   </p>
 [% END %]
 
@@ -57,12 +57,12 @@
     <tr>
       <td class="error">
         [% IF bug.error == "InvalidBugId" %]
-          '[%+ bug.bug_id FILTER html %]' 不是一個有效的 [% terms.bug %]
-          編號，也不是一個已知的 [% terms.bug %] 別名。
+          '[%+ bug.bug_id FILTER html %]' 不是一个有效的 [% terms.bug %]
+          编号，也不是一个已知的 [% terms.bug %] 別名。
         [% ELSIF bug.error == "NotPermitted" %]
-          你不被允許瀏覽這個 [% terms.bug %] 。
+          你不被允许浏览这个 [% terms.bug %] 。
         [% ELSIF bug.error == "NotFound" %]
-          找不到這個 [% terms.bug %]。
+          找不到这个 [% terms.bug %]。
         [% ELSE %]
           [%+ bug.error FILTER html %]
         [% END %]
@@ -197,7 +197,7 @@
 
     [% IF user.is_timetracker %]
       <tr>
-        <th>耗費時數：</th>
+        <th>耗费时数：</th>
         <td colspan="3">
           <table class="timetracking">
             <tr>
@@ -206,7 +206,7 @@
               <th>[% field_descs.work_time FILTER html %]</th>
               <th>[% field_descs.remaining_time FILTER html %]</th>
               <th>[% field_descs.percentage_complete FILTER html %]</th>
-              <th>節省</th>
+              <th>节省</th>
             </tr>
             <tr>
               <td>
@@ -244,7 +244,7 @@
             <table>
               <tr>
                 <th>描述</th>
-                <th>旗標</th>
+                <th>旗标</th>
               </tr>
               [% FOREACH attachment = bug.attachments %]
                 <tr>
@@ -255,7 +255,7 @@
                   </td>
                   <td>
                     [% IF attachment.flags.size == 0 %]
-                      <i>無</i>
+                      <i>无</i>
                     [% ELSE %]
                       [% FOREACH flag = attachment.flags %]
                         [% flag.setter.nick FILTER html %]:
@@ -343,7 +343,7 @@
       <th class="rightcell">[% field_descs.${name} FILTER html %]：</th>
       <td>[% bug.${name}.identity FILTER email FILTER html %]</td>
     [% ELSIF name == "flags" %]
-        <th class="rightcell">旗標：</th>
+        <th class="rightcell">旗标：</th>
         <td>
           [% FOREACH type = bug.flag_types %]
             [% FOREACH flag = type.flags %]
