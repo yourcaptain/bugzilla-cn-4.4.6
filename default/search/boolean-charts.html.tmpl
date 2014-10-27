@@ -38,7 +38,7 @@
 <div class="bz_section_title" id="custom_search_filter">
   <div id="custom_search_query_controller" class="arrow">&#9660;</div>
   <a id="chart" href="javascript:TUI_toggle_class('custom_search_query')" >自訂搜尋</a>
-  <span class="section_help">在上方沒找到需要的欄位嗎？此區域允許 AND 、 OR ，以及其他更為複雜的搜尋。</span>
+  <span class="section_help">在上面没有找到需要的字段吗?？此区域允许 AND 、 OR ，以及其他更为复杂的查询。</span>
 </div>
 <div id="custom_search_filter_section"
      class="bz_search_section custom_search_query">
@@ -55,15 +55,15 @@
   <script type="text/javascript">
     TUI_alternates['custom_search_query'] = '&#9658;';
     TUI_hide_default('custom_search_query');
-    TUI_alternates['custom_search_advanced'] = "顯示進階功能";
+    TUI_alternates['custom_search_advanced'] = "显示高级功能";
     TUI_hide_default('custom_search_advanced');
   </script>
   <script type="text/javascript" src="[% 'js/custom-search.js' FILTER mtime %]"></script>
   <script type="text/javascript">
     redirect_html4_browsers();
     [%# These are alternative labels for the AND and OR options in and_all_select %]
-    var cs_and_label = '符合下列「所有」條件：';
-    var cs_or_label  = '符合下列「任一」條件：';
+    var cs_and_label = '符合下列「所有」条件：';
+    var cs_or_label  = '符合下列「任一」条件：';
     cs_reconfigure('custom_search_last_row');
   </script>
   <script type="text/javascript" src="[% 'js/history.js/native.history.js' FILTER mtime %]"></script>
@@ -167,16 +167,16 @@
   <div class="any_all_select">
     <select name="[% name FILTER html %]" id="[% name FILTER html %]"
             onchange="fix_query_string(this)">
-      <option value="AND">分別符合下列「所有」條件：</option>
+      <option value="AND">分別符合下列「所有」条件：</option>
       <option value="OR" [% ' selected="selected"' IF selected == "OR" %]>
-        分別符合下列「任一」條件：</option>
+        分別符合下列「任一」条件：</option>
       <option value="AND_G" [% ' selected' IF selected == "AND_G" %]>
-        在同一欄位中符合下列「所有」條件：</option>
+        在同一字段中符合下列「所有」条件：</option>
     </select>
     [% IF with_advanced_link %]
       <a id="custom_search_advanced_controller"
          href="javascript:TUI_toggle_class('custom_search_advanced')">
-        隱藏進階功能
+        隐藏高级功能
       </a>
     [% END %]
   </div>

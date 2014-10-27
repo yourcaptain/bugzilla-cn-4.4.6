@@ -16,7 +16,7 @@ var queryform = "reportform"
 [% END %]
 
 [% PROCESS global/header.html.tmpl
-  title = "產生表格式報告"
+  title = "生成表格式报告"
   onload = "doOnSelectProduct(0)"
   yui = [ 'autocomplete', 'calendar' ]
   javascript = js_data
@@ -28,10 +28,10 @@ var queryform = "reportform"
 [% PROCESS "search/search-report-select.html.tmpl" %]
 
 <p>
-  選擇一個或多個欄位做為你的座標軸，並用此表單其他部份來對[% terms.bugs %]清單做精確的限制。
+  选择一个或多个字段作为你的坐标轴，并用此表单的其他部分来对[% terms.bugs %]清单做精确的限制。
 </p>
 
-[% button_name = "產生報告" %]
+[% button_name = "生成报告" %]
 
 <form method="get" action="report.cgi" name="reportform" id="reportform">
 
@@ -40,21 +40,21 @@ var queryform = "reportform"
     <td>
     </td>
     <td align="center">
-      <b>X軸：</b>
+      <b>X轴：</b>
       [% PROCESS select name = 'x_axis_field' %]
     </td>
   </tr>
 
   <tr>
     <td valign="middle" align="center">
-      <b>Y軸：</b><br>
+      <b>Y轴：</b><br>
       [% PROCESS select name = 'y_axis_field' %]
     </td>
     <td width="150" height="150">
       <table border="1" width="100%">
         <tr>
           <td align="center" valign="middle" height="150">
-            <b>顯示多個表格：</b><br>
+            <b>显示多个表格：</b><br>
             [% PROCESS select name = 'z_axis_field' %]
           </td>
         </tr>

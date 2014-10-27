@@ -7,19 +7,19 @@
   #%]
 
 [% PROCESS global/header.html.tmpl
-  title = "簡單搜尋"
+  title = "简单查询"
   style_urls = [ "skins/standard/search_form.css" ]
 %]
 
 [% WRAPPER search/tabs.html.tmpl %]
 
 <p>
-輸入字串來尋找一個特定的 [% terms.bug %] 。 [% terms.Bugzilla %] 將會以那些字串來搜尋 [% terms.bug %]
-的描述和意見，並以相關度的高低列出符合的 [% terms.bugs %] 。
+输入字符串来查询一个特定的 [% terms.bug %] 。 [% terms.Bugzilla %] 将会以那些字符串来查询 [% terms.bug %]
+的描述和留言，并以相关度的高低列出符合的 [% terms.bugs %] 。
 </p>
 
 <p>
-例如說，你在找的 [% terms.bug %] 的特徵是「當瀏覽內嵌 flash 動畫的安全性網站時，瀏覽器會當掉」的話，可以輸入"當掉 安全性網站 SSL flash"。
+比如，你在找的 [% terms.bug %] 的特征是「当浏览内嵌 flash 动画的安全性网站时，浏览器会宕掉」的话，可以输入"宕掉 安全性网站 SSL flash"。
 </p>
 
 <form name="queryform" method="get" action="buglist.cgi">
@@ -40,8 +40,8 @@
     </th>
     <td>
       <select name="bug_status" id="bug_status">
-        [% statuses = [ { name = 'open', label = "開啟" },
-                        { name = 'closed', label = "關閉" },
+        [% statuses = [ { name = 'open', label = "开启" },
+                        { name = 'closed', label = "关闭" },
                         { name = 'all', label = "全部" } ] %]
         [% FOREACH status = statuses %]
             <option value="__[% status.name %]__"
@@ -85,7 +85,7 @@
   </tr>
   <tr>
     <th>
-      <label for="content">字串：</label>
+      <label for="content">字符串：</label>
     </th>
     <td>
       <input name="content" size="40" id="content"
@@ -101,11 +101,11 @@
     <td>
 
       [% IF Param('search_allow_no_criteria') %]
-        <input type="submit" id="search" value="搜尋">
+        <input type="submit" id="search" value="查询">
       [% ELSE %]
-        <input type="submit" id="search" value="搜尋"
+        <input type="submit" id="search" value="查询"
              onclick="if (this.form.content.value == '')
-                      {alert('「字串」欄位不得為空白。你必須至少在搜尋欄內輸入一個字。');
+                      {alert('「字符串」字段不得为空白。你必须至少在查询栏内输入一个字。');
                        return false;} return true;">
       [% END %]
     </td>

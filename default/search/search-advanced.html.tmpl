@@ -25,7 +25,7 @@ function remove_token() {
 [% END %]
 
 [% PROCESS global/header.html.tmpl
-  title = "搜尋 $terms.bugs"
+  title = "查询 $terms.bugs"
   yui = [ 'autocomplete', 'calendar' ]
   javascript = javascript
   javascript_urls = [ "js/util.js", "js/TUI.js", "js/field.js"]
@@ -35,9 +35,9 @@ function remove_token() {
 
 [% WRAPPER search/tabs.html.tmpl %]
 
-[% button_name = "搜尋" %]
+[% button_name = "查询" %]
 
-<p id="search_help">將滑鼠移到每個欄位的標籤上，即會顯示得該欄位的提示。</p>
+<p id="search_help">将鼠标移到每个字段的标签上，即会显示该字段的提示。</p>
 
 <form method="post" action="buglist.cgi" name="queryform" id="queryform"
       onsubmit="remove_token()">

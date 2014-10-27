@@ -108,14 +108,14 @@ TUI_hide_default('information_query');
 <div id="detailed_information" class="bz_section_title">
   <div id="information_query_controller" class="arrow">&#9660;</div>
   <a href="javascript:TUI_toggle_class('information_query')">
-    [% terms.Bug %] 的詳細資訊
+    [% terms.Bug %] 的详细信息
   </a>
-  <span class="section_help">以下列欄位限制搜尋結果：
+  <span class="section_help">以下列字段限制查询結果：
     [%+ field_descs.longdesc FILTER html %] 、 [%+ field_descs.bug_file_loc FILTER html %] 、
     [% IF Param('usestatuswhiteboard') %] [%+ field_descs.status_whiteboard FILTER html %] 、 [%+ END %]
     [% IF use_keywords %] [%+ field_descs.keywords FILTER html %] 、 [%+ END %]
     [% IF user.is_timetracker %] [%+ field_descs.deadline FILTER html %] 、 [%+ END %]
-    [% terms.Bug %] 編號、 [%+ field_descs.version FILTER html %] 、
+    [% terms.Bug %] 编号、 [%+ field_descs.version FILTER html %] 、
     [% IF Param('usetargetmilestone') %] [%+ field_descs.target_milestone FILTER html %] 、 [%+ END %]
     [% field_descs.bug_severity FILTER html %] 、 [%+ field_descs.priority FILTER html %] 、 [%+ field_descs.rep_platform FILTER html %] 、
     [%+ field_descs.op_sys FILTER html %]
@@ -165,16 +165,16 @@ TUI_hide_default('information_query');
   [% END %]
 
   <div class="search_field_row">
-    搜尋結果中應該
+    查询结果中应该
     <select name="bug_id_type" id="bug_id_type">
       <option value="anyexact"[% " selected" IF default.bug_id_type.0 == "anyexact" %]>只包括</option>
       <option value="nowords"[% " selected" IF default.bug_id_type.0 == "nowords" %]>不包括</option>
     </select>
-    <span class="field_label"><label for="bug_id">[% terms.Bug %] 編號為：</label></span>
+    <span class="field_label"><label for="bug_id">[% terms.Bug %] 编号为：</label></span>
     <div id="bug_id_container" >
       <input type="text" name="bug_id" id="bug_id"
            value="[% default.bug_id.0 FILTER html %]" size="20">
-           <div class="field_help">[以逗號 (,) 分隔多個 [% terms.bug %] 編號</div>
+           <div class="field_help">[以逗号 (,) 分隔多个 [% terms.bug %] 编号</div>
     </div>
   </div>
 
@@ -223,8 +223,8 @@ TUI_hide_default('information_query');
 [%# *** Email Numbering *** %]
   <div class="bz_section_title" id="people_filter">
     <div id="people_query_controller" class="arrow">&#9660;</div>
-    <a href="javascript:TUI_toggle_class('people_query')">以人為條件搜尋</a>
-    <span>將結果限制在一個人在一個 [% terms.bug %] 上的角色（例如 [% field_descs.assigned_to FILTER html %] 、
+    <a href="javascript:TUI_toggle_class('people_query')">以人为条件查询</a>
+    <span>将结果限制在一个人在一个 [% terms.bug %] 上的角色（例如 [% field_descs.assigned_to FILTER html %] 、
       [%+ field_descs.reporter FILTER html %] 、 [% field_descs.commenter FILTER html %]  ）。
     </span>
   </div>
@@ -250,8 +250,8 @@ TUI_hide_default('information_query');
         { name => "notsubstring", description => "不包含" },
         { name => "exact", description => "是" },
         { name => "notequals", description => "不是" },
-        { name => "regexp", description => "符合正規表達式" },
-        { name => "notregexp", description => "不符合正規表達式" } ] %]
+        { name => "regexp", description => "符合正则表达式" },
+        { name => "notregexp", description => "不符合正则表达式" } ] %]
         <option value="[% qv.name %]"
           [% " selected" IF default.emailtype.$n == qv.name %]>[% qv.description %]</option>
       [% END %]
@@ -276,12 +276,12 @@ TUI_hide_default('information_query');
 [%# *** Bug Changes *** %]
 <div class="bz_section_title" id="history_filter">
   <div id="history_query_controller" class="arrow">&#9660;</div>
-  <a href="javascript:TUI_toggle_class('history_query')" >以變更歷史為條件搜尋</a>
-  <span>將結果限制在一段特定時間中欄位如何變更</span>
+  <a href="javascript:TUI_toggle_class('history_query')" >以变更履历为条件查询</a>
+  <span>将结果限制在一段特定时间中字段如何变更</span>
 </div>
 <ul class="bug_changes bz_search_section history_query" id="history_filter_section" >
   <li>
-    <label for="chfield">有下列一項或多項變更：</label>
+    <label for="chfield">有下列一项或多项变更：</label>
     [%# Create array, so we can sort it by description #%]
     [% chfields = [] %]
     [% FOREACH field = chfield %]
@@ -306,7 +306,7 @@ TUI_hide_default('information_query');
            value="[% default.chfieldfrom.0 FILTER html %]" onchange="updateCalendarFromField(this)">
            <button type="button" class="calendar_button"
                           id="button_calendar_chfieldfrom"
-                          onclick="showCalendar('chfieldfrom')"><span>月曆</span></button>
+                          onclick="showCalendar('chfieldfrom')"><span>月历</span></button>
            和
            <div id="con_calendar_chfieldfrom"></div>
           <input name="chfieldto" size="10" id="chfieldto"
@@ -314,10 +314,10 @@ TUI_hide_default('information_query');
                  onchange="updateCalendarFromField(this)">
           <button type="button" class="calendar_button"
                          id="button_calendar_chfieldto"
-                         onclick="showCalendar('chfieldto')"><span>月曆</span></button>
+                         onclick="showCalendar('chfieldto')"><span>月历</span></button>
           <div id="con_calendar_chfieldto"></div>
-          之間
-    (YYYY-MM-DD 或相對的日期)
+          之间
+    (YYYY-MM-DD 或相对的日期)
     <script type="text/javascript">
       <!--
         [%+ PROCESS "global/calendar.js.tmpl" id = 'chfieldfrom' %]

@@ -58,7 +58,7 @@
       tag_name = "span"
       editable = 1
     %]
-    從 <input name="[% field.name FILTER html %]from"
+    从 <input name="[% field.name FILTER html %]from"
                 id="[% field.name FILTER html %]"
                 size="10" maxlength="10"
                 value="[% value.0 FILTER html %]"
@@ -66,7 +66,7 @@
          <button type="button" class="calendar_button"
                         id="button_calendar_[% field.name FILTER html %]"
                         onclick="showCalendar('[% field.name FILTER js %]')">
-           <span>月曆</span>
+           <span>月历</span>
          </button>
          <span id="con_calendar_[% field.name FILTER html %]"></span>
     到 <input name="[% field.name FILTER html %]to"
@@ -76,9 +76,9 @@
        <button type="button" class="calendar_button"
                       id="button_calendar_[% field.name FILTER html %]to"
                       onclick="showCalendar('[% field.name FILTER js %]to')">
-         <span>月曆</span>
+         <span>月历</span>
        </button>
-    <small>(YYYY-MM-DD 或相對的日期)</small>
+    <small>(YYYY-MM-DD 或相对的日期)</small>
 
     <span id="con_calendar_[% field.name FILTER html %]to"></span>
     <script type="text/javascript">

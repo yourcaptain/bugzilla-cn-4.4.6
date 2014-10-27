@@ -16,7 +16,7 @@ var queryform = "reportform"
 [% END %]
 
 [% PROCESS global/header.html.tmpl
-  title = "產生圖表式報告"
+  title = "生成图表式报告"
   onload = "doOnSelectProduct(0); chartTypeChanged()"
   yui = [ 'autocomplete', 'calendar' ]
   javascript = js_data
@@ -28,7 +28,7 @@ var queryform = "reportform"
 [% PROCESS "search/search-report-select.html.tmpl" %]
 
 <p>
-  選擇一個或多個欄位做為你的座標軸，並用此表單其他部份來對 [% terms.bugs %] 清單做精確的限制。
+  选择一个或多个字段作为你的坐标轴，并用此表单其他部分来对 [% terms.bugs %] 清单做精确的限制。
 </p>
 
 <script type="text/javascript"><!--
@@ -48,30 +48,30 @@ var queryform = "reportform"
 // -->
 </script>
 
-[% button_name = "產生報告" %]
+[% button_name = "生成报告" %]
 
 <form method="get" action="report.cgi" name="reportform" id="reportform">
 
 <table align="center">
   <tr>
     <td valign="middle">
-      <b>Y 軸：</b><br>
-      <noscript><small>(圓餅圖不適用)</small><br></noscript>
+      <b>Y 轴：</b><br>
+      <noscript><small>(饼图不适合)</small><br></noscript>
       [% PROCESS select name = 'y_axis_field' %]<br>
       <br>
-        <b>資料集排列：</b><br>
+        <b>资料集排列：</b><br>
         <input type="radio" name="cumulate" value="0"
         [% " checked" IF default.cumulate.0 != "1" %]>
-        個別排列<br>
+        个别排列<br>
         <input type="radio" name="cumulate" value="1"
         [% " checked" IF default.cumulate.0 == "1" %]>
-        堆疊排列
+        层叠排列
     </td>
     <td width="150" height="150">
       <table border="1" width="100%" height="100%">
         <tr>
           <td align="center" valign="middle">
-            <b>顯示多個圖案：</b><br>
+            <b>显示多个图案：</b><br>
             [% PROCESS select name = 'z_axis_field' %]
           </td>
         </tr>
@@ -80,9 +80,9 @@ var queryform = "reportform"
     <td rowspan="2">
       <b>格式：</b><br>
       [% chart_formats = [
-        { name => "line", description => "折線圖" },
-        { name => "bar",  description => "長條圖" },
-        { name => "pie",  description => "圓餅圖" } ] %]
+        { name => "line", description => "折线图" },
+        { name => "bar",  description => "长条图" },
+        { name => "pie",  description => "圆饼图" } ] %]
       [% default.chart_format.0 = default.chart_format.0 || "bar" %]
 
       [% FOREACH chart_format = chart_formats %]
@@ -99,9 +99,9 @@ var queryform = "reportform"
     <td>
     </td>
     <td align="left">
-      <b>X 軸：</b>
+      <b>X 轴：</b>
       [% PROCESS select name = 'x_axis_field' %]<br>
-      <label for="x_labels_vertical"><b>Y 軸標籤：</b></label>
+      <label for="x_labels_vertical"><b>Y 轴标签：</b></label>
       <input type="checkbox" name="x_labels_vertical" id="x_labels_vertical"
              value="1"
          [% " checked" IF default.x_labels_vertical.0 == "1" %]>
