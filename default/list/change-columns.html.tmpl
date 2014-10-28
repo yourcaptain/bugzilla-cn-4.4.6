@@ -7,16 +7,16 @@
   #%]
 
 [% PROCESS global/header.html.tmpl
-  title = "變更欄位"
+  title = "变更字段"
   javascript_urls = "js/change-columns.js"
   onload = "initChangeColumns()"
 %]
 
 <p>
-  選擇你想要在你的 [% terms.bug %] 清單中出現的欄位。注意此功能需要將 cookie 啟用。
+  选择你想要在你的 [% terms.bug %] 清单中出现的字段。注意此功能需要将 cookie 启用。
 </p>
 
-[% field_descs.short_short_desc     = "摘要（前 60 個字）" %]
+[% field_descs.short_short_desc     = "摘要（前 60 个字）" %]
 [% field_descs.short_desc           = "摘要（完整）" %]
 [% field_descs.assigned_to_realname = "$field_descs.assigned_to 姓名" %]
 [% field_descs.reporter_realname    = "$field_descs.reporter 姓名" %]
@@ -38,9 +38,9 @@
   <input type="hidden" name="rememberedquery" value="[% buffer FILTER html %]">
     <table>
       <tr>
-        <th><div id="avail_header" class="bz_default_hidden">可用的欄位</div></th>
+        <th><div id="avail_header" class="bz_default_hidden">可用的字段</div></th>
         <th></th>
-        <th colspan="2">已選的欄位</th>
+        <th colspan="2">已选的字段</th>
       </tr>
       <tr>
         <td>
@@ -92,14 +92,14 @@
     <input id="nosplitheader" type="radio" name="splitheader" value="0"
       [%+ "checked='checked'" IF NOT splitheader %]>
     <label for="nosplitheader">
-      標題正常排列 (較為美觀)
+      标题正常排列 (较为美观)
     </label>
     <br>
 
     <input id="splitheader" type="radio" name="splitheader" value="1"
       [%+ "checked='checked'" IF splitheader %]>
     <label for="splitheader">
-      標題交叉排列 (經常使列表較為緊湊)
+      标题交叉排列 (经常使列表较为紧凑)
     </label>
   </p>
 
@@ -111,7 +111,7 @@
              value="[% issue_hash_token([saved_search.id, saved_search.name]) FILTER html %]">
       <input type="checkbox" id="save_columns_for_search" checked="checked"
              name="save_columns_for_search" value="1">
-      <label for="save_columns_for_search">只在搜尋 '[% saved_search.name FILTER html %]' 時儲存此欄位清單</label>
+      <label for="save_columns_for_search">只在搜索 '[% saved_search.name FILTER html %]' 时存储此字段清单</label>
     </p>
   [% ELSE %]
     <input type="hidden" name="token"
@@ -119,11 +119,11 @@
   [% END %]
 
   <p>
-    <input type="submit" id="change" value="變更欄位">
+    <input type="submit" id="change" value="变更栏位">
   </p>
 
   <input type="submit" id="resetit" name="resetit"
-         value="設回 [% terms.Bugzilla %] 的預設值">
+         value="设回 [% terms.Bugzilla %] 的预设值">
 </form>
 
 [% PROCESS global/footer.html.tmpl %]
