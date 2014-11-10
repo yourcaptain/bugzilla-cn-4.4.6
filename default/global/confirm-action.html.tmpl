@@ -12,28 +12,28 @@
   # reason: reason of the failure.
   #%]
 
-[% PROCESS global/header.html.tmpl title = "可疑的動作"
+[% PROCESS global/header.html.tmpl title = "可疑的动作"
                                    style_urls = ['skins/standard/global.css'] %]
 
 <div class="throw_error">
 <!--reason=[%reason FILTER html %]-->
   [% IF reason == "expired_token" %]
-    你所做的變更已被拒絕，原因是在送出你對 [% script_name FILTER html %]
-    所做的變更的時限（
+    你所做的变更已被拒绝，原因是在提交你对 [% script_name FILTER html %]
+    所做的变更的时限（
     [% constants.MAX_TOKEN_AGE FILTER html %]
-    天）已經超過了。可能是頁面顯示過久，或是意外送出已送出的舊有變更。
+    天）已经超过了。可能是页面显示过久，或是意外送出已送出的旧有变更。
 
   [% ELSIF reason == "missing_token" %]
-    看起來你並非從正確的頁面過來。
-    其中一個原因是你直接在瀏覽器的網址列輸入網址。這應該是安全的。
-    你點選了一個自動轉址的網址，<b>但未經過你的同意</b>。
+    看起來你并非从正确的页面过来。
+    其中一个原因是你直接在浏览器的地址栏输入网址。这应该是安全的。
+    你点击了一个自动跳转的网址，<b>但未经过你的同意</b>。
 
   [% ELSIF reason == "invalid_token" %]
-    你對 [% script_name FILTER html %] 做出的變更中含有不正確的
-    token ，可能是有人想要盜用你的帳號，例如讓你點選了一個自動轉址的網址跳轉到這裡，<b>但未經過你的同意</b>。
+    你对 [% script_name FILTER html %] 做出的变更中含有不正确的
+    token ，可能是有人想要盜用你的账号，例如让你点击了一个自动跳转的网址跳转到这里，<b>但未经过你的同意</b>。
   [% END %]
   <p>
-    你確定你仍要做出這些變更嗎？
+    你确定你仍要做出这些变更吗？
   </p>
 </div>
 
@@ -41,10 +41,10 @@
   [% PROCESS "global/hidden-fields.html.tmpl"
              exclude="^(Bugzilla_login|Bugzilla_password|token)$" %]
   <input type="hidden" name="token" value="[% token FILTER html %]">
-  <input type="submit" id="confirm" value="確認所做的變更">
+  <input type="submit" id="confirm" value="确认所做的变更">
 </form>
 
-<p><a href="index.cgi">放棄所做的變更</a>（你會被重導到此 [% terms.Bugzilla %] 的首頁）。
+<p><a href="index.cgi">放弃所做的变更</a>（你会被重定向到此 [% terms.Bugzilla %] 的首页）。
 </p>
 
 [% PROCESS global/footer.html.tmpl %]

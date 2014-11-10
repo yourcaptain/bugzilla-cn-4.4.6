@@ -25,21 +25,21 @@
 [%# This lists fields which use the user auto-completion feature and which
   # are not listed in field_descs. %]
 [% field_labels = { # Used by editcomponents.cgi
-                    "initialcc"               => "預設寄件副本清單",
-                    "initialowner"            => "預設負責人",
-                    "initialqacontact"        => "預設 QA 連絡人",
+                    "initialcc"               => "预设邮件抄送列表",
+                    "initialowner"            => "预设负责人",
+                    "initialqacontact"        => "预设 QA 联络人",
                     # Used by process_bug.cgi
-                    "masscc"                  => "寄件副本清單",
+                    "masscc"                  => "邮件抄送列表",
                     # Used by request.cgi
-                    "requester"               => "要求者",
-                    "requestee"               => "被要求者",
+                    "requester"               => "请求者",
+                    "requestee"               => "被请求者",
                     # Used by userprefs.cgi
-                    "new_watchedusers"        => "監控清單",
+                    "new_watchedusers"        => "监控列表",
 
    }
 %]
 [% IF matchsuccess == 1 %]
-  [% PROCESS global/header.html.tmpl title="確認符合" %]
+  [% PROCESS global/header.html.tmpl title="确认符合" %]
 
   [% USE Bugzilla %]
 
@@ -54,24 +54,24 @@
 
   <p>
     [% IF matchmultiple %]
-      你在前一頁所輸入的名稱或電子郵件地址，在 [% terms.Bugzilla %] 中符合多筆資料。
-      <br>請檢視下列可能符合的清單，並選擇你想要的使用者，
+      你在前一页所输入的名称或电子邮件地址，在 [% terms.Bugzilla %] 中符合多笔信息。
+      <br>请检查下列可能符合的列表，并选择你想要的使用者，
     [% ELSE %]
-      [% terms.Bugzilla %] 設定為無論在什麼時候你輸入了名稱或是一部份的電子郵件，都必須要確認。
-      <br>以下是你所輸入的名稱／電子郵件，以及符合的帳號。
-      請確認他們是否正確，
+      [% terms.Bugzilla %] 设定为无论在什么时候你输入了名称或是一部份的电子邮件，都必须要确认。
+      <br>以下是你所输入的名称／电子邮件，以及符合的账号。
+      请确认他们是否正确，
     [% END %]
-    或回到前一頁重新輸入。
+    或回到前一页重新输入。
   </p>
 [% ELSE %]
-  [% PROCESS global/header.html.tmpl title="找不到符合的資料" %]
+  [% PROCESS global/header.html.tmpl title="找不到符合的资料" %]
   <p>
-    你在前一頁所輸入的名稱或電子郵件地址，在 [% terms.Bugzilla %] 中找不到符合的資料。
+    你在前一页所输入的名称或电子邮件地址，在 [% terms.Bugzilla %] 中找不到符合的信息。
     [% IF !user.id %]
       <b>注意：你現在是登出狀態。只會顯示完全符合的電子郵件地址。</b>
     [% END %]
   </p>
-  <p>請回到前一頁，並試試其他的名稱或電子郵件地址。</p>
+  <p>请回到前一页，并试试其他的名称或电子邮件地址。</p>
 [% END %]
 
   <table border="0">
@@ -98,10 +98,10 @@
                     <font color="#FF0000">
                       符合多名使用者。
                     </font>
-                    請按上一頁，並以更明確的名稱或地址再次嘗試。
+                    请按上一页，并以更明确的名称或地址再次尝试。
                   [% ELSE %]
                     [% IF query.value.status == 'trunc' %]
-                      符合多於查詢上限數量 ([% query.value.users.size %]) 的使用者：<br>
+                      符合多于查询上限数量 ([% query.value.users.size %]) 的使用者：<br>
                     [% ELSE %]
                       符合：<br>
                     [% END %]
@@ -129,10 +129,10 @@
                 [% END %]
             [% ELSE %]
                 [% IF query.key.length < 3 %]
-                  <font color="#FF0000">要搜尋的子字串太短
-                  (至少 3 個字元)</font>
+                  <font color="#FF0000">要搜索的子字串太短
+                  (至少 3 个字符)</font>
                 [% ELSE %]
-                  <font color="#FF0000">找不到符合的資料</font>
+                  <font color="#FF0000">找不到符合的资料</font>
                 [% END %]
             [% END %]
             </div>
@@ -158,7 +158,7 @@
   [% PROCESS "global/hidden-fields.html.tmpl" exclude = exclude %]
 
   <p>
-    <input type="submit" id="continue" value="繼續">
+    <input type="submit" id="continue" value="继续">
   </p>
 
   </form>

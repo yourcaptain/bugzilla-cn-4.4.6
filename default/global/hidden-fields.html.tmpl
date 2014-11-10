@@ -24,10 +24,10 @@
   [% IF field == "data" && cgi.param("data") %]
     <div class="box">
       <p>
-        由於在表單中你所送出的資訊不足，所以我們無法儲存你上傳的檔案。因為無法在傳輸過程中保留檔案，因此，你必須重新附加檔案，並且填妥前述不足的資訊。
+        由于在表单中你所提交的信息不足，所以我们无法存储你上传的资料信息。因为无法在传输过程中保留资料信息，因此，你必须重新附加信息，并且填妥前述不足的信息。
       </p>
       <p>
-        請以下列表單重新附加檔案 <b>[% cgi.param(field) FILTER html %] </b>：
+        请以下列表单重新附加资料 <b>[% cgi.param(field) FILTER html %] </b>：
       </p>
       <p>
         <input type="file" id="data" name="data" size="50">
