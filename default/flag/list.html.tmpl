@@ -24,11 +24,11 @@
   [% UNLESS flag_no_header %]
     <tr>
       <th colspan="3">
-        旗標：
+        旗标：
       </th>
       [% IF any_flags_requesteeble %]
         <th>
-          要求者：
+          请求者：
         </th>
       [% END %]
     </tr>
@@ -68,7 +68,7 @@
   [% FOREACH type = flag_types %]
     [% FOREACH flag = type.flags %]
       [% IF !flag_no_header AND !header_displayed %]
-        <p><b>旗標：</b></p>
+        <p><b>旗标：</b></p>
         [% header_displayed = 1 %]
       [% END %]
       [% IF flag.setter.name %]
