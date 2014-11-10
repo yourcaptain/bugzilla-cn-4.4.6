@@ -10,7 +10,7 @@
 [% cgi = Bugzilla.cgi %]
 
 [% PROCESS global/header.html.tmpl
-  title="要求列表"
+  title="请求列表"
   onload="var f = document.request_form; selectProduct(f.product, f.component, null, null, '任何');"
   javascript_urls=["js/productform.js", "js/field.js"]
   style_urls = ['skins/standard/buglist.css']
@@ -43,8 +43,8 @@
 [% END %]
 
 <p>
-當你登入的時候，預設值只顯示你所做的要求以及你所收到的要求。你可以用下方的表格做調整。<br>
-當你登出之後，預設值顯示的是並未限制於某一群組，且未解決的要求。
+当你登入的时候，预设值只显示你所做的要求以及你所收到的要求。你可以用下方的表格做调整。<br>
+当你登出之后，预设值显示的是并未限制于某一群组，且未解決的要求。
 </p>
 
 <form id="request_form" name="request_form" action="request.cgi" method="get">
@@ -60,10 +60,10 @@
            value => cgi.param('requester')
            size => 20
            emptyok => 1
-           field_title => "要求者的電子郵件地址"
+           field_title => "要求者的电子邮件地址"
         %]
       </td>
-      <th>產品：</th>
+      <th>产品：</th>
       <td>
         <select name="product" onchange="selectProduct(this, this.form.component, null, null, '任何');">
           <option value="">任何</option>
@@ -88,7 +88,7 @@
           [% END %]
         </select>
       </td>
-      <th>旗標：</th>
+      <th>旗标：</th>
       <td>
         [% PROCESS "global/select-menu.html.tmpl"
                     name="type"
@@ -98,7 +98,7 @@
 
       [%# We could let people see a "queue" of non-pending requests. %]
       <!--
-      <th>狀態：</th>
+      <th>状态：</th>
       <td>
         [%# PROCESS "global/select-menu.html.tmpl"
                     name="status"
@@ -118,10 +118,10 @@
            size => 20
            emptyok => 1
            hyphenok => 1
-           field_title => "被要求者的電子郵件地址，或者以減號 \"-\" 代表沒有被要求者的一項要求"
+           field_title => "被要求者的电子邮件地址，或者以减号 \"-\" 代表没有被要求者的一项要求"
         %]
       </td>
-      <th>子產品：</th>
+      <th>模块：</th>
       <td>
         <select name="component">
           <option value="">任何</option>
@@ -131,13 +131,13 @@
           [% END %]
         </select>
       </td>
-      <th>以...做歸類：</th>
+      <th>以...做归类：</th>
       <td>
         [% groups = {
-            "要求者" => 'requester' ,
-            "被要求者" => 'requestee',
-            "旗標" => 'type' ,
-            "產品／子產品" => 'category'
+            "请求者" => 'requester' ,
+            "被请求者" => 'requestee',
+            "旗标" => 'type' ,
+            "产品／模块" => 'category'
           } %]
         [% PROCESS "global/select-menu.html.tmpl" name="group" options=groups default=cgi.param('group') %]
     </tr>
@@ -145,30 +145,30 @@
       <th></th>
       <td>
         <select id="do_union" name="do_union">
-          <option value="0">符合要求者以及被要求者</option>
+          <option value="0">符合请求者以及被请求者</option>
           <option value="1" [% 'selected="selected"' IF cgi.param('do_union') %]>
-            符合要求者或被要求者</option>
+            符合请求者或被请求者</option>
         </select>
       </td>
       <td colspan="3"></td>
       </td>
-      <td><input type="submit" id="filter" value="篩選"></td>
+      <td><input type="submit" id="filter" value="筛选"></td>
     </tr>
   </table>
 </form>
 
 [% column_headers = {
-      "type"       => "旗標" ,
-      "status"     => "狀態" ,
+      "type"       => "旗标" ,
+      "status"     => "状态" ,
       "bug"        => "$terms.Bug" ,
       "attachment" => "附件" ,
-      "requester"  => "要求者" ,
-      "requestee"  => "被要求者" ,
+      "requester"  => "请求者" ,
+      "requestee"  => "被请求者" ,
       "created"    => "已建立的" ,
-      "category"   => "產品／子產品"    } %]
+      "category"   => "产品／子产品"    } %]
 
 [% DEFAULT display_columns = ["requester", "requestee", "type", "bug", "attachment", "created"]
-           group_field     = "被要求者"
+           group_field     = "被请求者"
            group_value     = ""
 %]
 
@@ -178,7 +178,7 @@
 
 [% IF requests.size == 0 %]
   <p>
-    沒有要求。
+    沒有请求。
   </p>
 [% ELSE %]
   [% FOREACH request = requests %]
@@ -207,7 +207,7 @@
   [% buglist = {} %]
 
   <h3>[% column_headers.$group_field %]：
-    [%+ (request.$group_field || "無") FILTER email FILTER html %]</h3>
+    [%+ (request.$group_field || "无") FILTER email FILTER html %]</h3>
   <table class="requests" cellspacing="0" cellpadding="4" border="1">
     <tr>
       [% FOREACH column = display_columns %]
@@ -236,7 +236,7 @@
     <a href="attachment.cgi?id=[% request.attach_id %]&amp;action=edit">
       [% request.attach_id %]：[%+ request.attach_summary FILTER html %]</a>
   [% ELSE %]
-    不適用
+    不适用
   [% END %]
 [% END %]
 
@@ -257,5 +257,5 @@
   [% NEXT UNLESS buglist.keys.size %]
   <a href="buglist.cgi?bug_id=
           [%- buglist.keys.nsort.join(",") FILTER html %]">（以
-  [%+ terms.bug %] 清單方式檢視）</a>
+  [%+ terms.bug %] 清单方式检视）</a>
 [% END %]
