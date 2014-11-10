@@ -6,98 +6,98 @@
   # defined by the Mozilla Public License, v. 2.0.
   #%]
 
-[% INCLUDE global/header.html.tmpl title = "$terms.Bug 回報寫作技巧" %]
+[% INCLUDE global/header.html.tmpl title = "$terms.Bug 报告写作技巧" %]
 
-  <p>有效率的 [% terms.bug %] 回報可以讓 [% terms.bug %] 較容易被修復。以下解釋如何寫出此類回報。
+  <p>有效率的 [% terms.bug %] 报告可以让 [% terms.bug %] 较容易被修复。以下解释如何写出此类报告。
 
 <h3>原則</h3>
 
   <ul>
-    <li>正確</li>
-    <li>清晰－－適當解釋，讓他人可以重製該 [% terms.bug %]</li>
-    <li>每份報告只回報一個 [% terms.bug %]</li>
-    <li>即使是微小的 [% terms.bug %] 也應該回報－－小的 [% terms.bugs %] 背後可能隱藏著大的 [% terms.bugs %]</li>
-    <li>陳述事實而不猜測</li>
+    <li>正确</li>
+    <li>清晰－－适当解释，让他人可以重现该 [% terms.bug %]</li>
+    <li>每份报告只包含一个 [% terms.bug %]</li>
+    <li>即使是微小的 [% terms.bug %] 也应该报告－－小的 [% terms.bugs %] 背后可能隐藏着大的 [% terms.bugs %]</li>
+    <li>陈述事实而不猜测</li>
   </ul>
 
-<h3>事前準備</h3>
+<h3>事前准备</h3>
 
 <ol>
-  <li>以最新 build 的軟體試著重製你遇到的 [% terms.bug %] ，看此問題是否已修正。</li>
+  <li>以最新 build 的软件试着重现你遇到的 [% terms.bug %] ，看此问题是否已修正。</li>
 
-  <li><a href="query.cgi?format=specific">搜尋</a> [% terms.Bugzilla %]
-  看看你遇到的 [% terms.bug %] 是否已有人回報。
+  <li><a href="query.cgi?format=specific">查询</a> [% terms.Bugzilla %]
+  看看你遇到的 [% terms.bug %] 是否已有人报告。
   </li>
 </ol>
 
-<h3>回報一個新的 [% terms.Bug %]</h3>
+<h3>报告一个新的 [% terms.Bug %]</h3>
 
-<p>如果你已在最新的 build 重製出這個 [% terms.bug %] 而且還沒有人回報，那麼：</p>
+<p>如果你已在最新的 build 重现出这个 [% terms.bug %] 而且还没有人报告，那么：</p>
 
 <ol>
- <li>點選「<a href="enter_bug.cgi">輸入新的 [% terms.bug %]</a> 」</li>
- <li>選擇在哪個產品遇到這個 [% terms.bug %]</li>
- <li>填表。以下是一些有助瞭解表格內容的說明：</li>
+ <li>点选「<a href="enter_bug.cgi">录入新的 [% terms.bug %]</a> 」</li>
+ <li>选择在哪个产品遇到这个 [% terms.bug %]</li>
+ <li>填表。以下是一些有助了解表格內容的说明：</li>
 </ol>
 
   <blockquote>
-    <p><b>子產品：</b>這個 [% terms.bug %] 屬於軟體的哪個部份？<br>
-    此欄位為必填。點選「子產品」可以看見每項子產品的描述。如果沒有適當的子產品，試著尋找「一般」子產品。
+    <p><b>模块：</b>这个 [% terms.bug %] 输入软件的哪个部份？<br>
+    此字段为必填。点选「模块」可以看见每项模块的描述。如果没有适当的模块，试着寻找「一般」模块。
     </p>
 
-    <p><b>[% field_descs.op_sys FILTER html %]：</b>在哪個作業系統發現的？（例如 Linux 、 Windows XP 、 Mac OS X 。）<br>
-    如果你知道這個 [% terms.bug %] 會發生在多種作業系統，選擇<em>[% display_value("op_sys", "全部 (All)") FILTER html %]</em> 。
-    如果你的[% field_descs.op_sys FILTER html %]不在清單上，選擇<em>[% display_value("op_sys", "其他 (Other)") FILTER html %]</em> 。</p>
+    <p><b>[% field_descs.op_sys FILTER html %]：</b>在哪个操作系统发现的？（例如 Linux 、 Windows XP 、 Mac OS X 。）<br>
+    如果你知道这个 [% terms.bug %] 会发生在多种操作系统，选择<em>[% display_value("op_sys", "全部 (All)") FILTER html %]</em> 。
+    如果你的[% field_descs.op_sys FILTER html %]不在清单上，选择<em>[% display_value("op_sys", "其他 (Other)") FILTER html %]</em> 。</p>
 
-    <p><b>摘要：</b>你如何以少於 60 個字元的長度，來描述這個 [% terms.bug %] ？<br>
-    一個好的摘要應該能夠<b>快速並獨一無二地識別 [% terms.bug %] 的回報。</b>
-    它應該要解釋問題所在點，而非提供解決方法。<br>
+    <p><b>摘要：</b>你如何以少于 60 个字符的长度，来描述这个 [% terms.bug %] ？<br>
+    一个好的摘要应该能够<b>快速并独一无二地识别 [% terms.bug %] 的报告。</b>
+    它应该要解释问题所在点，而非提供解決方法。<br>
     <ul>
-     <li>好的例子：「<tt>取消複製檔案的對話框時，檔案總管當掉</tt>」</li>
-     <li>不好的例子：「<tt>軟體當掉</tt>」</li>
-     <li>不好的例子：「<tt>瀏覽器應該要可以瀏覽我的網頁</tt>」</li>
+     <li>好的例子：「<tt>取消复制文件的对话框时，文件管理器宕掉</tt>」</li>
+     <li>不好的例子：「<tt>软件宕掉</tt>」</li>
+     <li>不好的例子：「<tt>浏览器应该要可以浏览我的网页</tt>」</li>
     </ul>
 
     <b>描述：</b>
-    問題回報的細節，包括：</p>
+    问题报告的细节，包括：</p>
 
     <blockquote>
-      <p><b>概觀：</b>對於摘要做更詳細的描述。
+      <p><b>概述：</b>对于摘要做更详细的描述。
       </p>
 
       <blockquote>
 <pre>
-在 NSGetFactory 功能下拖拉任何頁面，會使 Mac build 當掉。
+在 NSGetFactory 功能下拖拉任何页面，会使 Mac build 宕掉。
 </pre>
       </blockquote>
 
-      <p><b>重製步驟：</b> 可以簡單重製 [% terms.bug %] 的步驟。包括任何特別的設定步驟。</p>
+      <p><b>重现步骤：</b> 可以简单重现 [% terms.bug %] 的步骤。包括任何特別的设定步骤。</p>
 
       <blockquote>
 <pre>
-1) 瀏覽任何網頁。（我用了預設的範本頁面， resource:/res/samples/test0.html ）
+1) 浏览任何网页。（我用了预设的默认页面， resource:/res/samples/test0.html ）
 
-2) 拖拉該頁。（特別是當按住滑鼠按鍵時，將滑鼠游標從瀏覽器內容區的任一點拖至瀏覽器內容區的底部。）
+2) 拖拉该页。（特別是当按住鼠标按键时，将鼠标游标从浏览器內容区的任一点拖至浏览器內容区的底部。）
 </pre>
       </blockquote>
 
-      <p><b>實際結果：</b>在上述步驟後，程式的實際結果。</p>
+      <p><b>实际結果：</b>在上述步骤后，程序的实际结果。</p>
 
       <blockquote>
 <pre>
-應用程式當了。
+应用程序宕了。
 </pre>
       </blockquote>
 
-      <p><b>預期結果：</b>如果沒有 [% terms.bug %] 的話，程式預期的結果。</p>
+      <p><b>预期结果：</b>如果没有 [% terms.bug %] 的话，程序预期的结果。</p>
 
       <blockquote>
 <pre>
-視窗應該往下拉。下拉的內容應該被選取。（至少應用程式不應該當掉。）
+窗口应该往下拉。下拉的內容应该被选取。（至少应用程序不应该宕掉。）
 </pre>
       </blockquote>
 
-      <p><b>build 日期以及[% field_descs.rep_platform FILTER html %]：</b>第一次遇到這個 [% terms.bug %] 時，[% field_descs.rep_platform FILTER html %]的 build 以及日期。</p>
+      <p><b>build 日期以及[% field_descs.rep_platform FILTER html %]：</b>第一次遇到这个 [% terms.bug %] 时，[% field_descs.rep_platform FILTER html %]的 build 以及日期。</p>
 
       <blockquote>
 <pre>
@@ -105,26 +105,26 @@ Build 2006-08-10 的 Mac OS 10.4.3
 </pre>
       </blockquote>
 
-      <p><b>額外的 build 以及硬體平台：</b>在其他的硬體平台（或瀏覽器）是否會發生這個 [% terms.bug %] 。</p>
+      <p><b>额外的 build 以及硬件平台：</b>在其他的硬件平台（或浏览器）是否会发生这个 [% terms.bug %] 。</p>
 
       <blockquote>
 <pre>
-不會在 build 2006-08-10 的 Windows XP Home (Service Pack 2) 上發生
+不会在 build 2006-08-10 的 Windows XP Home (Service Pack 2) 上发生
 </pre>
       </blockquote>
 
-      <p><b>附加資訊：</b>其他有用的資訊。
-      <br><br>對於會造成當掉的 [% terms.bugs %] ：</p>
+      <p><b>附加信息：</b>其他有用的信息。
+      <br><br>对于会造成宕掉的 [% terms.bugs %] ：</p>
 
       <ul>
-        <li><b>Windows ：</b>註明當掉的種類，以及應用程式在哪種模組下當掉換（例如：在 apprunner.exe 中拒絕存取。）</li>
+        <li><b>Windows ：</b>注明宕掉的种类，以及应用程序在哪种模块下宕掉（例如：在 apprunner.exe 中拒绝存取。）</li>
 
-        <li><b>Mac OS X ：</b>附上 "Crash Reporter" 的記錄檔。只要附上 "Thread 0 Crashed"
-        的段落即可。請勿貼上整份記錄檔！</li>
+        <li><b>Mac OS X ：</b>附上 "Crash Reporter" 的记录文件。只要附上 "Thread 0 Crashed"
+        的段落即可。请勿贴上整份记录文挡！</li>
       </ul>
     </blockquote>
 
-  <p>檢查報告內容是否正確，然後點選「送出」，就可以將你回報的 [% terms.bug %] 放進 [% terms.Bugzilla %] 資料庫裡了。<br>
+  <p>检查报告內容是否正确，然后点选「提交」按钮，就可以将你报告的 [% terms.bug %] 放进 [% terms.Bugzilla %] 数据库里了。<br>
   </p>
 </blockquote>
 

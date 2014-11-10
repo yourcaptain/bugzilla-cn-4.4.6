@@ -7,113 +7,113 @@
   #%]
 
 [% INCLUDE global/header.html.tmpl
-   title  = "$terms.Bugzilla 快速搜尋",
+   title  = "$terms.Bugzilla 快速搜索",
    style_urls = ['skins/standard/page.css']
    onload = 'document.forms[\'f\'].quicksearch.focus()'
  %]
 
 [% USE Bugzilla %]
 
-<p><label for="quicksearch">輸入一個以上的字（或字串）進行搜尋：</label></p>
+<p><label for="quicksearch">输入一个以上的字（或字串）进行搜索：</label></p>
 
 <form name="f" action="buglist.cgi" method="get"
       onsubmit="if (this.quicksearch.value == '')
-                { alert('請至少輸入一個字串來搜尋。');
+                { alert('请至少输入一个字串来搜索。');
                   return false; } return true;">
   <input type="text" size="40" name="quicksearch" id="quicksearch">
-  <input type="submit" value="搜尋" id="find">
+  <input type="submit" value="搜索" id="find">
 </form>
 
 <ul>
   <li><a href="#basics">基本</a></li>
-  <li><a href="#basic_examples">簡易搜尋的範例</a></li>
-  <li><a href="#fields">你可以搜尋的欄位</a></li>
-  <li><a href="#advanced_features">進階功能</a></li>
-  <li><a href="#shortcuts">進階快速鍵</a></li>
-  <li><a href="#advanced_examples">複雜搜尋的範例</a></li>
+  <li><a href="#basic_examples">简易搜索的范例</a></li>
+  <li><a href="#fields">你可以搜索的字段</a></li>
+  <li><a href="#advanced_features">高级功能</a></li>
+  <li><a href="#shortcuts">高级快速键</a></li>
+  <li><a href="#advanced_examples">复杂搜索的范例</a></li>
 </ul>
 
 <h2 id="basics">基本</h2>
 
 <ul class="qs_help">
-  <li>如果你在搜尋框裡輸入了一個或多個字，
-    [%+ terms.Bugzilla %] 會在
+  <li>如果你在搜索框里输入了一个或多个字，
+    [%+ terms.Bugzilla %] 会在
     [%+ field_descs.product FILTER html %]、
     [%+ field_descs.component FILTER html %]、
     [%+ IF use_keywords %][%+ field_descs.keywords FILTER html %]、[% END %]
     [%+ field_descs.alias FILTER html %]、
     [%+ field_descs.short_desc FILTER html %]、
     [%+ IF Param('usestatuswhiteboard') %][% field_descs.status_whiteboard FILTER html %][% END %]
-    以及 [% field_descs.longdesc FILTER html %] 這些欄位搜尋你所輸入的字。</li>
+    以及 [% field_descs.longdesc FILTER html %] 这些字段搜索你所输入的字。</li>
 
-  <li>在搜尋框輸入一個<strong>數字</strong>則會直接跳至該編號的 [% terms.bug %] 。
-      另外，輸入 [% terms.bug %] 的<strong>別名</strong>也會直接跳至該 [% terms.bug %]。
+  <li>在搜索框输入一个<strong>数字</strong>则会直接跳至该编号的 [% terms.bug %] 。
+      另外，输入 [% terms.bug %] 的<strong>別名</strong>也会直接跳至该 [% terms.bug %]。
   </li>
 
-  <li>加入較多的字會使搜尋結果<strong>變少</strong>，而不是增加。
-     （也就是說， [% terms.Bugzilla %] 會搜尋符合<em>所有</em>輸入字串的結果，
-     而不是<em>任何一個</em>輸入字串。）</li>
+  <li>加入较多的字会使搜索结果<strong>变少</strong>，而不是增加。
+     （也就是说， [% terms.Bugzilla %] 会搜索符合<em>所有</em>输入字串的结果，
+     而不是<em>任何一个</em>输入字串。）</li>
 
-  <li>搜尋是<strong>不分大小寫</strong>的。
-    所以 <kbd>table</kbd> 、 <kbd>Table</kbd> 和 <kbd>TABLE</kbd> 會被當成相同的字串。</li>
+  <li>搜索是<strong>不分大小写</strong>的。
+    所以 <kbd>table</kbd> 、 <kbd>Table</kbd> 和 <kbd>TABLE</kbd> 会被当成相同的字串。</li>
 
-  <li>[% terms.Bugzilla %] 不只是搜尋完全符合的字，也會搜尋<strong>包含</strong>該字串的其他字。
-    例如：搜尋 "cat" 的時候，也會找到其他字裡有 "cat" 的 [% terms.bugs %]&mdash;比方說，
+  <li>[% terms.Bugzilla %] 不只是搜索完全符合的字，也会搜索<strong>包含</strong>该字串的其他字。
+    例如：搜索 "cat" 的时候，也会找到其他字里有 "cat" 的 [% terms.bugs %]&mdash;比方说，
     提到 "<strong>cat</strong>ch" 或 "certifi<strong>cat</strong>e" 的 [% terms.bug %] 。
-    [% field_descs.longdesc FILTER html %]或[% field_descs.keywords FILTER html %]欄位例外&mdash;
-    那些欄位只會搜尋完全符合的字。</li>
+    [% field_descs.longdesc FILTER html %]或[% field_descs.keywords FILTER html %]字段例外&mdash;
+    那些字段只会搜索完全符合的字。</li>
 
-  <li>預設只會搜尋<strong>開啟的</strong> [% terms.bugs %] 。
-    如果你想知道如何搜尋關閉的 [% terms.bugs %] ，
-    請參考<a href="#shortcuts">進階快速鍵</a>一段。</li>
+  <li>预设只会搜索<strong>开启的</strong> [% terms.bugs %] 。
+    如果你想知道如何搜索关闭的 [% terms.bugs %] ，
+    请参考<a href="#shortcuts">高级快速键</a>一段。</li>
 
-  <li>如果你想要搜尋<strong>特定欄位</strong>，用
-    <kbd>field:value</kbd> 這個格式。 <kbd>field</kbd> 是此份文件下方
-    提到的<a href="#fields">欄位名稱</a>之一，而 <kbd>value</kbd> 是你
-    想要在該欄位搜尋的數值。如果在 <kbd>value</kbd> 欄位中輸入逗號 (,) ，
-    會把你所輸入的數值視為一串數值的清單，並且會搜尋符合<em>任何一個</em>數值的
+  <li>如果你想要搜索<strong>特定字段</strong>，用
+    <kbd>field:value</kbd> 这个格式。 <kbd>field</kbd> 是此份文件下方
+    提到的<a href="#fields">字段名称</a>之一，而 <kbd>value</kbd> 是你
+    想要在该字段搜索的数值。如果在 <kbd>value</kbd> 字段中输入逗号 (,) ，
+    会把你所输入的数值视为一串数值的清单，并且会搜索符合<em>任何一个</em>数值的
     [% terms.bugs %] 。</li>
 </ul>
 
-<h2 id="basic_examples">簡易搜尋的範例</h2>
+<h2 id="basic_examples">简易搜索的范例</h2>
 
-<p>以下是一些搜尋的範例。此頁面下方也可以找到<a href="#advanced_examples">更複雜的範例</a>。</p>
+<p>以下是一些搜索的范例。此页面下方也可以找到<a href="#advanced_examples">更复杂的范例</a>。</p>
 
 <ul class="qs_help">
-  <li>所有狀態為開啟 (OPEN) 的 [% terms.bugs %] 中， userA@company.com
-    在寄件副本清單中的 [% terms.bugs %] （不需要輸入「開啟」這個狀態的字串，這是預設值）：<br>
+  <li>所有状态为开启 (OPEN) 的 [% terms.bugs %] 中， userA@company.com
+    在邮件抄送副本中的 [% terms.bugs %] （不需要输入「开启」这个状态字串，这是预设值）：<br>
     <kbd>cc:userA@company.com</kbd></li>
-  <li>所有在產品「productA」中，狀態為未確認 (UNCONFIRMED) 的 [% terms.bugs %]
-    （將 [% terms.bug %] 的狀態放在第一個字的話，就會自動視為 [% terms.bug %]
-    的狀態）：<br>
+  <li>所有在产品「productA」中，状态为未确认 (UNCONFIRMED) 的 [% terms.bugs %]
+    （将 [% terms.bug %] 的状态放在第一个字的话，就会自动视为 [% terms.bug %]
+    的状态）：<br>
     <kbd>UNCONFIRMED product:productA</kbd>
-  <li>所有 (ALL) 由 userB@company.com 回報的 [% terms.bugs %]
-    （必須要在第一個字指定狀態為 ALL ，否則只會找狀態為開啟的 [% terms.bugs %]
+  <li>所有 (ALL) 由 userB@company.com 报告的 [% terms.bugs %]
+    （必须要在第一个字指定状态为 ALL ，否则只会找状态为开启的 [% terms.bugs %]
     ）：<br>
     <kbd>ALL reporter:userB@company.com</kbd>
-  <li>所有狀態為開啟、嚴重等級是 blocker 或 critical ，且目標里程碑是
+  <li>所有状态为开启、严重等级是 blocker 或 critical ，且目标里程碑是
     2.5 的 [% terms.bugs %] ：<br>
     <kbd>severity:blocker,critical milestone:2.5</kbd>
-  <li>所有在產品「Research & Development」中，優先程度是 P1 或 P2 ，狀態為開啟的 [% terms.bugs %]
-    （因為產品名稱中含有空白，因此必須以引號 (") 包覆它）：<br>
+  <li>所有在产品「Research & Development」中，优先程度是 P1 或 P2 ，状态为开启的 [% terms.bugs %]
+    （因为产品名称中含有空白，因此必须以引号 (") 包覆它）：<br>
     <kbd>component:"Research & Development" priority:P1,P2</kbd></li>
 </ul>
 
-<h2 id="fields">你可以搜尋的欄位</h2>
+<h2 id="fields">你可以搜索的字段</h2>
 
-<p>你可以在搜尋框以 <kbd>field:value</kbd> 格式指定任何欄位。
-  你也可以對欄位名稱使用縮寫，只要你所使用的縮寫僅符合一個欄位即可。
-  例如：輸入 <kbd>stat:VERIFIED</kbd> 會搜尋所有狀態是 <kbd>VERIFIED</kbd> 的
-  [%+ terms.bugs %] 。有些欄位有多個名稱，你可以用任何一個名稱來搜尋。</p>
+<p>你可以在搜索框以 <kbd>field:value</kbd> 格式指定任何字段。
+  你也可以对字段名称使用缩写，只要你所使用的缩写仅符合一个字段即可。
+  例如：输入 <kbd>stat:VERIFIED</kbd> 会搜索所有状态是 <kbd>VERIFIED</kbd> 的
+  [%+ terms.bugs %] 。有些字段有多个名称，你可以用任何一个名称来搜索。</p>
 
 [% IF Bugzilla.active_custom_fields.size %]
   [% SET first_field = Bugzilla.active_custom_fields.0 %]
-  <p>自訂欄位的部份，除了輸入以 <kbd>cf_</kbd> 開頭的標準欄位名稱之外，
-    也可以用位於 <kbd>cf_</kbd> <em>之後</em>的名稱來做為縮寫。
-    例如： <kbd>[% first_field.name FILTER html %]</kbd> 可以輸入成
+  <p>自定字段的部份，除了输入以 <kbd>cf_</kbd> 开头的标准字段名称之外，
+    也可以用位于 <kbd>cf_</kbd> <em>之后</em>的名称来作为缩写。
+    例如： <kbd>[% first_field.name FILTER html %]</kbd> 可以输入成
     <kbd>[% first_field.name.replace('^cf_') FILTER html %]</kbd> 。
-    然而當自訂欄位 <kbd>cf_</kbd> 之後的名稱和標準的 [%+ terms.Bugzilla %]
-    欄位名稱衝突的時候，標準的欄位名稱擁有優先權。</p>
+    然而当自定字段 <kbd>cf_</kbd> 之后的名称和标准的 [%+ terms.Bugzilla %]
+    字段名称冲突的时候，标准的字段名称拥有优先权。</p>
 [% END %]
 
 [% SET field_table = {} %]
@@ -126,8 +126,8 @@
 <table cellspacing="0" cellpadding="0" border="0" class="qs_fields">
   <thead>
     <tr>
-      <th class="field_name">欄位</th>
-      <th class="field_nickname">搜尋用的欄位名稱</th>
+      <th class="field_name">字段</th>
+      <th class="field_nickname">搜索用的字段名称</th>
     </tr>
   </thead>
   <tbody>
@@ -144,158 +144,158 @@
   </tbody>
 </table>
 
-<h2 id="advanced_features">進階功能</h2>
+<h2 id="advanced_features">高级功能</h2>
 
 <ul class="qs_help">
-  <li>如果你要搜尋的是<strong>片語</strong>或是含有空白、逗號 (,) 、冒號 (:)
-    、引號 (&quot;) 的字，必須以引號包覆這些字。
+  <li>如果你要搜索的是<strong>片語</strong>或是含有空白、逗号 (,) 、冒号 (:)
+    、引号 (&quot;) 的字，必须以引号包覆这些字。
     例如： <kbd>"yes, this is a phrase"</kbd> 。
-    如要搜尋含有會被快速搜尋認定為特別功能的字元時，也可以放在引號中。
-    例如： <kbd>"this|that"</kbd> 就會以字面上的 <em>this|that</em> 進行搜尋。
-    同樣的道理， <kbd>"-field:value"</kbd> 就會以字面上的 <em>-field:value</em>
-    進行搜尋，而不是解讀為 <kbd>"NOT field:value"</kbd> 。
+    如要搜索含有会被快速搜索认定为特別功能的字符时，也可以放在引号中。
+    例如： <kbd>"this|that"</kbd> 就会以字面上的 <em>this|that</em> 进行搜索。
+    同样的道理， <kbd>"-field:value"</kbd> 就会以字面上的 <em>-field:value</em>
+    进行搜索，而不是解读为 <kbd>"NOT field:value"</kbd> 。
   </li>
 
-  <li>你可以在搜尋中使用 <strong>AND</strong> 、 <strong>NOT</strong> 和
+  <li>你可以在搜索中使用 <strong>AND</strong> 、 <strong>NOT</strong> 和
     <strong>OR</strong> 。
 
     你也可以用 <kbd>-</kbd> 代表 "NOT"，以及 <kbd>|</kbd> 代表 "OR" 。
-    "AND" 並沒有特殊字元，因為預設任何以空白分隔的字都會以 "AND" 進行搜尋。
-    範例：
+    "AND" 并没有特殊字符，因为预设任何以空白分隔的字都会以 "AND" 进行搜艘。
+    范例：
     <ul>
       <li>
         <strong>NOT</strong> ：<br>
-        <kbd><strong>-</strong><em>summary:foo</em></kbd> 會排除在摘要中有
+        <kbd><strong>-</strong><em>summary:foo</em></kbd> 会排除在摘要中有
         <kbd>foo</kbd> 的 [%+ terms.bugs %] 。
-        等效於 <kbd><em>NOT summary:foo</em></kbd> 。
+        等效于 <kbd><em>NOT summary:foo</em></kbd> 。
       </li>
       <li>
         <strong>AND</strong> ：<br>
-        <kbd><em>foo bar</em></kbd> 會搜尋包含 <kbd>foo</kbd> 和 <kbd>bar</kbd>
+        <kbd><em>foo bar</em></kbd> 会搜索包含 <kbd>foo</kbd> 和 <kbd>bar</kbd>
         的 [% terms.bugs %] 。
-        等效於 <kbd><em>foo AND bar</em></kbd> 。
+        等效于 <kbd><em>foo AND bar</em></kbd> 。
       </li>
       <li>
         <strong>OR</strong> ：<br>
-        <kbd><em>foo<strong>|</strong>bar</em></kbd> 會搜尋包含 <kbd>foo</kbd>
+        <kbd><em>foo<strong>|</strong>bar</em></kbd> 会搜索包含 <kbd>foo</kbd>
         或 <kbd>bar</kbd> 的 [% terms.bugs %] 。
-        等效於 <kbd><em>foo OR bar</em></kbd> 。
+        等效于 <kbd><em>foo OR bar</em></kbd> 。
       </li>
     </ul>
 
-    <p>如果某個欄位有多個可能的值時，不能用 | 或 OR 來列舉，而是用逗號 (,)
-      分隔。所以 <kbd>field:value1,value2</kbd> 搜尋的結果會符合你的需求，而
-      <kbd>field:value1|value2</kbd> 不會，因為它被解讀為
-      <kbd>field:value1 OR value2</kbd> ，也就是 value2 並未被限制於指定的 field 中。
+    <p>如果某个字段有多个可能的值时，不能用 | 或 OR 来列举，而是用逗号 (,)
+      分隔。所以 <kbd>field:value1,value2</kbd> 搜索的结果会符合你的需求，而
+      <kbd>field:value1|value2</kbd> 不会，因为它被解读为
+      <kbd>field:value1 OR value2</kbd> ，也就是 value2 并未被限制于指定的 field 中。
     </p>
 
-    <p>OR 比 AND 有較高的優先權； AND 是最上層的運算子。
+    <p>OR 比 AND 有较高的优先权； AND 是最上层的演算子。
       例如：</p>
-    <p>搜尋 <em><kbd>url|location bar|field -focus</kbd></em> 代表
+    <p>搜索 <em><kbd>url|location bar|field -focus</kbd></em> 代表
       (<kbd>url</kbd> OR <kbd>location</kbd>) AND (<kbd>bar</kbd> OR
       <kbd>field</kbd>) AND (NOT <kbd>focus</kbd>)</p>
   </li>
 </ul>
 
-<h2 id="shortcuts">進階快速鍵</h2>
+<h2 id="shortcuts">高级快速键</h2>
 
-<p>除了用<a href="#fields">欄位名稱</a>搜尋特定欄位之外，
-  還有一些特定的字或字元可以當成「快速鍵」，對特定欄位做搜尋：</p>
+<p>除了用<a href="#fields">字段名称</a>搜索特定字段之外，
+  还有一些特定的字或字符可以当成「快速键」，对特定字段作搜索：</p>
 
 <table cellspacing="0" cellpadding="0" border="0" class="qs_fields">
   <thead>
     <tr>
-      <th class="field_name">欄位</th>
-      <th class="field_nickname">快速鍵</th>
+      <th class="field_name">字段</th>
+      <th class="field_nickname">快速键</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td class="field_name">[% field_descs.bug_status FILTER html %]</td>
       <td class="field_nickname">
-        把搜尋的<strong>第一個字</strong>設定為任何狀態，甚至是狀態的縮寫，
-        就會搜尋符合該狀態的 [% terms.bugs %] 。
-        <strong><kbd>ALL</kbd></strong> 是代表「所有狀態」的特別快速鍵。
-        <strong><kbd>OPEN</kbd></strong> 是代表「所有狀態為開啟」的特別快速鍵。
+        把搜索的<strong>第一个字</strong>设定为任何状态，甚至是状态的缩写，
+        就会搜索符合该状态的 [% terms.bugs %] 。
+        <strong><kbd>ALL</kbd></strong> 是代表「所有状态」的特別快捷键。
+        <strong><kbd>OPEN</kbd></strong> 是代表「所有状态为开启」的特別快捷键。
       </td>
     </tr>
     <tr>
       <td class="field_name">[% field_descs.resolution FILTER html %]</td>
       <td class="field_nickname">
-        把搜尋的<strong>第一個字</strong>設定為任何解決方案，甚至是解決方案的縮寫，
-        就會搜尋符合該解決方案的 [% terms.bugs %] 。
-        例如：把 <kbd>FIX</kbd> 做為搜尋的第一個字，就會搜尋解決方案是
+        把搜索的<strong>第一个字</strong>设定为任何解決方案，甚至是解決方案的缩写，
+        就会搜索符合该解決方案的 [% terms.bugs %] 。
+        例如：把 <kbd>FIX</kbd> 作为搜索的第一个字，就会搜索解決方案是
         <kbd>FIXED</kbd> 的 [% terms.bugs %] 。
     </tr>
     <tr>
       <td class="field_name">[% field_descs.priority FILTER html %]</td>
-      <td class="field_nickname">"<strong>P1</strong>" （做為搜尋字串中的任一字串）
-        代表「搜尋最高優先權的 [% terms.bugs %] 」。
-        "P2" 代表搜尋第二高優先權，類推。
-        <p>"<strong>P1-3</strong>" 會搜尋前三高優先權的任何 [% terms.bugs %] ，
-        類推。</p>
+      <td class="field_nickname">"<strong>P1</strong>" （作为搜索字串中的任一字串）
+        代表「搜索最高优先权的 [% terms.bugs %] 」。
+        "P2" 代表搜搜第二高优先权，类推。
+        <p>"<strong>P1-3</strong>" 会搜索前三高优先权的任何 [% terms.bugs %] ，
+        类推。</p>
       </td>
     </tr>
     <tr>
       <td class="field_name">[% field_descs.assigned_to FILTER html %]</td>
-      <td class="field_nickname"><strong>@</strong><em>數值</em></td>
+      <td class="field_nickname"><strong>@</strong><em>数值</em></td>
     </tr>
     <tr>
       <td class="field_name">[% field_descs.product FILTER html %] or
         [%+ field_descs.component FILTER html %]</td>
-      <td class="field_nickname"><strong>:</strong><em>數值</em></td>
+      <td class="field_nickname"><strong>:</strong><em>数值</em></td>
     </tr>
     [% IF use_keywords %]
       <tr>
         <td class="field_name">[% field_descs.keywords FILTER html %]</td>
-        <td class="field_nickname"><strong>!</strong><em>數值</em></td>
+        <td class="field_nickname"><strong>!</strong><em>数值</em></td>
       </tr>
     [% END %]
     <tr>
       [% SET key = "flagtypes.name" %]
       <td class="field_name">[% field_descs.$key FILTER html %]</td>
       <td class="field_nickname">
-        <em>旗標</em><strong>?</strong><em>被要求者</em>
+        <em>旗标</em><strong>?</strong><em>被要求者</em>
       </td>
     </tr>
     <tr>
       <td class="field_name">[% field_descs.longdesc FILTER html %]
         或 [% field_descs.short_desc FILTER html %]</td>
       <td class="field_nickname">
-        <strong>#</strong><em>數值</em>
+        <strong>#</strong><em>数值</em>
       </td>
     </tr>
     [% IF Param('usestatuswhiteboard') %]
       <tr>
         <td class="field_name">[% field_descs.short_desc FILTER html %]
           或 [% field_descs.status_whiteboard FILTER html %]</td>
-        <td class="field_nickname"><strong>[</strong><em>數值</em></td>
+        <td class="field_nickname"><strong>[</strong><em>数值</em></td>
       </tr>
     [% END %]
   </tbody>
 </table>
 
-<h2 id="advanced_examples">複雜搜尋的範例</h2>
+<h2 id="advanced_examples">复杂搜索的范例</h2>
 
-<p>要輸入複雜的搜尋也不會太花力氣。當然，如果你的搜尋非常非常複雜時，你必須用
-  <a href="query.cgi?format=advanced">進階搜尋</a>。</p>
+<p>要输入复杂的搜索也不会太花力气。当然，如果你的搜索非常非常复杂时，你必须用
+  <a href="query.cgi?format=advanced">高级搜索</a>。</p>
 
 <ul class="qs_help">
-  <li>所有由 userA@company.com 回報的 [% terms.bugs %] ，或者由他負責的
-    [% terms.bugs %] （關於 @
-    的用法，參見上方<a href="#shortcuts">進階快速鍵</a>一段）：<br>
+  <li>所有由 userA@company.com 报告的 [% terms.bugs %] ，或者由他负责的
+    [% terms.bugs %] （关于 @
+    的用法，参见上方<a href="#shortcuts">高级快速键</a>一段）：<br>
     <kbd>ALL @userA@company.com OR reporter:userA@company.com</kbd></li>
-  <li>所有在產品「productA」中，狀態為開啟 (OPEN) 的 [% terms.bugs %] 中
-    ，嚴重等級是 blocker 、 critical 或 major ，或者優先程度為 P1
-    ，或者設定了 blocker+ 的旗標，且並非由 userB@company.com 或
-    userC@company.com 負責（我們假設只有兩個使用者符合 userB 和 userC
-    ，不然就必須要輸入完整的登入名稱）：<br>
+  <li>所有在产品「productA」中，状态为开启 (OPEN) 的 [% terms.bugs %] 中
+    ，严重等级是 blocker 、 critical 或 major ，或者优先程度为 P1
+    ，或者设定了 blocker+ 的旗标，且并非由 userB@company.com 或
+    userC@company.com 负责（我们假设只有两个使用者符合 userB 和 userC
+    ，不然就必须要输入完整的登录名称）：<br>
     <kbd>:productA sev:blocker,critical,major OR pri:P1 OR flag:blocker+ -assign:userB,userC</kbd></li>
-  <li>所有解決方案為已解決 (FIXED) 的 [% terms.bugs %] 中，設定了
-    blocker+ 的旗標，但沒有設定 approval+ 或 approval? 的旗標：<br>
+  <li>所有解決方案为已解决 (FIXED) 的 [% terms.bugs %] 中，设定了
+    blocker+ 的旗标，但没有设定 approval+ 或 approval? 的旗标：<br>
     <kbd>FIXED flag:blocker+ -flag:approval+ -flag:approval?</kbd></li>
   <li>摘要中含有 <em>That's a "unusual" issue</em> 字串的
-    [%+ terms.bugs %] （引號以 <em>\"</em> 方式輸入）：<br>
+    [%+ terms.bugs %] （引号以 <em>\"</em> 方式输入）：<br>
     <kbd>summary:"That's a \"unusual\" issue"</kbd></li>
 </ul>
 

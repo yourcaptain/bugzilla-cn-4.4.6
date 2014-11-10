@@ -6,10 +6,10 @@
   # defined by the Mozilla Public License, v. 2.0.
   #%]
 
-[% INCLUDE global/header.html.tmpl title = "文字連結化" %]
+[% INCLUDE global/header.html.tmpl title = "文字链接化" %]
 
 <p>
-  如果你輸入一些文字，此表格會自動將它轉為標準的 [% terms.Bugzilla %] 意見格式。也就是說，有效的 [% terms.bug %] 數字、網址、電子郵件信箱等等都會被加上適當的 HTML 連結。
+  如果你输入一些文字，此表格会自动将它转为标准的 [% terms.Bugzilla %] 留言格式。也就是说，有效的 [% terms.bug %] 数字、网址、电子邮件信箱等等都会被加上适当的 HTML 链接。
 </p>
 
 <form action="page.cgi" method="post">
@@ -20,7 +20,7 @@
   %]
   <br>
   <input type="hidden" name="id" value="linked.html">
-  <input type="submit" id="linkify" value="連結化">
+  <input type="submit" id="linkify" value="链接化">
 </form>
 
 [% INCLUDE global/footer.html.tmpl %]
