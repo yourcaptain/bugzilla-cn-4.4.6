@@ -15,17 +15,17 @@
   #%]
 
 [% PROCESS "reports/series-common.html.tmpl"
-   newtext = "新的（在下方輸入）"
+   newtext = "新的（在下方输入）"
  %]
 
 <table cellpadding="2" cellspacing="2" border="0"
        style="text-align: left; margin-left: 20px">
   <tbody>
     <tr>
-      <th>分類：</th>
+      <th>分类：</th>
       <th></th>
-      <th>子分類：</th>
-      <th>名稱：</th>
+      <th>子分类：</th>
+      <th>名称：</th>
       <td></td>
     </tr>
     <tr>
@@ -52,14 +52,14 @@
         <span style="font-weight: bold;">每</span> &nbsp;
         <input type="text" size="2" name="frequency"
                value="[% (default.frequency.0 OR 7) FILTER html %]">
-        <span style="font-weight: bold;">&nbsp;天執行</span><br>
+        <span style="font-weight: bold;">&nbsp;天执行</span><br>
         [%# Change 'admin' here and in Series.pm, or remove the check
             completely, if you want to change who can make series public. %]
         [% IF user.in_group('admin') %]
           <input type="checkbox" name="public"
                  [%+ "checked='checked'" IF default.public.0 %]>
-          <span style="font-weight: bold;">(在群組限制中)<br>
-          全部可見</span>
+          <span style="font-weight: bold;">(在群组限制中)<br>
+          全部可见</span>
         [% END %]
       </td>
     </tr>

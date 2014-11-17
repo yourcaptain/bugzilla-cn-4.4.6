@@ -16,10 +16,10 @@
 
   [% IF product.size %]
     [% title = BLOCK %]
-      產品 [% product.join(', ') FILTER html %] 最常回報的 [% $terms.Bugs %]
+      产品 [% product.join(', ') FILTER html %] 最常报告的 [% $terms.Bugs %]
     [% END %]
   [% ELSE %]
-    [% title = "最常回報的 $terms.Bugs" %]
+    [% title = "最常报告的 $terms.Bugs" %]
   [% END%]
 
   <head>

@@ -6,7 +6,7 @@
   # defined by the Mozilla Public License, v. 2.0.
   #%]
 
-[% title = "編輯系列" %]
+[% title = "编辑系列" %]
 [% subheader = BLOCK %]
   [% default.category FILTER html %] /
   [%+ default.subcategory FILTER html %] /
@@ -26,7 +26,7 @@
 <form method="get" action="chart.cgi" name="chartform">
 
   [% PROCESS reports/series.html.tmpl
-     button_name = "變更資料集" %]
+     button_name = "变更资料集" %]
   <input type="hidden" name="action" value="alter">
   <input type="hidden" name="token"
          value="[% issue_hash_token([default.id, default.name]) FILTER html %]">
@@ -37,26 +37,26 @@
 </form>
 
 <p>
-  <b>建立者</b>：
+  <b>创建者</b>：
   [% IF default.creator %]
     <a href="mailto:[% default.creator.email FILTER html %]">
     [% default.creator.email FILTER html %]</a>
   [% ELSE %]
-    (由 [% terms.Bugzilla %] 自動建立)
+    (由 [% terms.Bugzilla %] 自动创建)
   [% END %]
 </p>
 
-<p>注意：目前還無法編輯和此資料集有關聯的搜尋。
+<p>注意：目前还无法编辑和此资料集有关的搜索。
 </p>
 
 <p>
-  <a href="query.cgi?[% default.query FILTER html %]">檢視系列的搜尋參數
+  <a href="query.cgi?[% default.query FILTER html %]">检查系列的搜索参数
     </a> |
   <a href="buglist.cgi?cmdtype=dorem&amp;namedcmd=
     [% default.category FILTER uri %]-
     [% default.subcategory FILTER uri %]-
     [% default.name FILTER uri %]&amp;remaction=runseries&amp;series_id=
-    [% default.series_id %]">執行系列搜尋</a>
+    [% default.series_id %]">执行系列搜索</a>
 </p>
 
 [% PROCESS global/footer.html.tmpl %]

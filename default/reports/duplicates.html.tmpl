@@ -20,11 +20,11 @@
 
 [% IF product.size %]
   [% title = BLOCK %]
-    產品 [% query_products.join(', ') FILTER html %]
-    最常回報的 [% terms.Bugs %]
+    产品 [% query_products.join(', ') FILTER html %]
+    最常报告的 [% terms.Bugs %]
   [% END %]
 [% ELSE %]
-  [% title = "最常回報的 $terms.Bugs" %]
+  [% title = "最常报告的 $terms.Bugs" %]
 [% END%]
 
 [% PROCESS global/header.html.tmpl
@@ -33,9 +33,9 @@
 %]
 
 <p>
-  <a href="#explanation">這份資料是什麼？</a>
+  <a href="#explanation">这份资料是什么？</a>
   <br>
-  <a href="#params">變更參數</a>
+  <a href="#params">变更参数</a>
 </p>
 
 [% PROCESS "reports/duplicates-table.html.tmpl" %]
@@ -44,7 +44,7 @@
 
 [% bug_ids_string = bug_ids.join(',') %]
 
-<h3 id="params">變更參數</h3>
+<h3 id="params">变更参数</h3>
 
 <form method="get" action="duplicates.cgi">
   <input type="hidden" name="sortby" value="[% sortby FILTER html %]">
@@ -52,21 +52,21 @@
   <input type="hidden" name="bug_id" value="[% bug_ids_string FILTER html %]">
   <table>
     <tr>
-      <td>在排序或限制時，對...有效：</td>
+      <td>在排序或限制时，对...有效：</td>
       <td>
         <input type="radio" name="sortvisible" id="entirelist" value="0"
           [% ' checked="checked"' IF NOT sortvisible %]>
         <label for="entirelist">
-          整份清單
+          整份清单
         </label>
         <br>
         <input type="radio" name="sortvisible" id="visiblelist" value="1"
           [% ' checked="checked"' IF sortvisible %]>
         <label for="visiblelist">
-          目前可見的清單
+          目前可见的清单
         </label>
       </td>
-      <td rowspan="4" valign="top">限制於下列產品：</td>
+      <td rowspan="4" valign="top">限制于下列产品：</td>
       <td rowspan="4" valign="top">
         <select name="product" size="5" multiple="multiple">
           [% FOREACH p = user.get_selectable_products %]
@@ -79,7 +79,7 @@
      </tr>
 
     <tr>
-      <td><label for="maxrows">最大列數：</label></td>
+      <td><label for="maxrows">最大列数：</label></td>
       <td>
         <input size="4" name="maxrows" id="maxrows"
 	       value="[% maxrows FILTER html %]">
@@ -88,7 +88,7 @@
 
     <tr>
       <td>
-        <label for="changedsince">欄位在最近幾天變更：</label>
+        <label for="changedsince">字段在最近几天变更：</label>
       </td>
       <td>
         <input size="4" name="changedsince" id="changedsince"
@@ -99,7 +99,7 @@
     <tr>
       <td>
         <label for="openonly">
-          只顯示開啟的 [% terms.bugs %] ：
+          只显示开启的 [% terms.bugs %] ：
         </label>
       </td>
       <td>
@@ -110,46 +110,46 @@
 
   </table>
 
-  <input type="submit" id="change" value="變更">
+  <input type="submit" id="change" value="变更">
 </form>
 
 <form method="post" action="buglist.cgi">
   <input type="hidden" name="bug_id" value="[% bug_ids_string FILTER html %]">
-  或者以<input type="submit" id="list" value="[% terms.bug %] 清單">呈現即可。
-  (注意：順序可能不一樣。)
+  或者以<input type="submit" id="list" value="[% terms.bug %] 清单">呈现即可。
+  (注意：顺序可能不一样。)
 </form>
 
 <hr>
 
 <h3 id="explanation">
-  什麼是「最常回報的 [% terms.Bugs %] 」？
+  什么是「最常报告的 [% terms.Bugs %] 」？
 </h3>
 
 <p>
-  最常回報的 [% terms.Bugs %] 頁面列出目前狀態為開啟，且最常被回報的
-  [%+ terms.bugs %] 清單。此清單產生方式為計算被直接或間接標記為重複的
-  [%+ terms.bugs %] 數量。提供此清單的目的是將輸入 [% terms.Bugzilla %]
-  的重複 [% terms.bugs %] 數量減到最低，以省下品保工程師分類 [% terms.bugs %] 的時間。
+  最常报告的 [% terms.Bugs %] 页面列出目前状态为开启，且最常被报告的
+  [%+ terms.bugs %] 清单。此清单产生方式为计算被直接或间接标记为重复的
+  [%+ terms.bugs %] 数量。提供此清单的目的是将输入 [% terms.Bugzilla %]
+  的重复 [% terms.bugs %] 数量减到最低，以省下品保工程师分类 [% terms.bugs %] 的时间。
 </p>
 
-<b>我如何使用這份清單？</b>
+<b>我如何使用这份清单？</b>
 
 <ul>
-  <li>檢視最常回報的 [% terms.bugs %] 清單。</li>
-  <li>如果你的問題列在上面：</li>
+  <li>检查最常报告的 [% terms.bugs %] 清单。</li>
+  <li>如果你的问题列在上面：</li>
 
   <ul>
-    <li>點選 [% terms.bug %] 編號以確認你找到的是同一個
-        [% terms.bug %] 。如果你有額外的資訊（例如測試結果）時，可隨時發表意見。
+    <li>点击 [% terms.bug %] 编号以确认你找到的是同一个
+        [% terms.bug %] 。如果你有额外的信息（例如测试结果）时，可随时发表留言。
     </li>
   </ul>
 
-  <li>如果你的問題不在上面：</li>
+  <li>如果你的问题不在上面：</li>
 
   <ul>
-    <li>在已存在的 [% terms.bug %] 中<a href="query.cgi">嘗試搜尋是否有類似的 [% terms.bug %]</a>。</li>
-    <li>如果你在 [% terms.Bugzilla %] 中找到了你的問題，且有新的或額外的資訊可提供時，可隨時發表意見。</li>
-    <li>如果你在 [% terms.Bugzilla %] 並未找到你的問題，<a href="enter_bug.cgi">新增一個 [% terms.bug %]</a> 。</li>
+    <li>在已存在的 [% terms.bug %] 中<a href="query.cgi">尝试搜索是否有类似的 [% terms.bug %]</a>。</li>
+    <li>如果你在 [% terms.Bugzilla %] 中找到了你的问题，且有新的或额外的信息可提供时，可随时发表留言。</li>
+    <li>如果你在 [% terms.Bugzilla %] 并未找到你的问题，<a href="enter_bug.cgi">新增一个 [% terms.bug %]</a> 。</li>
   </ul>
 </ul>
 

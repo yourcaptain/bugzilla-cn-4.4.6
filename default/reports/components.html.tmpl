@@ -12,7 +12,7 @@
   #%]
 
 [% title = BLOCK %]
-  [% product.name FILTER html %] 的子產品
+  [% product.name FILTER html %] 的模块
 [% END %]
 
 [% PROCESS global/header.html.tmpl
@@ -29,7 +29,7 @@
 <table cellpadding="0" cellspacing="0" id="components_header_table">
   <tr>
     <td class="instructions">
-      選擇一項子產品來檢視該子產品中尚未關閉的 [% terms.bugs %] ：
+      选择一项模块来检查该模块中尚未关闭的 [% terms.bugs %] ：
     </td>
     <td class="product_container">
       <span class="product_name">[% product.name FILTER html %]</span>
@@ -40,15 +40,15 @@
   </tr>
 </table>
 
-<span class="components_header">子產品</span>
+<span class="components_header">模块</span>
 
-<table summary="子產品表格" class="component_table" cellspacing="0" cellpadding="0">
+<table summary="模块表格" class="component_table" cellspacing="0" cellpadding="0">
   <thead>
   <tr>
     <th>&nbsp;</th>
-    <th>預設負責人</th>
+    <th>预设负责人</th>
     [% IF Param("useqacontact") %]
-      <th>預設 QA 連絡人</th>
+      <th>预设 QA 联络人</th>
     [% END %]
   </tr>
   </thead>

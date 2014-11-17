@@ -83,9 +83,9 @@ YAHOO.util.Event.addListener(window, "load", function() {
     var a_total_test = a.getData("row_title");
     var b_total_test = b.getData("row_title");
     var comp_result = YAHOO.util.Sort.compare(a_value, b_value, desc);
-    if( a_total_test == "總計" ){
+    if( a_total_test == "总计" ){
       comp_result = 1;
-    }else if( b_total_test == "總計" ){
+    }else if( b_total_test == "总计" ){
       comp_result = -1;
     }
     return comp_result;
@@ -176,7 +176,7 @@ YAHOO.util.Event.addListener(window, "load", function() {
         </th>
       [% END %]
       <th class="ttotal">
-        總計
+        总计
       </th>
     </tr>
     </thead>
@@ -219,7 +219,7 @@ YAHOO.util.Event.addListener(window, "load", function() {
     <tr>
       [% row_idx = 1 - row_idx %]
       <td class="ttotal">
-        總計
+        总计
       </td>
       [% FOREACH col = col_names %]
         [% NEXT IF col == "" %]

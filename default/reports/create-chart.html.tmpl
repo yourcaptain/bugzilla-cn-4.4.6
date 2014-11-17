@@ -14,7 +14,7 @@
   #%]
 
 [% PROCESS global/header.html.tmpl
-  title = "建立報表"
+  title = "创建报表"
 %]
 
 [% PROCESS "reports/series-common.html.tmpl"
@@ -45,7 +45,7 @@ function subcatSelected() {
 }
 </script>
 
-[% gttext = "總計" %]
+[% gttext = "总计" %]
 
 <form method="get" action="chart.cgi" name="chartform">
 
@@ -53,16 +53,16 @@ function subcatSelected() {
     [% IF NOT category OR category.size == 0 %]
       <tr>
         <td>
-          <i>沒有資料集存在，或是你沒有權限瀏覽。</i>
+          <i>没有资料集存在，或是你没有权限浏览。</i>
         </td>
       </tr>
     [% ELSE %]
       <tr>
-        <th><label for="category">分類</label>:</th>
+        <th><label for="category">分类</label>:</th>
         <th></th>
-        <th><label for="subcategory">子分類</label>:：</th>
+        <th><label for="subcategory">子分类</label>:：</th>
         <th></th>
-        <th><label for="name" accesskey="N">名稱</label>：</th>
+        <th><label for="name" accesskey="N">名称</label>：</th>
         <th><br>
         </th>
       </tr>
@@ -99,22 +99,22 @@ function subcatSelected() {
                                          value_in_hash => 1 } %]
 
         <td align="center" valign="middle">
-          <input type="submit" name="action-add" value="加到清單"
+          <input type="submit" name="action-add" value="加到清单"
                  id="action-add"><br>
         </td>
       </tr>
     [% END %]
   </table>
 
-  <h3>列出要放置的資料集</h3>
+  <h3>列出要放置的资料集</h3>
 
   [% IF chart.lines.size %]
     <table cellspacing="2" cellpadding="2">
       <tr>
-        <th style="width: 5em;">選擇</th>
-        <th>標籤</th>
+        <th style="width: 5em;">选择</th>
+        <th>标签</th>
         <th></th>
-        <th>資料集</th>
+        <th>资料集</th>
         <th></th>
       </tr>
 
@@ -163,15 +163,15 @@ function subcatSelected() {
             <td align="center">
               [% IF user.id == series.creator_id OR user.in_group("admin") %]
                <a href="chart.cgi?action=edit&amp;series_id=
-                       [% series.series_id %]">編輯</a> |
+                       [% series.series_id %]">编辑</a> |
                <a href="chart.cgi?action=confirm-delete&amp;series_id=
-                       [%- series.series_id %]">刪除</a> |
+                       [%- series.series_id %]">删除</a> |
               [% END %]
               <a href="buglist.cgi?cmdtype=dorem&amp;namedcmd=
                 [% series.category FILTER uri %]%20/%20
                 [% series.subcategory FILTER uri %]%20/%20
                 [% series.name FILTER uri -%]&amp;series_id=
-                [% series.series_id %]&amp;remaction=runseries">執行搜尋</a>
+                [% series.series_id %]&amp;remaction=runseries">执行搜索</a>
             </td>
           </tr>
         [% END %]
@@ -204,7 +204,7 @@ function subcatSelected() {
         <td valign="bottom" style="text-align: center;">
           <input type="submit" name="action-sum" value="相加"
                  style="width: 5em;" id="action-sum"><br>
-          <input type="submit" name="action-remove" value="刪除"
+          <input type="submit" name="action-remove" value="删除"
                  style="width: 5em;" id="action-remove">
         </td>
 
@@ -216,7 +216,7 @@ function subcatSelected() {
 
         <td></td>
         <td valign="bottom">
-          <label for="datefrom"><b>日期範圍</b></label>：
+          <label for="datefrom"><b>日期范围</b></label>：
           <input type="text" size="12" name="datefrom" id="datefrom"
             value="[% time2str("%Y-%m-%d", chart.datefrom) IF chart.datefrom%]">
           <label for="dateto"><b>到</b></label>
@@ -231,26 +231,26 @@ function subcatSelected() {
       </tr>
     </table>
   [% ELSE %]
-  <p><i>無</i></p>
+  <p><i>无</i></p>
   [% END %]
 </form>
 
 [% IF user.in_group('editbugs') %]
-  <h3>新增資料集</h3>
+  <h3>新增资料集</h3>
   <p>
-    你可以根據已儲存的搜尋為基礎，來建立新的資料集。或是你也可以從頭開始建立。
+    你可以根据已存储的搜索为基础，来创建新的资料集。或是你也可以从头开始创建。
   </p>
 
   <form action="chart.cgi" id="create_series" name="create_series" method="GET">
     <input type="hidden" name="action" value="convert_search">
-    <label for="series_from_search">以搜尋為基礎：</label>
+    <label for="series_from_search">以搜索为基础：</label>
     <select id="series_from_search" name="series_from_search">
-      <option value="">(從頭開始)</option>
+      <option value="">(从头开始)</option>
       [% FOREACH q = user.queries %]
         <option value="[% q.name FILTER html %]">[% q.name FILTER html %]</option>
       [% END %]
     </select>
-    <input id="submit_create" type="submit" value="新增資料集">
+    <input id="submit_create" type="submit" value="新增资料集">
   </form>
 [% END %]
 

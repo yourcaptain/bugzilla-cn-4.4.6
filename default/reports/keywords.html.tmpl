@@ -16,7 +16,7 @@
  %]
 
 [% PROCESS global/header.html.tmpl
-  title = "$terms.Bugzilla 關鍵字描述"
+  title = "$terms.Bugzilla 关键字描述"
 %]
 
 [% FOREACH keyword = keywords %]
@@ -27,9 +27,9 @@
 
     <table border="1" cellpadding="4" cellspacing="0">
       <tr bgcolor="#6666FF">
-        <th align="left">名稱</th>
+        <th align="left">名称</th>
         <th align="left">描述</th>
-        <th align="left">開啟的 [% terms.Bugs %]</th>
+        <th align="left">开启的 [% terms.Bugs %]</th>
         <th align="left">全部的 [% terms.Bugs %]</th>
       </tr>
   [% END %]
@@ -42,9 +42,9 @@
     <td align="center">
       [% IF keyword.bug_count > 0 %]
         <a href="buglist.cgi?keywords=[% keyword.name FILTER uri %]&amp;resolution=---">
-          搜尋</a>
+          搜索</a>
       [% ELSE %]
-        無
+        无
       [% END %]
     </td>
     <td align="right">
@@ -52,7 +52,7 @@
         <a href="buglist.cgi?keywords=[% keyword.name FILTER uri %]">
           [% keyword.bug_count %]</a>
       [% ELSE %]
-        無
+        无
       [% END %]
     </td>
   </tr>
@@ -64,7 +64,7 @@
 
 [% IF caneditkeywords %]
   <p>
-    <a href="editkeywords.cgi">編輯關鍵字</a>。
+    <a href="editkeywords.cgi">编辑关键字</a>。
   </p>
 [% END %]
 

@@ -97,14 +97,14 @@
         [% END %]width=[% width %]&amp;height=[% height %]
       [% END %]
 
-      <img id="graphical_report" alt="圖形式報表結果" src="[% imageurl %]">
+      <img id="graphical_report" alt="图形式报表结果" src="[% imageurl %]">
     [% END %]
     <br>
   [% END %]
 
-  [% formats = [ { name => "pie",   description => "圓餅圖" },
-                 { name => "bar",   description => "柱狀圖" },
-                 { name => "line",  description => "折線圖" },
+  [% formats = [ { name => "pie",   description => "饼图" },
+                 { name => "bar",   description => "柱状图" },
+                 { name => "line",  description => "折线图" },
                  { name => "table", description => "表格" } ] %]
 
   [% formaturl = "report.cgi?$switchbase&amp;width=$width&amp;height=$height&amp;action=wrap" %]
@@ -122,21 +122,21 @@
     <tr>
       <td>
         [% IF format == "table" %]
-          <a href="query.cgi?[% switchbase %]&amp;format=report-table">編輯此份報告</a>
+          <a href="query.cgi?[% switchbase %]&amp;format=report-table">编辑此份报告</a>
         [% ELSE %]
           <a href="query.cgi?[% switchbase %]&amp;chart_format=
                   [%~ format FILTER uri %]&amp;format=report-graph&amp;cumulate=[% cumulate %]">
-          編輯此份報告</a>
+          编辑此份报告</a>
         [% END %]
       </td>
       <td>|</td>
       <td>
         [% IF saved_report_id %]
           <a href="report.cgi?action=del&amp;saved_report_id=[% saved_report_id FILTER uri %]&amp;token=
-                  [%~ issue_hash_token(['delete_report', saved_report_id]) FILTER uri %]">刪除此份報告</a>
+                  [%~ issue_hash_token(['delete_report', saved_report_id]) FILTER uri %]">删除此份报告</a>
         [% ELSE %]
           <form method="get" action="report.cgi">
-            <input type="submit" id="remember" value="儲存此份報告">，名稱：
+            <input type="submit" id="remember" value="存储此份报告">，名称：
             <input type="hidden" name="query" value="[% switchbase %]&amp;format=[% format FILTER html %]&amp;action=wrap">
             <input type="hidden" name="action" value="add">
             <input type="hidden" name="token" value="[% issue_hash_token(['save_report']) FILTER html %]">
