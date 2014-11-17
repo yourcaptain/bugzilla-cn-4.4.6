@@ -14,12 +14,12 @@
 
 [% PROCESS "bug/show-header.html.tmpl" %]
 [% PROCESS global/header.html.tmpl
-  title = "已對 $terms.Bug $attachment.bug_id 的附件 $attachment.id 做出變更"
+  title = "已对 $terms.Bug $attachment.bug_id 的附件 $attachment.id 作出变更"
 %]
 
 <dl>
-  <dt>對[% "$terms.bug $attachment.bug_id" FILTER bug_link(attachment.bug_id) FILTER none %]的<a
-    href="attachment.cgi?id=[% attachment.id %]&amp;action=edit">附件 [% attachment.id %]</a> 所做的變更已儲存。
+  <dt>对[% "$terms.bug $attachment.bug_id" FILTER bug_link(attachment.bug_id) FILTER none %]的<a
+    href="attachment.cgi?id=[% attachment.id %]&amp;action=edit">附件 [% attachment.id %]</a> 所作的变更已存储。
   </dt>
   <dd>
     [% PROCESS "bug/process/bugmail.html.tmpl" mailing_bugid = attachment.bug_id %]

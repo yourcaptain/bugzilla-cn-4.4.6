@@ -39,9 +39,9 @@ TUI_hide_default('attachment_text_field');
     [%# Additional fields for attachments on existing bugs: %]
     [% IF attachments.size %]
       <tr>
-        <th>廢棄附件：</th>
+        <th>废弃附件：</th>
         <td>
-          <em>（選用）若勾選以下已存在的附件，在新增附件的同時會廢棄已勾選的附件。</em><br>
+          <em>（选用）若勾选以下已存在的附件，在新增附件的同时会废弃已勾选的附件。</em><br>
           [% FOREACH attachment = attachments %]
             <input type="checkbox" id="[% attachment.id %]"
                  name="obsolete" value="[% attachment.id %]">
@@ -55,9 +55,9 @@ TUI_hide_default('attachment_text_field');
       <tr>
         <th>重新分配：</th>
         <td>
-          <em>如果你想要將這個 [% terms.bug %] 的負責人改為你自己，請勾選下方的選項。</em><br>
+          <em>如果你想要将这个 [% terms.bug %] 的负责人改为你自己，请勾选下方的选项。</em><br>
           <input type="checkbox" id="takebug" name="takebug" value="1">
-          <label for="takebug">我要負責這個 [% terms.bug %] </label>
+          <label for="takebug">我要负责这个 [% terms.bug %] </label>
           [% bug_statuses = [] %]
           [% FOREACH bug_status = bug.status.can_change_to %]
             [% NEXT IF bug_status.name == "UNCONFIRMED"
@@ -65,9 +65,9 @@ TUI_hide_default('attachment_text_field');
             [% bug_statuses.push(bug_status) IF bug_status.is_open %]
           [% END %]
           [% IF bug_statuses.size %]
-            <label for="takebug">並且將 [% terms.bug %] 的狀態設定為</label>
+            <label for="takebug">并且将 [% terms.bug %] 的状态设定为</label>
             <select id="bug_status" name="bug_status">
-              <option value="[% bug.status.name FILTER html %]">[% display_value("bug_status", bug.status.name) FILTER html %] (目前的狀態)</option>
+              <option value="[% bug.status.name FILTER html %]">[% display_value("bug_status", bug.status.name) FILTER html %] (目前的状态)</option>
               [% FOREACH bug_status = bug_statuses %]
                 [% NEXT IF bug_status.id == bug.status.id %]
                 <option value="[% bug_status.name FILTER html %]">[% display_value("bug_status", bug_status.name) FILTER html %]</option>
@@ -78,9 +78,9 @@ TUI_hide_default('attachment_text_field');
       </tr>
     [% END %]
     <tr>
-      <th><label for="comment">意見：</label></th>
+      <th><label for="comment">意见：</label></th>
       <td>
-        <em>（選填）對新增的附件加上意見。</em><br>
+        <em>（选填）对新增的附件加上意见。</em><br>
         [% INCLUDE global/textarea.html.tmpl
           name    = 'comment'
           id      = 'comment'
@@ -96,20 +96,20 @@ TUI_hide_default('attachment_text_field');
                 IF user.settings.state_addselfcc.value == 'always'
                    || (!bug.user.has_any_role
                        && user.settings.state_addselfcc.value == 'cc_unless_role') %]>
-          <label for="addselfcc">將我加入寄件副本清單中</label>
+          <label for="addselfcc">将我加入邮件抄送清单中</label>
         [% END %]
       </td>
     </tr>
     [% IF user.is_insider %]
       <tr>
-        <th>不公開：</th>
+        <th>不公开：</th>
         <td>
           <input type="checkbox" name="isprivate" id="isprivate"
           value="1" onClick="updateCommentPrivacy(this)">
           <label for="isprivate">
-            將附件及意見設定為不公開（只有
+            将附件及意见设定为不公开（只有
             <strong>[% Param('insidergroup') FILTER html %]</strong>
-            群組中的成員才能看見）
+            群组中的成员才能看见）
           </label>
         </td>
       </tr>
@@ -119,7 +119,7 @@ TUI_hide_default('attachment_text_field');
 
     <tr>
       <th>&nbsp;</th>
-      <td><input type="submit" id="create" value="送出"></td>
+      <td><input type="submit" id="create" value="提交"></td>
     </tr>
   </table>
 

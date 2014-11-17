@@ -24,11 +24,11 @@ function toggle_display(link) {
     }
 
     if (YAHOO.util.Dom.hasClass(rows[0], 'bz_default_hidden')) {
-        link.innerHTML = "顯示已廢棄的附件";
+        link.innerHTML = "显示已废弃的附件";
         view_all.href = view_all.href + hide_obsolete_url_parameter
     }
     else {
-        link.innerHTML = "隱藏已廢棄的附件";
+        link.innerHTML = "隐藏已废弃的附件";
         view_all.href = view_all.href.replace(hide_obsolete_url_parameter,"");
     }
 
@@ -68,7 +68,7 @@ function toggle_display(link) {
         <td valign="top">
           [% IF attachment.datasize %]
             <a href="attachment.cgi?id=[% attachment.id %]"
-               title="瀏覽附件的內容">
+               title="浏览附件的內容">
           [% END %]
           <b>[% attachment.description FILTER html FILTER obsolete(attachment.isobsolete) %]</b>
           [% "</a>" IF attachment.datasize %]
@@ -87,7 +87,7 @@ function toggle_display(link) {
 
             <br>
             <a href="#attach_[% attachment.id %]"
-               title="瀏覽和該附件有關的意見"
+               title="浏览和该附件有关的留言"
               >[%- attachment.attached FILTER time %]</a>，
 
             [%# No need to recreate the exact same template if we already have it. %]
@@ -104,7 +104,7 @@ function toggle_display(link) {
         [% IF show_attachment_flags %]
           <td class="bz_attach_flags" valign="top">
             [% IF attachment.flags.size == 0 %]
-              <i>沒有旗標</i>
+              <i>没有旗标</i>
             [% ELSE %]
               [% FOREACH flag = attachment.flags %]
                 [% IF user.id %]
@@ -130,9 +130,9 @@ function toggle_display(link) {
         [% END %]
 
         <td valign="top">
-          <a href="attachment.cgi?id=[% attachment.id %]&amp;action=edit">詳細資料</a>
+          <a href="attachment.cgi?id=[% attachment.id %]&amp;action=edit">详细资料</a>
           [% IF attachment.ispatch && feature_enabled('patch_viewer') %]
-            | <a href="attachment.cgi?id=[% attachment.id %]&amp;action=diff">比較差異 (Diff)</a>
+            | <a href="attachment.cgi?id=[% attachment.id %]&amp;action=diff">比较差异 (Diff)</a>
           [% END %]
           [% Hook.process("action") %]
         </td>
@@ -145,18 +145,18 @@ function toggle_display(link) {
       [% IF attachments.size %]
         <span class="bz_attach_view_hide">
           [% IF obsolete_attachments %]
-            <a href="#a0" onclick="return toggle_display(this);">顯示已廢棄的附件</a> ([% obsolete_attachments %])
+            <a href="#a0" onclick="return toggle_display(this);">显示已废弃的附件</a> ([% obsolete_attachments %])
           [% END %]
           [% IF Param("allow_attachment_display") %]
             <a id="view_all" href="attachment.cgi?bugid=
                   [%- bugid %]&amp;action=viewall
-                  [%- "&amp;hide_obsolete=1" IF obsolete_attachments %]">顯示全部</a>
+                  [%- "&amp;hide_obsolete=1" IF obsolete_attachments %]">显示全部</a>
           [% END %]
         </span>
       [% END %]
       [% IF Param("maxattachmentsize") || Param("maxlocalattachment") %]
         <a href="attachment.cgi?bugid=[% bugid %]&amp;action=enter">新增附件</a>
-        （建議的 patch, testcase 等等）
+        （建议的 patch, testcase 等等）
       [% END %]
     </td>
   </tr>

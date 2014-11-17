@@ -46,9 +46,9 @@ incremental_restore()
     已增加
   [% ELSIF file.is_remove %]
     [% IF bonsai_prefix %]
-      <a href="[% bonsai_prefix %]">已刪除</a>
+      <a href="[% bonsai_prefix %]">已删除</a>
     [% ELSE %]
-      已刪除
+      已删除
     [% END %]
   [% ELSE %]
     [% IF bonsai_prefix %]
@@ -65,7 +65,7 @@ incremental_restore()
     &nbsp;&nbsp;[% section.func_info FILTER html IF section.func_info %]
   [% END %]
     </th><th>
-  <a href="#[% file.filename FILTER html %]_sec[% section_num %]">按此連結</a>&nbsp;
+  <a href="#[% file.filename FILTER html %]_sec[% section_num %]">按此连接</a>&nbsp;
     </th></tr></table>
   </th></tr>
   [% current_line_old = section.old_start %]

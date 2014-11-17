@@ -28,14 +28,14 @@
     [% PROCESS "bug/process/bugmail.html.tmpl" mailing_bugid = attachment.bug_id %]
     [% IF convertedbmp %]
       <p>
-        <b>注意：</b> [% terms.Bugzilla %] 已自動將你的 BMP 圖形檔轉成 PNG 格式。
+        <b>注意：</b> [% terms.Bugzilla %] 已自动将你的 BMP 图片格式转成 PNG 格式。
       </p>
     [% END %]
     [% IF contenttypemethod == 'autodetect' %]
       <p>
-        <b>注意：</b> [% terms.Bugzilla %] 將此附件的內容種類自動偵測為
-        <em>[% attachment.contenttype FILTER html %]</em> 。如果不對的話，請點選連結編輯該附件的<a
-        href="attachment.cgi?id=[% attachment.id %]&amp;action=edit">詳細資料</a>。
+        <b>注意：</b> [% terms.Bugzilla %] 将此附件的內容种类自动检测为
+        <em>[% attachment.contenttype FILTER html %]</em> 。如果不对的话，请点击链接编辑该附件的<a
+        href="attachment.cgi?id=[% attachment.id %]&amp;action=edit">详细资料</a>。
       </p>
     [% END %]
 
@@ -45,7 +45,7 @@
 </dl>
 
 <p>
-<a href="attachment.cgi?bugid=[% attachment.bug_id %]&amp;action=enter">新增另一個 [% terms.Bug %]
+<a href="attachment.cgi?bugid=[% attachment.bug_id %]&amp;action=enter">新增另一个 [% terms.Bug %]
  [%+ attachment.bug_id %] 的附件</a>
 </p>
 

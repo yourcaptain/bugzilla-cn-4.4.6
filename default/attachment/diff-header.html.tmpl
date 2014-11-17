@@ -12,7 +12,7 @@
   [% IF attachid %]
 [% terms.bug %] #[% bugid %] 的附件 #[% attachid %]
   [% ELSE %]
-[% terms.bug %] #[% bugid %] 在 patch #[% oldid %] 和 #[% newid %] 間的差異
+[% terms.bug %] #[% bugid %] 在 patch #[% oldid %] 和 #[% newid %] 间的差异
   [% END %]
 [% END %]
 
@@ -30,7 +30,7 @@
     [% ELSE %]
       在 #[% oldid %] <a
       href="[% PROCESS diffurl id=oldid %]">[% old_desc FILTER html %]</a> 和 #[% newid %] <a
-      href="[% PROCESS diffurl id=newid %]">[% new_desc FILTER html %]</a> 之間的差異
+      href="[% PROCESS diffurl id=newid %]">[% new_desc FILTER html %]</a> 之间的差异
     [% END %]
   [% END %]
   [% subheader = BLOCK %]
@@ -54,9 +54,9 @@
 [% IF attachid %]
   [%# HEADER %]
   [% IF headers %]
-    <a href="[% PROCESS viewurl id=attachid %]">瀏覽</a>
-    | <a href="[% PROCESS editurl id=attachid %]">詳細資料</a>
-    | <a href="[% PROCESS diffurl id=attachid %]&amp;context=[% context FILTER uri %]&amp;collapsed=[% collapsed FILTER uri %]&amp;headers=[% headers FILTER uri %]&amp;format=raw">原始檔案</a>
+    <a href="[% PROCESS viewurl id=attachid %]">浏览</a>
+    | <a href="[% PROCESS editurl id=attachid %]">详细资料</a>
+    | <a href="[% PROCESS diffurl id=attachid %]&amp;context=[% context FILTER uri %]&amp;collapsed=[% collapsed FILTER uri %]&amp;headers=[% headers FILTER uri %]&amp;format=raw">原始文件</a>
     | 回到 [% "$terms.bug $bugid" FILTER bug_link(bugid) FILTER none %]
   [% END %]
   [% IF other_patches.size > 0 %]
@@ -70,8 +70,8 @@
         >[% patch.desc FILTER html %]</option>
       [% END %]
       </select>
-      和這個 patch 的差異
-      <input type="submit" id="diff" value="比較">
+      和这个 patch 的差异
+      <input type="submit" id="diff" value="比较">
       <input type="hidden" name="action" value="interdiff">
       <input type="hidden" name="newid" value="[% attachid %]">
       <input type="hidden" name="headers" value="[% headers FILTER html %]">
@@ -80,7 +80,7 @@
   <br>
 [% ELSE %]
   [% IF headers %]
-    <a href="attachment.cgi?oldid=[% oldid %]&amp;newid=[% newid %]&amp;action=interdiff&amp;format=raw">原始檔案</a>
+    <a href="attachment.cgi?oldid=[% oldid %]&amp;newid=[% newid %]&amp;action=interdiff&amp;format=raw">原始档案</a>
     | 回到 [% "$terms.bug $bugid" FILTER bug_link(bugid) FILTER none %]
     |
   [% END %]
@@ -88,13 +88,13 @@
 
 [%# Collapse / Expand %]
 <a href="#"
-   onmouseover="lastStatus = window.status; window.status='展開全部'; return true"
+   onmouseover="lastStatus = window.status; window.status='展开全部'; return true"
    onmouseout="window.status = lastStatus; return true"
-   onclick="return collapse_all()">展開全部</a> |
+   onclick="return collapse_all()">展开全部</a> |
 <a href="#"
-   onmouseover="lastStatus = window.status; window.status='堆疊全部'; return true"
+   onmouseover="lastStatus = window.status; window.status='堆叠全部'; return true"
    onmouseout="window.status = lastStatus; return true"
-   onclick="return expand_all()">堆疊全部</a>
+   onclick="return expand_all()">堆叠全部</a>
 
 [% IF do_context %]
   [%# only happens for normal viewing, not interdiff %]
@@ -105,9 +105,9 @@
     (<a href="[% PROCESS diffurl id=attachid %]&amp;headers=[% headers FILTER uri %]">Patch</a> /
   [% END %]
   [% IF context == "file" %]
-    <strong>檔案</strong> /
+    <strong>文件</strong> /
   [% ELSE %]
-    <a href="[% PROCESS diffurl id=attachid %]&amp;headers=[% headers FILTER uri %]&amp;context=file">檔案</a> /
+    <a href="[% PROCESS diffurl id=attachid %]&amp;headers=[% headers FILTER uri %]&amp;context=file">文件</a> /
   [% END %]
 
   [% IF context == "patch" || context == "file" %]
@@ -120,10 +120,10 @@
 [% IF warning %]
 <h2 class="warning">警告：
   [% IF warning == "interdiff1" %]
-  在比較不同的檔案的時候，兩個 patch 之間的差異可能會因為 [% terms.Bugzilla %] 的限制而把結果擺錯位置。
+  在比较不同的文件的时候，两个 patch 之间的差异可能会因为 [% terms.Bugzilla %] 的限制而把结果摆错位置。
   [% END %]
   [% IF warning == "interdiff2" %]
-  在比較不同版本的 patch 差異時，可能會因為 [% terms.Bugzilla %] 的限制而有所不正確。
+  在比较不同版本的 patch 差异时，可能会因为 [% terms.Bugzilla %] 的限制而有所不正确。
   [% END %]
 </h2>
 [% ELSE %]

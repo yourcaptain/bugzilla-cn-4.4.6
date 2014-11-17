@@ -20,14 +20,14 @@
 
 [% PROCESS global/header.html.tmpl title = "Mid-air collision!" %]
 
-<h1>偵測到發生衝突！</h1>
+<h1>检测到发生冲突！</h1>
 
 <p>
-  在你嘗試對
+  在你尝试对
   [% "$terms.bug $attachment.bug_id" FILTER bug_link(attachment.bug_id) FILTER none %]
   的<a href="attachment.cgi?id=[% attachment.id %]&amp;action=edit">附件 [% attachment.id %]</a>
-  做變更的同時，有其他人已做出變更。<br>
-  已做出的變更為：
+  做变更的同时，有其他人已做出变更。<br>
+  已做出的变更为：
 </p>
 
 <p>
@@ -36,7 +36,7 @@
 
 [% IF cgi.param("comment") %]
 <p>
-  你原本的意見是：<br>
+  你原本的留言是：<br>
   <blockquote><pre class="bz_comment_text">
     [% cgi.param("comment") FILTER html %]
   </pre></blockquote>
@@ -44,19 +44,19 @@
 [% END %]
 
 <p>
-你有下列選擇可以選：
+你有下列选择可以选：
 </p>
 
 <ul>
   <li>
     <form method="post" action="attachment.cgi">
       [% PROCESS "global/hidden-fields.html.tmpl" exclude="^Bugzilla_(login|password)$" %]
-      <input type="submit" id="process" value="仍舊送出我做的變更">
-        這將會覆寫以上的變更。
+      <input type="submit" id="process" value="仍旧提交我做的变更">
+        这将会覆盖以上的变更。
     </form>
   </li>
   <li>
-    刪除我做的變更，並<a href="attachment.cgi?id=[% attachment.id %]&amp;action=edit">重新瀏覽附件
+    删除我做的变更，并<a href="attachment.cgi?id=[% attachment.id %]&amp;action=edit">重新浏览附件
     [% attachment.id %]</a>
   </li>
 </ul>

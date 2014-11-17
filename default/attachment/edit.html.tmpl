@@ -8,11 +8,11 @@
 
 [%# Define strings that will serve as the title and header of this page %]
 [% title = BLOCK %]
-  [% terms.Bug %] [%+ attachment.bug_id %] 附件 [% attachment.id %] 的詳細內容
+  [% terms.Bug %] [%+ attachment.bug_id %] 附件 [% attachment.id %] 的详细內容
 [% END %]
 [% header = BLOCK %]
   [%+ "$terms.Bug $attachment.bug_id" FILTER bug_link(attachment.bug_id) FILTER none %]
-  附件 [% attachment.id %] 的詳細內容
+  附件 [% attachment.id %] 的详细內容
 [% END %]
 [% subheader = BLOCK %][% attachment.bug.short_desc FILTER html %][% END %]
 
@@ -50,7 +50,7 @@
             [% attachment.description FILTER html %]
           </span>
           [% IF can_edit %]
-            <span class="bz_edit">(<a href="javascript:toggle_attachment_details_visibility()">編輯細節</a>)</span>
+            <span class="bz_edit">(<a href="javascript:toggle_attachment_details_visibility()">编辑细节</a>)</span>
           [% END %]
         </div>
         <div class="details">
@@ -58,16 +58,16 @@
           [% IF attachment.datasize %]
             [%+ attachment.datasize FILTER unitconvert %]
           [% ELSE %]
-            <em>已刪除</em>
+            <em>已删除</em>
           [% END %]，由 [%+ INCLUDE global/user.html.tmpl who = attachment.attacher %] 於 [%+ attachment.attached FILTER time %] 建立
           [% IF attachment.isprivate %]；
-            <span class="bz_private">僅 <strong>[% Param('insidergroup') FILTER html %]</strong> 群組可見</span>
+            <span class="bz_private">仅 <strong>[% Param('insidergroup') FILTER html %]</strong> 群组可见</span>
           [% END %]
         </div>
       </div>
       <div id="attachment_information_edit">
         <span class="bz_hide">
-          (<a href="javascript:toggle_attachment_details_visibility();">隱藏</a>)
+          (<a href="javascript:toggle_attachment_details_visibility();">隐藏</a>)
         </span>
         <div id="attachment_description">
           <label for="description">描述：</label>&nbsp;
@@ -83,26 +83,26 @@
         </div>
 
           <div id="attachment_filename">
-            <label for="filename">檔名：</label>
+            <label for="filename">文件名：</label>
             <input type="text" size="20"  class="text block[% editable_or_hide %]"
                    id="filename" name="filename"
                    value="[% attachment.filename FILTER html %]">
           </div>
 
           <div id="attachment_mimetype">
-            <label for="contenttypeentry">MIME 類別：</label>
+            <label for="contenttypeentry">MIME 类别：</label>
             <input type="text" size="20" class="text block[% editable_or_hide %]"
                    id="contenttypeentry" name="contenttypeentry"
                    value="[% attachment.contenttype FILTER html %]">
           </div>
 
           <div id="attachment_creator">
-            <span class="label">建立者：</span>
+            <span class="label">创建者：</span>
             [%+ INCLUDE global/user.html.tmpl who = attachment.attacher %]
           </div>
 
           <div id="attachment_created">
-            <span class="label">建立於：</span>
+            <span class="label">创建于：</span>
             [%+ attachment.attached FILTER time %]
           </div>
 
@@ -111,7 +111,7 @@
             [% IF attachment.datasize %]
               [%+ attachment.datasize FILTER unitconvert %]
             [% ELSE %]
-              <em>已刪除</em>
+              <em>已删除</em>
             [% END %]
           </div>
 
@@ -126,7 +126,7 @@
             <div id="attachment_isobsolete">
               <input type="checkbox" id="isobsolete" name="isobsolete" value="1"
                      [%+ 'checked="checked"' IF attachment.isobsolete %]>
-                <label for="isobsolete">已廢棄</label>
+                <label for="isobsolete">已废弃</label>
             </div>
 
             [% IF user.is_insider %]
@@ -134,11 +134,11 @@
                 <input type="checkbox" id="isprivate" name="isprivate" value="1"
                        [%+ 'checked="checked"' IF attachment.isprivate %]>
                 [% IF can_edit %]
-                  <label for="isprivate">不公開（僅
-                    <strong>[% Param('insidergroup') FILTER html %]</strong>群組可見）
+                  <label for="isprivate">不公开（仅
+                    <strong>[% Param('insidergroup') FILTER html %]</strong>群组可见）
                   </label>
                 [% ELSE %]
-                  <span class="label">是否為不公開：</span>
+                  <span class="label">是否为不公开：</span>
                   [%+ attachment.isprivate ? "是" : "否" %]
                 [% END %]
               </div>
@@ -149,14 +149,14 @@
 
       <div id="attachment_view_window">
         [% IF !attachment.datasize %]
-          <div><b>此附件的內容已被刪除。</b></div>
+          <div><b>此附件的內容已被删除。</b></div>
         [% ELSIF !Param("allow_attachment_display") %]
           <div id="view_disabled">
             <p><b>
-              因 [% terms.Bugzilla %] 的安全性限制，此附件無法直接顯示於瀏覽器中。
+              因 [% terms.Bugzilla %] 的安全性限制，此附件无法直接显示于浏览器中。
             </b></p>
             <p><b>
-              若要檢視此附件，請先<a href="attachment.cgi?id=[% attachment.id %]">下載</a>。
+              若要检查此附件，请先<a href="attachment.cgi?id=[% attachment.id %]">下载</a>。
             </b></p>
           </div>
         [% ELSIF attachment.is_viewable %]
@@ -196,8 +196,8 @@
               %]
             [% ELSE %]
               <iframe id="viewFrame" src="attachment.cgi?id=[% attachment.id %]">
-                <b>你無法在瀏覽附件的詳細資料時同時瀏覽附件，因為你的瀏覽器並不支援 IFRAME 屬性。
-               <a href="attachment.cgi?id=[% attachment.id %]">另開新視窗瀏覽</a>。</b>
+                <b>你无法在浏览附件的详细资料时同时浏览附件，因为你的浏览器并不支持 IFRAME 属性。
+               <a href="attachment.cgi?id=[% attachment.id %]">另开新窗口浏览</a>。</b>
               </iframe>
             [% END %]
             <script type="text/javascript">
@@ -210,18 +210,18 @@
                   document.write('<iframe id="viewDiffFrame" class="bz_default_hidden"><\/iframe>');
                 [% END %]
                 [% IF user.id %]
-                  document.write('<button type="button" id="editButton" onclick="editAsComment(patchviewerinstalled);">以編輯附件方式做為意見<\/button>');
-                  document.write('<button type="button" id="undoEditButton" onclick="undoEditAsComment(patchviewerinstalled);" class="bz_default_hidden">回復<\/button>');
-                  document.write('<button type="button" id="redoEditButton" onclick="redoEditAsComment(patchviewerinstalled);" class="bz_default_hidden">重做以編輯附件方式做為意見<\/button>');
+                  document.write('<button type="button" id="editButton" onclick="editAsComment(patchviewerinstalled);">以编辑附件方式作为留言<\/button>');
+                  document.write('<button type="button" id="undoEditButton" onclick="undoEditAsComment(patchviewerinstalled);" class="bz_default_hidden">回复<\/button>');
+                  document.write('<button type="button" id="redoEditButton" onclick="redoEditAsComment(patchviewerinstalled);" class="bz_default_hidden">重做以编辑附件方式作为留言<\/button>');
                   var editFrame = document.getElementById('editFrame');
                   if (editFrame) {
                     editFrame.disabled = false;
                   }
                 [% END %]
                 [% IF use_patchviewer %]
-                  document.write('<button type="button" id="viewDiffButton" onclick="viewDiff(attachment_id, patchviewerinstalled);">以比較差異方式 (Diff) 瀏覽附件<\/button>');
+                  document.write('<button type="button" id="viewDiffButton" onclick="viewDiff(attachment_id, patchviewerinstalled);">以比较差异方式 (Diff) 浏览附件<\/button>');
                 [% END %]
-                document.write('<button type="button" id="viewRawButton" onclick="viewRaw(patchviewerinstalled);" class="bz_default_hidden">以原始格式瀏覽附件<\/button>');
+                document.write('<button type="button" id="viewRawButton" onclick="viewRaw(patchviewerinstalled);" class="bz_default_hidden">以原始格式浏览附件<\/button>');
               }
               //-->
             </script>
@@ -229,11 +229,11 @@
         [% ELSE %]
           <div id="noview">
             <p><b>
-              無法在你的瀏覽器中瀏覽該附件，因為它的 MIME 類別
-              ([% attachment.contenttype FILTER html %]) 並非你的瀏覽器支援可以顯示的種類。
+              无法在你的浏览器中浏览该附件，因为它的 MIME 类别
+              ([% attachment.contenttype FILTER html %]) 并非你的浏览器支持可以显示的种类。
             </b></p>
             <p><b>
-              <a href="attachment.cgi?id=[% attachment.id %]">下載該附件</a>。
+              <a href="attachment.cgi?id=[% attachment.id %]">下载该附件</a>。
             </b></p>
           </div>
         [% END %]
@@ -241,7 +241,7 @@
       <div id="attachment_comments_and_flags">
         [% IF user.id %]
           <div id="smallCommentFrame" >
-            <label for="comment">（對 [% terms.bug %] ）的意見：</label>
+            <label for="comment">（对 [% terms.bug %] ）的留言：</label>
             [% classNames = 'block' %]
             [% classNames = "$classes bz_private" IF attachment.isprivate %]
             [% INCLUDE global/textarea.html.tmpl
@@ -258,7 +258,7 @@
                     IF user.settings.state_addselfcc.value == 'always'
                        || (!attachment.bug.user.has_any_role
                            && user.settings.state_addselfcc.value == 'cc_unless_role') %]>
-              <label for="addselfcc">將我加入寄件副本清單中</label>
+              <label for="addselfcc">将我加入邮件抄送清单中</label>
             [% END %]
           </div>
         [% END %]
@@ -275,7 +275,7 @@
 
         [% IF user.id %]
           <div id="update_container">
-            <input type="submit" value="送出" id="update">
+            <input type="submit" value="提交" id="update">
           </div>
         [% END %]
       </div>
@@ -284,21 +284,21 @@
 </form>
 
 <div id="attachment_actions">
-  <span class="label">動作：</span>
-  <a href="attachment.cgi?id=[% attachment.id %]">檢視</a>
+  <span class="label">动作：</span>
+  <a href="attachment.cgi?id=[% attachment.id %]">检查</a>
   [% IF use_patchviewer %]
-    | <a href="attachment.cgi?id=[% attachment.id %]&amp;action=diff">比較差異 (Diff)</a>
+    | <a href="attachment.cgi?id=[% attachment.id %]&amp;action=diff">比较差异 (Diff)</a>
   [% END %]
   [% IF Param("allow_attachment_deletion")
         && user.in_group('admin')
         && attachment.datasize > 0 %]
-    | <a href="attachment.cgi?id=[% attachment.id %]&amp;action=delete">刪除</a>
+    | <a href="attachment.cgi?id=[% attachment.id %]&amp;action=delete">删除</a>
   [% END %]
   [% Hook.process('action') %]
 </div>
 
 <div id="attachment_list">
-  在 [% "$terms.bug ${attachment.bug_id}" FILTER bug_link(attachment.bug_id) FILTER none %] 裡的附件：
+  在 [% "$terms.bug ${attachment.bug_id}" FILTER bug_link(attachment.bug_id) FILTER none %] 里的附件：
   [% FOREACH a = attachments %]
     [% IF a.isobsolete %]
       <span class="bz_obsolete">

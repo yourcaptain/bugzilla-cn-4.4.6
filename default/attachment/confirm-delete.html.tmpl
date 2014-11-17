@@ -12,7 +12,7 @@
   #%]
 
 [% title = BLOCK %]
-  刪除 [% terms.Bug %] [%+ a.bug_id FILTER html %] 的附件 [% a.id FILTER html %]
+  删除 [% terms.Bug %] [%+ a.bug_id FILTER html %] 的附件 [% a.id FILTER html %]
 [% END %]
 
 [% PROCESS global/header.html.tmpl
@@ -22,17 +22,17 @@
 
 <table border="1" cellpadding="4" cellspacing="0">
   <tr bgcolor="#6666FF">
-    <th valign="top" align="left">欄位</th>
+    <th valign="top" align="left">字段</th>
     <th valign="top" align="left">值</th>
   </tr>
   <tr>
-    <td valign="top">附件編號：</td>
+    <td valign="top">附件编号：</td>
     <td valign="top">
       <a href="attachment.cgi?id=[% a.id FILTER html %]">[% a.id FILTER html %]</a>
     </td>
   </tr>
   <tr>
-    <td valign="top">檔案名稱：</td>
+    <td valign="top">文件名称：</td>
     <td valign="top">[% a.filename FILTER html %]</td>
   </tr>
   <tr>
@@ -40,7 +40,7 @@
     <td valign="top">[% a.description FILTER html %]</td>
   </tr>
   <tr>
-    <td valign="top">此附件位於 [% terms.Bug %] 中：</td>
+    <td valign="top">此附件位于 [% terms.Bug %] 中：</td>
     <td valign="top">[% a.bug_id FILTER bug_link(a.bug_id) FILTER none %]</td>
   </tr>
   <tr>
@@ -53,30 +53,30 @@
   </tr>
 </table>
 
-<h2>確認</h2>
+<h2>确认</h2>
 
 <table border="0" cellpadding="20" width="70%" bgcolor="red">
   <tr>
     <td>
-      此附件的內容將會以<b>無法回復的</b>方式刪除。
+      此附件的內容将会以<b>无法恢复的</b>方式删除。
     </td>
   </tr>
 </table>
 
-<p>你確定要刪除此附件嗎？</p>
+<p>你确定要删除此附件吗？</p>
 
 <form action="attachment.cgi" method="POST">
-  <label for="reason">刪除原因：</label>
+  <label for="reason">删除原因：</label>
   <input type="text" id="reason" name="reason" value="" size="80" maxlength="200">
   <br>
-  <input type="submit" value="是的，刪除" id="delete">
+  <input type="submit" value="是的，删除" id="delete">
   <input type="hidden" name="action" value="delete">
   <input type="hidden" name="id" value="[% a.id FILTER html %]">
   <input type="hidden" name="token" value="[% token FILTER html %]">
 </form>
 
 <p>
-  不，取消刪除，並回到[%+ "$terms.bug " _ a.bug_id FILTER bug_link(a.bug_id) FILTER none %] 。
+  不，取消删除，并回到[%+ "$terms.bug " _ a.bug_id FILTER bug_link(a.bug_id) FILTER none %] 。
 </p>
 
 [% PROCESS global/footer.html.tmpl %]
