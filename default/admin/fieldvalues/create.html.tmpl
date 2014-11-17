@@ -11,43 +11,43 @@
   #%]
 
 [% title = BLOCK %]
-  在欄位 '[% field.description FILTER html %]' ([% field.name FILTER html %]) 新增數值
+  在字段 '[% field.description FILTER html %]' ([% field.name FILTER html %]) 新增数值
 [% END %]
 [% PROCESS global/header.html.tmpl
   title = title
 %]
 
 <p>
-  此頁面允許你在 '[% field.description FILTER html %]' 欄位新增一個數值。
+  此页面允许你在 '[% field.description FILTER html %]' 字段新增一个数值。
 </p>
 
 <form method="post" action="editvalues.cgi">
   <table border="0" cellpadding="4" cellspacing="0">
     <tr>
-      <th align="right"><label for="value">數值：</label></th>
+      <th align="right"><label for="value">数值：</label></th>
       <td>
         <input id="value" name="value" size="30"
                maxlength="[% constants.MAX_FIELD_VALUE_SIZE FILTER none %]">
       </td>
     </tr>
     <tr>
-      <th align="right"><label for="sortkey">排序鍵：</label></th>
+      <th align="right"><label for="sortkey">排序键：</label></th>
       <td><input id="sortkey" name="sortkey" size="6" maxlength="6"></td>
     </tr>
     [% IF field.name == "bug_status" %]
       <tr>
-        <th align="right"><label for="is_open">狀態種類：</label></th>
+        <th align="right"><label for="is_open">状态种类：</label></th>
         <td>
           <input type="radio" id="open_status" name="is_open" value="1" checked="checked">
-          <label for="open_status">開啟</label><br>
+          <label for="open_status">开启</label><br>
           <input type="radio" id="closed_status" name="is_open" value="0">
-          <label for="closed_status">關閉（需要有解決方案）</label>
+          <label for="closed_status">关闭（需要有解決方案）</label>
         </td>
       </tr>
       <tr>
         <th>&nbsp;</th>
         <td>
-          注意：開啟／關閉的屬性僅能於建立狀態時設定。之後無法編輯。
+          注意：开启／关闭的属性仅能于创建状态时设定。之后无法编辑。
         </td>
       </tr>
     [% END %]
@@ -55,7 +55,7 @@
       <tr>
         <th align="right">
           <label for="visibility_value_id">只在
-           [%+ field.value_field.description FILTER html %] 設定為以下數值時出現：
+           [%+ field.value_field.description FILTER html %] 设定为以下数值时出现：
           </label>
         </th>
         <td>
@@ -71,7 +71,7 @@
               </option>
             [% END %]
           </select>
-          <small>（若不設定，則此數值將永遠顯示。）</small>
+          <small>（若不设定，则此数值将永远显示。）</small>
         </td>
       </tr>
     [% END %]

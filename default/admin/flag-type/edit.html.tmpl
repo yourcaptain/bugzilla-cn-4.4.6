@@ -11,13 +11,13 @@
 [% IF action == "insert" %]
   [% title = BLOCK %]
     [% IF type.id %]
-      以 [% type.name FILTER html %] 為基礎
+      以 [% type.name FILTER html %] 为基础
     [% END %]
-    新增 [% type.target_type == "bug" ? terms.Bugs : "附件" %] 的旗標類型
+    新增 [% type.target_type == "bug" ? terms.Bugs : "附件" %] 的旗标类型
   [% END %]
   [% doc_section = "flags-overview.html#flags-create" %]
 [% ELSE %]
-  [% title = BLOCK %]編輯旗標類型 [% type.name FILTER html %][% END %]
+  [% title = BLOCK %]编辑旗标类型 [% type.name FILTER html %][% END %]
   [% doc_section = "flags-overview.html#flags-edit" %]
 [% END %]
 
@@ -49,13 +49,13 @@
 
   [%# Add a hidden button at the top of the form so that the user pressing "return"
     # really submit the form, as expected. %]
-  <input type="submit" id="commit" value="送出" style="display: none;">
+  <input type="submit" id="commit" value="提交" style="display: none;">
 
   <table id="form" cellspacing="0" cellpadding="4" border="0">
     <tr>
-      <th>名稱：</th>
+      <th>名称：</th>
       <td>
-        能辨識此旗標類型的簡短名稱。<br>
+        能辨识此旗标类型的简短名称。<br>
         <input type="text" name="name" value="[% type.name FILTER html %]" size="50"
                maxlength="50" [%- ' disabled="disabled"' UNLESS can_fully_edit %]>
       </td>
@@ -64,7 +64,7 @@
     <tr>
       <th>描述：</th>
       <td>
-        對此旗標類型的描述。<br>
+        对此旗标类型的描述。<br>
         [% INCLUDE global/textarea.html.tmpl
           name           = 'description'
           minrows        = 4
@@ -79,19 +79,19 @@
       <th>分類：</th>
 
       <td>
-        為了讓使用者能夠替 [% type.target_type == "bug" ? terms.bugs : "附件" %]
-        設定此旗標類型， [% type.target_type == "bug" ? terms.bugs : "附件" %]
-        必須（「包括」）或必須不（「不包括」）屬於哪些產品／子產品。
+        为了让使用者能夠替 [% type.target_type == "bug" ? terms.bugs : "附件" %]
+        设定此旗标类型， [% type.target_type == "bug" ? terms.bugs : "附件" %]
+        必须（「包括」）或必须不（「不包括」）属于哪些产品／模块。
         [% UNLESS can_fully_edit %]
-          <p class="warning">此旗標類型也適用於一些你不被允許編輯的產品
-          （也因此你在清單中並不會看見它們）。因為你的權限有限，
-          因此你僅被允許在你可以編輯的產品中新增／移除此一旗標類型，
-          但是無法編輯此一旗標類型的其他設定值。</p>
+          <p class="warning">此旗标类型也适用于一些你不被允许编辑的产品
+          （也因此你在清单中并不会看见它们）。因为你的权限有限，
+          因此你仅被允许在你可以编辑的产品中新增／移除此旗标类型，
+          但是无法编辑此一旗标类型的其他设定值。</p>
         [% END %]
         <table>
           <tr>
             <td style="vertical-align: top;">
-              <b>產品／子產品：</b><br>
+              <b>产品／模块：</b><br>
               <select name="product" onchange="selectProduct(this, this.form.component, null, null, '__任何__');">
                 <option value="">__任何__</option>
                 [% FOREACH prod = products %]
@@ -113,12 +113,12 @@
               <b>包括：</b><br>
               [% PROCESS category_select name="inclusion_to_remove" categories = inclusions %]<br>
               <input type="submit" id="categoryAction-removeInclusion"
-                     name="categoryAction-removeInclusion" value="刪除該項「包括」設定">
+                     name="categoryAction-removeInclusion" value="删除该项「包括」设定">
             </td>
             <td style="vertical-align: top;">
               <b>不包括：</b><br>
               [% PROCESS category_select name="exclusion_to_remove" categories = exclusions %]<br>
-                     name="categoryAction-removeExclusion" value="刪除該項「不包括」設定">
+                     name="categoryAction-removeExclusion" value="删除该项「不包括」设定">
             </td>
           </tr>
         </table>
@@ -126,10 +126,10 @@
     </tr>
 
     <tr>
-      <th>排序鍵：</th>
+      <th>排序键：</th>
       <td>
-        輸入介於 1 和 [% constants.MAX_SMALLINT FILTER none %] 之間的數字。
-        當以清單顯示給使用者時，將會以該方法排序。如果你想要以字母做排序，或不在乎排序，則無須填入。<br>
+        输入介于 1 和 [% constants.MAX_SMALLINT FILTER none %] 之间的数字。
+        当以清单显示给使用者时，将会以该方法排序。如果你想要以字母做排序，或不在乎排序，则无须填入。<br>
         <input type="text" name="sortkey" value="[% type.sortkey || 1 FILTER html %]" size="5"
                maxlength="5" [% ' disabled="disabled"' UNLESS can_fully_edit %]>
       </td>
@@ -141,7 +141,7 @@
         <input type="checkbox" id="is_active" name="is_active"
                [%- ' disabled="disabled"' UNLESS can_fully_edit %]
                [% " checked" IF type.is_active || !type.is_active.defined %]>
-        <label for="is_active">啟用（將會在使用者介面顯示此旗標類型，並可設定）</label>
+        <label for="is_active">启用（将会在使用者界面显示此旗标类型，并可设定）</label>
       </td>
     </tr>
 
@@ -151,18 +151,18 @@
         <input type="checkbox" id="is_requestable" name="is_requestable"
                [%- ' disabled="disabled"' UNLESS can_fully_edit %]
                [% " checked" IF type.is_requestable || !type.is_requestable.defined %]>
-        <label for="is_requestable">可以要求（使用者可以要求設置此旗標類型）</label>
+        <label for="is_requestable">可以要求（使用者可以要求设置此旗标类型）</label>
       </td>
     </tr>
 
     <tr>
-      <th>寄件副本清單：</th>
+      <th>邮件抄送清单：</th>
       <td>
-        如果可以要求此類型旗標的話，誰應該收到關於要求的電子郵件通知。此一清單應以半形逗號 (,)
-        分隔多位收信人。收信人不一定要擁有 [% terms.Bugzilla %] 的帳號。
+        如果可以要求此类型旗标的话，谁应该收到关于要求的电子邮件通知。此清单以半角逗号 (,)
+        分隔多位收信人。收信人不一定要拥有 [% terms.Bugzilla %] 的账号。
         [% IF Param('emailsuffix') %]
-          <br>注意：預設的電子郵件地址的後半段 (<kbd>[% Param('emailsuffix') %]</kbd>)
-          並<em>不會</em>被自動加在這些地址中，因此你應該完整填寫每個電子郵件地址。
+          <br>注意：预设的电子邮件地址的后半段 (<kbd>[% Param('emailsuffix') %]</kbd>)
+          并<em>不会</em>被自动加在这些地址中，因此你应该完整填写每个电子邮件地址。
         [% END %]<br>
         <input type="text" name="cc_list" value="[% type.cc_list FILTER html %]" size="80"
                maxlength="200" [%- ' disabled="disabled"' UNLESS can_fully_edit %]>
@@ -175,7 +175,7 @@
         <input type="checkbox" id="is_requesteeble" name="is_requesteeble"
                [%- ' disabled="disabled"' UNLESS can_fully_edit %]
                [% " checked" IF type.is_requesteeble || !type.is_requesteeble.defined %]>
-        <label for="is_requesteeble">特定要求（使用者可以要求特定的其他使用者設置此旗標類型）</label>
+        <label for="is_requesteeble">特定要求（使用者可以要求特定的其他使用者设置此类旗标类型）</label>
       </td>
     </tr>
 
@@ -185,27 +185,27 @@
         <input type="checkbox" id="is_multiplicable" name="is_multiplicable"
                [%- ' disabled="disabled"' UNLESS can_fully_edit %]
                [% " checked" IF type.is_multiplicable || !type.is_multiplicable.defined %]>
-        <label for="is_multiplicable">多重種類（可以在同一
+        <label for="is_multiplicable">多重种类（可以在同一
                [% type.target_type == "bug" ? terms.bug : "附件" %]
-               上設定多個此旗標類型）</label>
+               上设定多个此类旗标类型）</label>
       </td>
     </tr>
 
     <tr>
-      <th>同意的群組：</th>
+      <th>同意的群组：</th>
       <td>
-        允許同意／否決此類型旗標的群組<br>
-        （如要允許所有使用者可以同意／否決此旗標類型，則不要選擇群組）。<br>
+        允许同意／否决此类型旗标的群组<br>
+        （如要允许所有使用者可以同意／否决此旗标类型，则不要选择群组）。<br>
         [% PROCESS group_select selname = "grant_group" %]
       </td>
     </tr>
 
     <tr>
-      <th>要求的群組：</th>
+      <th>要求的群组：</th>
       <td>
-        如果此類型的旗標必須透過要求產生，則允許做出要求動作的群組<br>
-        （如要允許所有使用者要求此旗標類型，則不要選擇群組）。<br>
-        注意：若並未定義「同意的群組」時，「要求的群組」並不會有任何效力！<br>
+        如果此类型的旗标必须通过要求产生，则允许做出要求动作的群组<br>
+        （如要允许所有使用者要求此旗标类型，则不要选择群组）。<br>
+        注意：若并未定义「同意的群组」时，「要求的群组」并不会有任何效力！<br>
         [% PROCESS group_select selname = "request_group" %]
       </td>
     </tr>
@@ -213,7 +213,7 @@
     <tr>
       <th>&nbsp;</th>
       <td>
-        <input type="submit" id="save" value="[% action == "insert" ? "新增" : "儲存設定" %]">
+        <input type="submit" id="save" value="[% action == "insert" ? "新增" : "存储设定" %]">
       </td>
     </tr>
 
@@ -230,7 +230,7 @@
 
 [% BLOCK group_select %]
   <select name="[% selname %]" id="[% selname %]" [%- ' disabled="disabled"' UNLESS can_fully_edit %]>
-    <option value="">（無群組）</option>
+    <option value="">（无群组）</option>
     [% group_found = 0 %]
     [% FOREACH group = groups %]
       <option value="[% group.name FILTER html %]"

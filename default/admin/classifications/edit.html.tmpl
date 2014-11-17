@@ -7,7 +7,7 @@
   #%]
 
 [% PROCESS global/header.html.tmpl
-  title = "編輯分類"
+  title = "编辑分类"
 %]
 
 <form method=post action="editclassifications.cgi">
@@ -17,7 +17,7 @@
 
     <tr valign=top>
       <th align="right">
-        <a href="editproducts.cgi?classification=[% classification.name FILTER uri %]">編輯產品</a>：
+        <a href="editproducts.cgi?classification=[% classification.name FILTER uri %]">编辑产品</a>：
       </th>
       <td>
         [% IF classification.products.size > 0 %]
@@ -29,14 +29,14 @@
                   [% IF product.description %]
                     [% product.description FILTER html_light %]
                   [% ELSE %]
-                    <font color="red">沒有描述</font>
+                    <font color="red">没有描述</font>
                   [% END %]
                 </td>
               </tr>
             [% END %]
           </table>
         [% ELSE %]
-          <font color="red">無</font>
+          <font color="red">无</font>
         [% END %]
       </td>
     </tr>

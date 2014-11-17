@@ -19,8 +19,8 @@
 [% USE Bugzilla %]
 [% cgi = Bugzilla.cgi %]
 
-[% title = BLOCK %]選擇 '[% field.description FILTER html %]' ([% field.name FILTER html %])
-                   欄位的數值[% END %]
+[% title = BLOCK %]选择 '[% field.description FILTER html %]' ([% field.name FILTER html %])
+                   字段的数值[% END %]
 [% PROCESS global/header.html.tmpl
   title = title
 %]
@@ -34,22 +34,22 @@
 [% columns = [
      {
        name => "name"
-       heading => "編輯欄位數值…"
+       heading => "编辑字段数值…"
        contentlink => edit_contentlink
      },
      {
        name => "sortkey"
-       heading => "排序鍵"
+       heading => "排序键"
      },
      {
        name => "isactive"
-       heading => "開啟回報 $terms.bugs 功能"
+       heading => "开启报告 $terms.bugs 功能"
        yesno_field => 1
      },
      {
        name => "action"
-       heading => "動作"
-       content => "刪除"
+       heading => "动作"
+       content => "删除"
        contentlink => delete_contentlink
      } ]
 %]
@@ -60,7 +60,7 @@
   [% IF check_value.is_static %]
     [% overrides.action.name.${check_value.name} = {
          override_content => 1
-         content => "（不可刪除的數值）"
+         content => "（不可删除的数值）"
          override_contentlink => 1
          contentlink => undef
        }
@@ -68,7 +68,7 @@
   [% ELSIF check_value.is_default %]
     [% overrides.action.name.${check_value.name} = {
          override_content => 1
-         content => "（預設值）"
+         content => "（预设值）"
          override_contentlink => 1
          contentlink => undef
        }

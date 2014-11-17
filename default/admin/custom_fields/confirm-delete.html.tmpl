@@ -14,7 +14,7 @@
 [% PROCESS "global/field-descs.none.tmpl" %]
 
 [% title = BLOCK %]
-  刪除自訂欄位 '[% field.name FILTER html %]' ([% field.description FILTER html %])
+  删除自定义字段 '[% field.name FILTER html %]' ([% field.description FILTER html %])
 [% END %]
 
 [% PROCESS global/header.html.tmpl
@@ -25,11 +25,11 @@
 
 <table border="1" cellpadding="4" cellspacing="0">
 <tr bgcolor="#6666FF">
-  <th valign="top" align="left">欄位</th>
+  <th valign="top" align="left">字段</th>
   <th valign="top" align="left">值</th>
 </tr>
 <tr>
-  <td valign="top">自訂欄位：</td>
+  <td valign="top">自定义字段：</td>
   <td valign="top">[% field.name FILTER html %]</td>
 </tr>
 <tr>
@@ -37,23 +37,23 @@
   <td valign="top">[% field.description FILTER html %]</td>
 </tr>
 <tr>
-  <td valign="top">種類：</td>
+  <td valign="top">种类：</td>
   <td valign="top">[% field_types.${field.type} FILTER html %]</td>
 </tr>
 </table>
 
-<h2>確認</h2>
+<h2>确认</h2>
 
 <p class="confirmation">
-  你確定要從資料庫中刪除此自訂欄位嗎？<br>
-  <em>此動作僅在該欄位已廢棄，且從未於任何 [% terms.bug FILTER html %] 中使用過，才會成功。</em>
+  你确定要从资料库中删除此自定义字段吗？<br>
+  <em>此动作仅在该字段已废弃，且从未于任何 [% terms.bug FILTER html %] 中使用过，才会成功。</em>
 </p>
 
 <a href="editfields.cgi?action=delete&amp;name=[% field.name FILTER html %]&amp;token=[% token FILTER html %]">
-  刪除欄位 '[% field.description FILTER html %]'</a>
+  删除字段 '[% field.description FILTER html %]'</a>
 
 <p>
-  <a href="editfields.cgi">回到現有的自訂欄位列表</a>
+  <a href="editfields.cgi">回到现有的自定义字段列表</a>
 </p>
 
 [% PROCESS global/footer.html.tmpl %]

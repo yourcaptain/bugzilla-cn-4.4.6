@@ -9,7 +9,7 @@
 [% PROCESS "global/js-products.html.tmpl" %]
 
 [% PROCESS global/header.html.tmpl
-  title = '管理旗標類型'
+  title = '管理旗标类型'
   style = "
     table#flag_types_bugs tr th,
     table#flag_types_attachments tr th { text-align: left; }
@@ -22,24 +22,24 @@
 %]
 
 <p>
-  旗標是用來識別 [% terms.bug %] 或附件是否已被同意或被拒絕某些狀態的一種標記。在使用者介面中，旗標以名稱和狀態符號顯示：
-  "+" 代表同意， "-" 代表拒絕， "?" 代表使用者已要求設定旗標的狀態。
+  旗标是用来识别 [% terms.bug %] 或附件是否已被同意或被拒绝某些状态的一种旗标。在使用者界面中，旗标以名称和状态符号显示：
+  "+" 代表同意， "-" 代表拒绝， "?" 代表使用者已要求设定旗标的状态。
 </p>
 
 <p>
-  例如，你可以定義一種狀態叫 "review" ，讓使用者可以對瀏覽附件做出要求。當 patch 寫作者要求瀏覽時，
-  "review?" 字串就會出現在附件上。而當 patch 瀏覽者瀏覽該 patch 時，就會依 patch 是否通過瀏覽的條件，顯示為
+  例如，你可以定义一种状态叫 "review" ，让使用者可以对浏览附件做出要求。当 patch 写作者要求浏览时，
+  "review?" 字串就会出现在附件上。而当 patch 浏览者浏览该 patch 时，就会依 patch 是否通过浏览的条件，显示为
   "review+" 或 "review-" 。
 </p>
 
 <p>
-  你可以對特定的產品以及子產品限制旗標類型的清單。如果選擇沒有子產品的產品，那麼將只顯示屬於產品中至少一項子產品的旗標類型。
+  你可以对特定的产品以及模块限制旗标类型的清单。如果选择没有模块的产品，那么将只显示属于产品中至少一项模块的旗标类型。
 </p>
 
 <form id="flagtype_form" name="flagtype_form" action="editflagtypes.cgi" method="get">
   <table>
     <tr>
-      <th><label for="product">產品：</label></th>
+      <th><label for="product">产品：</label></th>
       <td>
         <select name="product" onchange="selectProduct(this, this.form.component, null, null, '__任何__');">
           <option value="">__任何__</option>
@@ -50,7 +50,7 @@
           [% END %]
         </select>
       </td>
-      <th><label for="component">子產品：</label></th>
+      <th><label for="component">模块：</label></th>
       <td>
         <select name="component">
           <option value="">__任何__</option>
@@ -64,27 +64,27 @@
       <td>
         <input type="checkbox" id="show_flag_counts" name="show_flag_counts" value="1"
                [%+ 'checked="checked"' IF show_flag_counts %]>
-        <label for="show_flag_counts">顯示旗標數</label>
+        <label for="show_flag_counts">显示旗标数</label>
       </td>
-      <td><input type="submit" id="submit" value="篩選"></td>
+      <td><input type="submit" id="submit" value="筛选"></td>
     </tr>
   </table>
 </form>
 
-<h3>[% terms.Bugs %] 的旗標類型</h3>
+<h3>[% terms.Bugs %] 的旗标类型</h3>
 
 [% PROCESS display_flag_types types=bug_types types_id='bugs' %]
 
 <p>
-  <a href="editflagtypes.cgi?action=enter&amp;target_type=bug">新增 [% terms.Bugs %] 的旗標類型</a>
+  <a href="editflagtypes.cgi?action=enter&amp;target_type=bug">新增 [% terms.Bugs %] 的旗标类型</a>
 </p>
 
-<h3>附件的旗標類型</h3>
+<h3>附件的旗标类型</h3>
 
 [% PROCESS display_flag_types types=attachment_types types_id='attachments' %]
 
 <p>
-  <a href="editflagtypes.cgi?action=enter&amp;target_type=attachment">新增附件的旗標類型</a>
+  <a href="editflagtypes.cgi?action=enter&amp;target_type=attachment">新增附件的旗标类型</a>
 </p>
 
 [% PROCESS global/footer.html.tmpl %]
@@ -94,18 +94,18 @@
   <table id="flag_types_[% types_id FILTER html %]" cellspacing="0" cellpadding="4" border="1">
 
     <tr>
-      <th>編輯名稱…</th>
+      <th>编辑名称…</th>
       <th>描述</th>
-      <th>排序鍵</th>
-      <th>性質</th>
-      <th>同意的群組</th>
-      <th>要求的群組</th>
+      <th>排序键</th>
+      <th>性质</th>
+      <th>同意的群组</th>
+      <th>要求的群组</th>
       [% IF show_flag_counts %]
-        <th>旗標</th>
+        <th>旗标</th>
         [%# Note to translators: translate the strings in quotes only. %]
-        [% state_desc = {granted = '同意' denied = '拒絕' pending = '未決定'} %]
+        [% state_desc = {granted = '同意' denied = '拒绝' pending = '未决定'} %]
       [% END %]
-      <th>動作</th>
+      <th>动作</th>
     </tr>
 
     [% FOREACH type = types %]
@@ -122,7 +122,7 @@
             <span class="requesteeble">（特定要求）</span>
           [% END %]
           [% IF type.is_multiplicable %]
-            <span class="multiplicable">多重種類</span>
+            <span class="multiplicable">多重种类</span>
           [% END %]
         </td>
         <td>[% IF type.grant_group %][% type.grant_group.name FILTER html %][% END %]</td>
@@ -133,18 +133,18 @@
               [% bug_list = bug_lists.${type.id}.$state || [] %]
               [% IF bug_list.size %]
                 <a href="buglist.cgi?bug_id=[% bug_list.unique.nsort.join(",") FILTER html %]">
-                  [% bug_list.size FILTER html %] 項[% state_desc.$state FILTER html %]
+                  [% bug_list.size FILTER html %] 项[% state_desc.$state FILTER html %]
                 </a>
                 <br>
               [% ELSE %]
-                沒有[% state_desc.$state FILTER html %]<br>
+                没有[% state_desc.$state FILTER html %]<br>
               [% END %]
             [% END %]
           </td>
         [% END %]
         <td>
-          <a href="editflagtypes.cgi?action=copy&amp;id=[% type.id %]">複製</a>
-          | <a href="editflagtypes.cgi?action=confirmdelete&amp;id=[% type.id %]">刪除</a>
+          <a href="editflagtypes.cgi?action=copy&amp;id=[% type.id %]">复制</a>
+          | <a href="editflagtypes.cgi?action=confirmdelete&amp;id=[% type.id %]">删除</a>
         </td>
       </tr>
 

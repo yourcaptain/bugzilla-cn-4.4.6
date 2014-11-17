@@ -13,7 +13,7 @@
   #               which the component belongs.
   #%]
 
-[% title = BLOCK %]自 '[% product.name FILTER html %]' 產品中刪除子產品 '[% comp.name FILTER html %]'
+[% title = BLOCK %]自 '[% product.name FILTER html %]' 产品中删除模宽 '[% comp.name FILTER html %]'
   [% END %]
 
 [% PROCESS global/header.html.tmpl
@@ -23,44 +23,44 @@
 
 <table border="1" cellpadding="4" cellspacing="0">
 <tr bgcolor="#6666FF">
-  <th valign="top" align="left">欄位</th>
+  <th valign="top" align="left">字段</th>
   <th valign="top" align="left">值</th>
 </tr>
 <tr>
-  <td valign="top">子產品：</td>
+  <td valign="top">模块：</td>
   <td valign="top">[% comp.name FILTER html %]</td>
 </tr>
 <tr>
-  <td valign="top">子產品描述：</td>
+  <td valign="top">模块描述：</td>
   <td valign="top">[% comp.description FILTER html_light %]</td>
 </tr>
 <tr>
-  <td valign="top">預設的負責人：</td>
+  <td valign="top">预设的负责人：</td>
   <td valign="top">[% comp.default_assignee.login FILTER html %]</td>
 
 [% IF Param('useqacontact') %]
 </tr>
 <tr>
-  <td valign="top">預設的 QA 連絡人：</td>
+  <td valign="top">预设的 QA 联络人：</td>
   <td valign="top">[% comp.default_qa_contact.login FILTER html %]</td>
 [% END %]
 
 </tr>
 <tr>
-  <td valign="top">所屬產品別：</td>
+  <td valign="top">所属产品别：</td>
   <td valign="top">[% product.name FILTER html %]</td>
 
 [% IF product.description %]
 </tr>
 <tr>
-  <td valign="top">產品描述：</td>
+  <td valign="top">产品描述：</td>
   <td valign="top">[% product.description FILTER html_light %]</td>
 [% END %]
 
 [% IF Param('usetargetmilestone') %]
 </tr>
 <tr>
-  <td valign="top">產品里程碑網址：</td>
+  <td valign="top">产品里程碑网址：</td>
   <td valign="top">
     <a href="[% product.milestone_url FILTER html %]">[% product.milestone_url FILTER html %]</a>
   </td>
@@ -68,37 +68,37 @@
 
 </tr>
 <tr>
-  <TD VALIGN="top">開啟回報 [% terms.bugs %] 功能：</TD>
+  <TD VALIGN="top">开启报告 [% terms.bugs %] 功能：</TD>
   <TD VALIGN="top">[% IF product.is_active && comp.isactive %]是[% ELSE %]否[% END %]</td>
 </tr>
 <tr>
   <td valign="top">[% terms.Bugs %] ：</td>
   <td valign="top">
 [% IF comp.bug_count %]
-  <a title="列出子產品 '[% comp.name FILTER html %]' 的 [% terms.bugs %]"
+  <a title="列出模块 '[% comp.name FILTER html %]' 的 [% terms.bugs %]"
      href="buglist.cgi?component=[% comp.name FILTER uri %]&amp;product=
           [%- product.name FILTER uri %]">[% comp.bug_count %]</a>
 [% ELSE %]
-  無
+  无
 [% END %]
   </td>
 </tr>
 </table>
 
-<h2>確認</h2>
+<h2>确认</h2>
 
 [% IF comp.bug_count %]
 
   [% IF !Param("allowbugdeletion") %]
   <p class="confirmation">
-    很抱歉，此子產品中還有 [% comp.bug_count %] 個 [%+ terms.bug %]
-    等待處理。你必須將它[% '們' IF comp.bug_count > 1 %]分配到其他子產品之後，才能刪除此子產品。
+    很抱歉，此模块中还有 [% comp.bug_count %] 个 [%+ terms.bug %]
+    等待处理。你必须将它[% '们' IF comp.bug_count > 1 %]分配到其他模块之后，才能删除此模块。
   </p>
   [% ELSE %]
 
   <table border="0" cellpadding="20" width="70%" bgcolor="red"><tr><td>
-    此子產品中有 [% comp.bug_count %] 個已輸入的 [%+ terms.bug %]
-    ！當你刪除此子產品時，<b>所有</b>已儲存的 [% terms.bug %] 和它們的歷史資訊也都會被刪除。
+    此模块中有 [% comp.bug_count %] 个已输入的 [%+ terms.bug %]
+    ！当你删除此模块时，<b>所有</b>已存储的 [% terms.bug %] 和它们的历史记录也都会被删除。
     </td></tr></table>
 
   [% END %]
@@ -107,7 +107,7 @@
 
 [% IF comp.bug_count == 0 || Param('allowbugdeletion') %]
 
-  <p>你確定要刪除此一子產品嗎？</p>
+  <p>你确定要删除此模块吗？</p>
 
   <form method="post" action="editcomponents.cgi">
   <input type="submit" id="delete" value="是的，刪除">

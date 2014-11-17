@@ -7,7 +7,7 @@
   #%]
 
 [% PROCESS global/header.html.tmpl
-  title = "刪除分類"
+  title = "删除分类"
 %]
 
 <table border=1 cellpadding=4 cellspacing=0>
@@ -16,7 +16,7 @@
   <th valign="top" align="left">值</th>
 
 </tr><tr>
-  <td valign="top">分類：</td>
+  <td valign="top">分类：</td>
   <td valign="top">[% classification.name FILTER html %]</td>
 
 </tr><tr>
@@ -25,22 +25,22 @@
     [% IF classification.description %]
       [% classification.description FILTER html_light %]
     [% ELSE %]
-      <font color="red">沒有描述</font>
+      <font color="red">没有描述</font>
     [% END %]
   </td>
 
 </tr><tr>
-  <td valign="top">排序鍵：</td>
+  <td valign="top">排序键：</td>
   <td valign="top">[% classification.sortkey FILTER html %]</td>
 
 </tr>
 </table>
 
-<h2>確認</h2>
+<h2>确认</h2>
 
-<p>你確定要刪除此一分類嗎？</p>
+<p>你确定要删除此分类吗？</p>
 <form method=post action="editclassifications.cgi">
-  <input type=submit value="是的，刪除">
+  <input type=submit value="是的，删除">
   <input type=hidden name="action" value="delete">
   <input type=hidden name="classification" value="[% classification.name FILTER html %]">
   <input type="hidden" name="token" value="[% token FILTER html %]">

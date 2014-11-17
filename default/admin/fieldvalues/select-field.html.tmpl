@@ -16,13 +16,13 @@
 [% cgi = Bugzilla.cgi %]
 
 [% PROCESS global/header.html.tmpl
-  title = "要編輯哪個欄位的數值？"
+  title = "要编辑哪个字段的数值？"
 %]
 
 [% columns = [
      {
        name => "name"
-       heading => "選擇欄位…"
+       heading => "选择字段…"
        content_use_field = 1
        contentlink => "editvalues.cgi?field=%%name%%"
      }

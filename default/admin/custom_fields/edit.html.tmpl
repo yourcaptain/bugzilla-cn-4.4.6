@@ -13,7 +13,7 @@
 [% PROCESS "global/field-descs.none.tmpl" %]
 
 [% title = BLOCK %]
-  編輯自訂欄位 '[% field.name FILTER html %]' ([% field.description FILTER html %])
+  编辑自定义字段 '[% field.name FILTER html %]' ([% field.description FILTER html %])
 [% END %]
 
 [% javascript = BLOCK %]
@@ -29,17 +29,17 @@
 %]
 
 <p>
-  「描述」是一個用來描述欄位，而且非常短的字串。將會在使用者介面使用它來當作這個自訂欄位的標籤。
+  「描述」是一个用来描述字段，而且非常短的字串。将会在使用者界面使用它来当作这个自定义字段的标签。
 </p>
 
 <form id="edit_field" action="editfields.cgi" method="GET">
   <table border="0" cellspacing="0" cellpadding="5" id="edit_custom_field">
     <tr>
-      <th class="narrow_label">名稱：</th>
+      <th class="narrow_label">名称：</th>
       <td>[% field.name FILTER html %]</td>
 
       <th>
-        <label for="enter_bug">可以在建立 [% terms.bug %] 時設定：</label>
+        <label for="enter_bug">可以在建立 [% terms.bug %] 时设定：</label>
       </th>
       <td><input type="checkbox" id="enter_bug" name="enter_bug" value="1"
                  [%- " checked" IF field.enter_bug %]
@@ -51,31 +51,31 @@
                  value="[% field.description FILTER html %]"></td>
 
       <th>
-        <label for="new_bugmail">將新的 [% terms.bug %] 顯示於 [% terms.bug %] 通知信中：</label>
+        <label for="new_bugmail">将新的 [% terms.bug %] 显示于 [% terms.bug %] 通知信中：</label>
       </th>
       <td><input type="checkbox" id="new_bugmail" name="new_bugmail" value="1"
                  [%- " checked" IF field.mailhead %]></td>
     </tr>
     <tr>
-      <th class="narrow_label">種類：</th>
+      <th class="narrow_label">种类：</th>
       <td>[% field_types.${field.type} FILTER html %]</td>
 
-      <th><label for="obsolete">已廢棄：</label></th>
+      <th><label for="obsolete">已废弃：</label></th>
       <td><input type="checkbox" id="obsolete" name="obsolete" value="1"
                  [%- " checked" IF field.obsolete %]></td>
     </tr>
     <tr>
-      <th class="narrow_label"><label for="sortkey">排序鍵：</label></th>
+      <th class="narrow_label"><label for="sortkey">排序键：</label></th>
       <td>
         <input type="text" id="sortkey" name="sortkey" size="6" maxlength="6"
                value="[% field.sortkey FILTER html %]">
       </td>
-      <th align="right"><label for="is_mandatory">是否強制：</label></th>
+      <th align="right"><label for="is_mandatory">是否强制：</label></th>
       <td><input type="checkbox" id="is_mandatory" name="is_mandatory" value="1"
                  [%- ' checked="checked"' IF field.is_mandatory %]></td>
     </tr>
     <tr>
-      <th class="narrow_label">較長的描述：</th>
+      <th class="narrow_label">较长的描述：</th>
       <td>
         [% INCLUDE global/textarea.html.tmpl
          name           = 'long_desc'
@@ -87,7 +87,7 @@
        %]
       </td>
       <th>
-        <label for="visibility_field_id">當符合下列條件時，欄位才會出現：</label>
+        <label for="visibility_field_id">当符合下列条件时，字段才会出现：</label>
       </th>
       <td>
         <select name="visibility_field_id" id="visibility_field_id"
@@ -104,7 +104,7 @@
           [% END %]
         </select>
         <label for="visibility_values">
-          <strong>設定為以下其中任何一個：</strong>
+          <strong>设定为以下其中任何一个：</strong>
         </label>
         <select multiple="multiple" size="5" name="visibility_values"
                 id="visibility_values" class="field_value">
@@ -122,30 +122,30 @@
     </tr>
     [% IF field.type == constants.FIELD_TYPE_BUG_ID %]
       <th class="narrow_label">
-        <label for="reverse_desc">反向關係描述：</label>
+        <label for="reverse_desc">反向关系描述：</label>
       </th>
       <td>
         <input type="text" id="reverse_desc" name="reverse_desc" size="40"
                value="[% field.reverse_desc FILTER html %]">
         <br/>
-        使用此標籤可列出因
+        使用此标签可列出因
         [%+ field_types.${constants.FIELD_TYPE_BUG_ID} FILTER html %]
-        此欄位，而連至一個 [% terms.bug %] 的 [% terms.bugs %] 清單。
-        例如，描述是「此 [% terms.bug %] 和 ... 重複」時，
-        反向關係就會是「和此 [% terms.bug %] 重複的 [% terms.bugs %] 」。
-        如果要停用此欄位的清單，請留白。
+        此字段，而连至一个 [% terms.bug %] 的 [% terms.bugs %] 清单。
+        例如，描述是「此 [% terms.bug %] 和 ... 重复」时，
+        反向关系就会是「和此 [% terms.bug %] 重复的 [% terms.bugs %] 」。
+        如果要停用此字段的清单，请留白。
       </td>
     [% END %]
     [% IF field.is_select %]
       <tr>
         <th>&nbsp;</th>
         <td>
-          <a href="editvalues.cgi?field=[% field.name FILTER uri %]">編輯此自訂欄位的有效數值</a>。
+          <a href="editvalues.cgi?field=[% field.name FILTER uri %]">编辑此自定义字段的有效数值</a>。
         </td>
 
         <th>
           <label for="value_field_id">
-            控制欄位值是否在此欄位中出現的欄位：
+            控制字段值是否在此字段中出现的字段：
           </label>
         </th>
 
@@ -170,18 +170,18 @@
   <input type="hidden" name="action" value="update">
   <input type="hidden" name="name" value="[% field.name FILTER html %]">
   <input type="hidden" name="token" value="[% token FILTER html %]">
-  <input type="submit" id="edit" value="送出">
+  <input type="submit" id="edit" value="提交">
 </form>
 
 [% IF field.obsolete %]
 <p>
-  <a href="editfields.cgi?action=del&amp;name=[% field.name FILTER html %]">自資料庫中刪除此自訂欄位。</a><br>
-  只有在此自訂欄位從未於 [% terms.bug %] 中使用過時，才會成功。
+  <a href="editfields.cgi?action=del&amp;name=[% field.name FILTER html %]">自资料库中删除此自定义字段。</a><br>
+  只有在此自定义字段从未于 [% terms.bug %] 中使用过时，才会成功。
 </p>
 [% END %]
 
 <p>
-  <a href="editfields.cgi">回到現有的自訂欄位列表</a>
+  <a href="editfields.cgi">回到现有的自定义字段列表</a>
 </p>
 
 [% PROCESS global/footer.html.tmpl %]

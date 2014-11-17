@@ -15,15 +15,15 @@
 <hr>
 
 <p>
-  編輯[% IF comp && !no_edit_component_link %]子產品<a
-  title="編輯子產品 '[% comp.name FILTER html %]'"
+  编辑[% IF comp && !no_edit_component_link %]模块<a
+  title="编辑模块 '[% comp.name FILTER html %]'"
   href="editcomponents.cgi?action=edit&amp;product=
   [%- product.name FILTER uri %]&amp;component=[% comp.name FILTER uri %]">
-   '[% comp.name FILTER html %]'</a>，或是編輯[% END %][% IF !no_edit_other_components_link %]產品<a
-  title="從產品 '[% product.name FILTER html %]' 中選擇一項子產品進行編輯"
+   '[% comp.name FILTER html %]'</a>，或是编辑[% END %][% IF !no_edit_other_components_link %]产品<a
+  title="从产品 '[% product.name FILTER html %]' 中选择一项模块进行编辑"
   href="editcomponents.cgi?product=
-  [%- product.name FILTER uri %]">'[% product.name FILTER html %]'</a>的其他子產品，或是編輯[% END %]產品<a
-  title="編輯產品 '[% product.name FILTER html %]'"
+  [%- product.name FILTER uri %]">'[% product.name FILTER html %]'</a>的其他模块，或是编辑[% END %]产品<a
+  title="编辑产品 '[% product.name FILTER html %]'"
   href="editproducts.cgi?action=edit&amp;product=
   [%- product.name FILTER uri %]">'[% product.name FILTER html %]'</a>。
 

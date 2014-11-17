@@ -16,7 +16,7 @@
 [% PROCESS global/variables.none.tmpl %]
 
 [% title = BLOCK %]
-  編輯產品 '[% product.name FILTER html %]' 的子產品 '[% comp.name FILTER html %]'
+  编辑产品 '[% product.name FILTER html %]' 的模块 '[% comp.name FILTER html %]'
 [% END %]
 [% PROCESS global/header.html.tmpl
   yui = [ 'autocomplete' ]
@@ -30,7 +30,7 @@
     [% PROCESS "admin/components/edit-common.html.tmpl" %]
 
     <tr>
-      <th class="field_label"><label for="isactive">開啟回報 [% terms.Bugs %] 功能：</label></th>
+      <th class="field_label"><label for="isactive">开启报告 [% terms.Bugs %] 功能：</label></th>
       <td><input id="isactive" name="isactive" type="checkbox" value="1"
                  [% 'checked="checked"' IF comp.isactive %]></td>
     </tr>
@@ -38,12 +38,12 @@
       <th class="field_label">[% terms.Bugs %]：</th>
       <td>
 [% IF comp.bug_count > 0 %]
-        <a title="在子產品 '[% comp.name FILTER html %]' 中的 [% terms.Bugs %]"
+        <a title="在模块 '[% comp.name FILTER html %]' 中的 [% terms.Bugs %]"
            href="buglist.cgi?component=
                 [%- comp.name FILTER uri %]&amp;product=
                 [%- product.name FILTER uri %]">[% comp.bug_count %]</a>
 [% ELSE %]
-        無
+        无
 [% END %]
       </td>
     </tr>
@@ -54,10 +54,10 @@
    <input type="hidden" name="componentold" value="[% comp.name FILTER html %]">
    <input type="hidden" name="product" value="[% product.name FILTER html %]">
    <input type="hidden" name="token" value="[% token FILTER html %]">
-   <input type="submit" value="儲存設定" id="update">，或是<a
+   <input type="submit" value="存储设定" id="update">，或是<a
         href="editcomponents.cgi?action=del&amp;product=
         [%- product.name FILTER uri %]&amp;component=
-        [%- comp.name FILTER uri %]">刪除</a>此一子產品。
+        [%- comp.name FILTER uri %]">删除</a>此模块。
 
 </form>
 

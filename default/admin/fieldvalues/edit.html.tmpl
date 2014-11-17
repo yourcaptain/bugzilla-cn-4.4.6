@@ -12,7 +12,7 @@
   #%]
 
 [% title = BLOCK %]
-  編輯 '[% field.description FILTER html %]' ([% field.name FILTER html %]) 欄位的數值 '[% value.name FILTER html %]'
+  编辑 '[% field.description FILTER html %]' ([% field.name FILTER html %]) 字段的数值 '[% value.name FILTER html %]'
 [% END %]
 [% PROCESS global/header.html.tmpl
   title = title
@@ -23,7 +23,7 @@
 
     <tr>
       <th valign="top" align="right">
-        <label for="value_new">欄位數值：</label>
+        <label for="value_new">字段数值：</label>
       </th>
       <td>
         [% IF value.is_static %]
@@ -38,21 +38,21 @@
       </td>
     </tr>
     <tr>
-      <th align="right"><label for="sortkey">排序鍵：</label></th>
+      <th align="right"><label for="sortkey">排序键：</label></th>
       <td><input id="sortkey" size="6" maxlength="6" name="sortkey"
                  value="[%- value.sortkey FILTER html %]"></td>
     </tr>
     [% IF field.name == "bug_status" %]
       <tr>
-        <th align="right"><label for="is_open">狀態種類：</label></th>
-        <td>[% IF value.is_open %]開啟[% ELSE %]關閉[% END %]</td>
+        <th align="right"><label for="is_open">状态种类：</label></th>
+        <td>[% IF value.is_open %]开启[% ELSE %]关闭[% END %]</td>
       </tr>
     [% END %]
     [% IF field.value_field %]
       <tr>
         <th align="right">
           <label for="visibility_value_id">只在
-           [%+ field.value_field.description FILTER html %] 設定為以下數值時出現：
+           [%+ field.value_field.description FILTER html %] 设定为以下数值时出现：
           </label>
         </th>
         <td>
@@ -70,19 +70,19 @@
               </option>
             [% END %]
           </select>
-          <small>（若不設定，則此數值將永遠顯示。）</small>
+          <small>（若不设定，则此数值将永远显示。）</small>
         </td>
       </tr>
     [% END %]
     <tr>
-      <th align="right"><label for="is_active">開啟回報 [% terms.bugs %] 功能：</label></th>
+      <th align="right"><label for="is_active">开启报告 [% terms.bugs %] 功能：</label></th>
       <td><input id="is_active" name="is_active" type="checkbox" value="1"
            [%+ 'checked="checked"' IF value.is_active %]
            [%+ 'disabled="disabled"' IF value.is_default OR value.is_static %]>
            [% IF value.is_default %]
-             此數值是此欄位的預設值，無法被停用。
+             此数值是此字段的预设值，无法被停用。
            [% ELSIF value.is_static %]
-              此數值不可刪除，也不能被停用。
+              此数值不可删除，也不能被停用。
            [% END %]
            [% IF !(value.is_default OR value.is_static) %]
              <input id="defined_is_active" name="defined_is_active"
@@ -95,7 +95,7 @@
   <input type="hidden" name="action" value="update">
   <input type="hidden" name="field" value="[% field.name FILTER html %]">
   <input type="hidden" name="token" value="[% token FILTER html %]">
-  <input type="submit" id="update" value="儲存設定">
+  <input type="submit" id="update" value="保存设定">
 </form>
 
 [% PROCESS admin/fieldvalues/footer.html.tmpl

@@ -7,13 +7,13 @@
   #%]
 
 [% PROCESS global/header.html.tmpl
-  title = "重新分類產品"
+  title = "重新分类产品"
 %]
 
 <form method=post action="editclassifications.cgi">
   <table border=0 cellpadding=4 cellspacing=0>
     <tr>
-      <th align="right">分類：</th>
+      <th align="right">分类：</th>
       <td valign="top" colspan=3>[% classification.name FILTER html %]</td>
 
     </tr><tr>
@@ -22,19 +22,19 @@
         [% IF classification.description %]
           [% classification.description FILTER html_light %]
         [% ELSE %]
-          <font color="red">沒有描述</font>
+          <font color="red">没有描述</font>
         [% END %]
       </td>
 
     </tr><tr>
-      <th align="right">排序鍵：</th>
+      <th align="right">排序键：</th>
       <td valign="top" colspan=3>[% classification.sortkey FILTER html %]</td>
 
     </tr><tr>
-      <th align="right">產品：</th>
-      <td valign="top">其他分類</td>
+      <th align="right">产品：</th>
+      <td valign="top">其他分类</td>
       <td></td>
-      <td valign="top">此分類</td>
+      <td valign="top">此分类</td>
 
     </tr><tr>
       <td></td>
@@ -53,7 +53,7 @@
 
       <td align="center">
         <input type=submit value="新增 &gt;&gt;" name="add_products"><br><br>
-        <input type=submit value="&lt;&lt; 刪除" name="remove_products">
+        <input type=submit value="&lt;&lt; 删除" name="remove_products">
       </td>
 
       <td valign="middle" rowspan=2>
