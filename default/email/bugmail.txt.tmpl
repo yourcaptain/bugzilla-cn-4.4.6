@@ -17,13 +17,13 @@
 [% FOREACH comment = new_comments %]
 
 [%- IF comment.count %]
---- 來自 [% comment.author.identity %] 的意見 #[% comment.count %] ---
+--- 来自 [% comment.author.identity %] 的留言 #[% comment.count %] ---
 [% END %]
 [%+ comment.body_full({ is_bugmail => 1, wrap => 1 }) FILTER strip_control_chars %]
 [% END %]
 
 -- [%# Protect the trailing space of the signature marker %]
-你會收到這封信是因為：
+你会收到这封信是因为：
 [% SET reason_lines = [] %]
 [% FOREACH reason = reasons %]
   [% reason_lines.push(reason_descs.$reason) IF reason_descs.$reason %]
@@ -44,16 +44,16 @@
     [% IF !isnew && change.who.id != last_changer %]
       [% last_changer = change.who.id %]
       [% IF change.blocker %]
-        處理 [% terms.bug %] [%+ bug.id %] 之前要先處理的 [% terms.bug %] [%+ change.blocker.id %] 改變了狀態。
+        处理 [% terms.bug %] [%+ bug.id %] 之前要先处理的 [% terms.bug %] [%+ change.blocker.id %] 改变了状态。
 
 [%+ terms.Bug %] [%+ change.blocker.id %] 摘要： [% change.blocker.short_desc %]
 [%+ urlbase %]show_bug.cgi?id=[% change.blocker.id %]
       [% ELSE %]
 
-[% change.who.identity %] 已改變：
+[% change.who.identity %] 已改变：
       [% END %]
 
-           什麼    |移除                        |新增
+           什么    |移除                        |新增
 ----------------------------------------------------------------------------
 [%+ END %][%# End of IF. This indentation is intentional! ~%]
     [% PROCESS "email/bugmail-common.txt.tmpl"%]

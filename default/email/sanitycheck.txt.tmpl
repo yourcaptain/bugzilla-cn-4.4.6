@@ -8,16 +8,16 @@
 
 From: [% Param('mailfrom') %]
 To: [% addressee %]
-Subject: [[% terms.Bugzilla %]] 健全度測試結果
+Subject: [[% terms.Bugzilla %]] 健全度测试结果
 X-Bugzilla-Type: sanitycheck
 
 [%+ urlbase %]sanitycheck.cgi
 
-你可以在下方看見健全度測試的結果。
+你可以在下方看見健全度测试的结果。
 [% IF error_found %]
-找到一些錯誤。
+找到一些错误。
 [% ELSE %]
-並未找到任何錯誤。
+并未找到任何错误。
 [% END %]
 
 [% output %]

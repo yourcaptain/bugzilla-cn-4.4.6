@@ -8,19 +8,19 @@
 
 From: [% Param('mailfrom') %]
 To: [% Param('maintainer') %]
-Subject: [[% terms.Bugzilla %]] 鎖帳號通知： [% locked_user.login %] ([% address %])
+Subject: [[% terms.Bugzilla %]] 锁定帐号通知： [% locked_user.login %] ([% address %])
 X-Bugzilla-Type: admin
 
-此位址 [% address %] 在登入
-[% locked_user.login %] 此帳號時失敗次數過多
+此地址 [% address %] 在登录
+[% locked_user.login %] 此账号时失败次数过多
 （ [% constants.MAX_LOGIN_ATTEMPTS %] 次）。
 
-以下是嘗試登入的時間點：
+以下是尝试登录的时间点：
 
 [% FOREACH login = attempts %]
   [%+ login.login_time FILTER time %]
 [% END %]
 
-此 IP 將在
+此 IP 将在
 [%+ unlock_at FILTER time %]
-後，才能以此帳號登入。
+后，才能以此账号登录。

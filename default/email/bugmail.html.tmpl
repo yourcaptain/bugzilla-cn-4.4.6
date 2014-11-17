@@ -21,9 +21,9 @@
         <div>
           [% IF comment.count %]
             <b>
-              來自 [% INCLUDE global/user.html.tmpl who = comment.author %] 對
+              来自 [% INCLUDE global/user.html.tmpl who = comment.author %] 对
               [% "$terms.bug $bug.id" FILTER bug_link(bug, { full_url => 1, user => to_user }) FILTER none %]
-              的 [% "意見 # ${comment.count}" FILTER bug_link( bug,
+              的 [% "留言 # ${comment.count}" FILTER bug_link( bug,
               {comment_num => comment.count, full_url => 1}) FILTER none %]
             </b>
           [% END %]
@@ -33,7 +33,7 @@
       </p>
 
       <hr>
-      <span>你會收到這封信是因為：</span>
+      <span>你会收到这封信是因为：</span>
 
       <ul>
       [% FOREACH reason = reasons %]
@@ -61,12 +61,12 @@
           [% SET in_table = 0 %]
         [% END %]
         [% IF change.blocker %]
-              處理 [% "${terms.bug} ${bug.id}" FILTER bug_link(bug, {full_url => 1, user => to_user}) FILTER none %]
-              之前要先處理的 [% "${terms.bug} ${change.blocker.id}"
+              处理 [% "${terms.bug} ${bug.id}" FILTER bug_link(bug, {full_url => 1, user => to_user}) FILTER none %]
+              之前要先处理的 [% "${terms.bug} ${change.blocker.id}"
                   FILTER bug_link(change.blocker, {full_url => 1, user => to_user}) FILTER none %]
-              改變了狀態。
+              改变了状态。
         [% ELSE %]
-              [% INCLUDE global/user.html.tmpl who = change.who %] 改變了
+              [% INCLUDE global/user.html.tmpl who = change.who %] 改变了
               [%+ "${terms.bug} ${bug.id}" FILTER bug_link(bug, {full_url => 1, user => to_user}) FILTER none %]
         [% END %]
           <br>
@@ -75,7 +75,7 @@
              [% SET in_table = 1 %]
           [% END %]
           <tr>
-            <th>什麼</th>
+            <th>什么</th>
             <th>移除</th>
             <th>新增</th>
           </tr>
