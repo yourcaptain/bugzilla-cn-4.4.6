@@ -19,44 +19,44 @@
   #         sort:  integer that sets execution order on named queries
   #%]
 
-[% title = "設定訂閱" %]
+[% title = "设定订阅" %]
 [% PROCESS global/header.html.tmpl
   title = title
   doc_section = "whining.html"
 %]
 
 <p>
-  「訂閱」這項功能，是 [% terms.Bugzilla %] 在一個固定的期間執行一項已儲存的搜尋，並將搜尋結果所列出的 [% terms.bugs %] 以電子郵件傳送。
+  「订阅」这项功能，是 [% terms.Bugzilla %] 在一个固定的期间执行一项已存储的搜索，并将搜索结果所列出的 [% terms.bugs %] 以电子邮件传送。
 </p>
 
 <p>
-  要設定一個新的訂閱事件，點選「新增事件」。
-  <br>只要輸入信件主旨以及描述文字，就會和[% terms.bug %]清單一起寄出。
+  要设定一个新的订阅事件，点击「新增事件」。
+  <br>只要输入信件主题以及描述文字，就会和[% terms.bug %]清单一起寄出。
 </p>
 
 <p>
-  要替事件設定排程，點選「新增排程」。
-  <br>排程的內容包括一天、一天中的某個時間，或是一個時間的間隔（例如每15分鐘），以及電子郵件地址。
-  <br>電子郵件地址將會根據你的權限來決定是否可以變動。
-  <br>一個事件可以設定多組排程，以便對不同的使用者執行多次。
+  要替事件设定排程，点击「新增排程」。
+  <br>排程的內容包括一天、一天中的某个时间，或是一个时间的间隔（例如每15分钟），以及电子邮件地址。
+  <br>电子邮件地址将会根据你的权限来决定是否可以变动。
+  <br>一个事件可以设定多组排程，以便对不同的使用者执行多次。
 </p>
 
 <p>
-  搜尋來自已儲存的搜尋。
-  <br>已儲存的搜尋是在執行<a href="query.cgi">搜尋</a>頁面，並將該頁面結果以指定的名稱儲存於 [% terms.Bugzilla %] 中。
-  <br>點選「新增搜尋」，選擇已儲存的搜尋名稱，並於 [% terms.bug %] 表格中加入標題。
-  <br>「排序」下的數字為選填。若有多筆搜尋排列，將會以該數字決定執行的順序（從最小到最大）。
-  <br>如果勾選「每個 [% terms.bug %] 送出一封信」，那麼符合該搜尋的每個 [% terms.bug%] 都會寄出一封信。
+  搜索来自已存储的搜索。
+  <br>已存储的搜索是在执行<a href="query.cgi">搜索</a>页面，并将该页面结果以指定的名称储存于 [% terms.Bugzilla %] 中。
+  <br>点击「新增搜索」，选择已存储的搜索名称，并于 [% terms.bug %] 表格中加入标题。
+  <br>「排序」下的数字为选填。若有多笔搜索排列，将会以该数字决定执行的顺序（从最小到最大）。
+  <br>如果勾选「每个 [% terms.bug %] 送出一封信」，那么符合该搜索的每个 [% terms.bug%] 都会寄出一封信。
 </p>
 
 <p>
-  所有時間為伺服器端時間 ([% local_timezone FILTER html %]) 。
+  所有时间为服务器端时间 ([% local_timezone FILTER html %]) 。
 </p>
 
 <form method="post" action="editwhines.cgi">
 [%# This hidden submit button must be here to set default behavior when
     the user presses return on a form input field #%]
-<input type="submit" value="更新／送出" name="commit"
+<input type="submit" value="更新／提交" name="commit"
        style="display: none;" id="commit">
 <input type="hidden" name="update" value="1">
 <input type="hidden" name="token" value="[% token FILTER html %]">
@@ -69,7 +69,7 @@
       事件：
     </th>
     <td align="right" colspan="2">
-      <input type="submit" value="刪除事件"
+      <input type="submit" value="删除事件"
              name="remove_event_[% event.key %]"
              id="remove_event_[% event.key %]">
     </td>
@@ -77,7 +77,7 @@
 
   <tr>
     <td valign="top" align="right">
-      電子郵件主旨：
+      电子邮件主题：
     </td>
     <td colspan="2">
       <input type="text" name="event_[% event.key %]_subject"
@@ -88,7 +88,7 @@
 
   <tr>
     <td valign="top" align="right">
-      在訂閱訊息中的描述文字：
+      在订阅消息中的描述文字：
     </td>
     <td colspan="2">
       [% INCLUDE global/textarea.html.tmpl
@@ -104,7 +104,7 @@
 
   <tr>
     <td valign="top" align="right">
-      即使搜尋結果沒有任何 [% terms.bugs %] ，仍然送出訊息：
+      即使搜索结果没有任何 [% terms.bugs %] ，仍然发送消息：
     </td>
     <td colspan="2">
       <input type="checkbox" name="event_[% event.key %]_mailifnobugs"
@@ -119,7 +119,7 @@
         排程：
       </td>
       <td class="unset" colspan="2">
-        無任何排程可執行<br>
+        无任何排程可执行<br>
         <input type="submit" value="新增排程"
                name="add_schedule_[% event.key %]"
                id="add_schedule_[% event.key %]">
@@ -137,11 +137,11 @@
         <table>
           <tr>
             <th>
-              執行間隔
+              执行间隔
             </th>
             <th>
               [% IF mail_others %]
-                寄電子郵件到
+                发邮件到
               [% END %]
             </th>
             <th>
@@ -171,7 +171,7 @@
                                       [% END %]>使用者</option>
                     <option value="1" [% IF schedule.mailto_type == 1 %]
                                         selected
-                                      [% END %]>群組</option>
+                                      [% END %]>群组</option>
                   </select>
                   <input type="hidden" name="orig_mailto_[% schedule.id %]"
                          value="[% schedule.mailto FILTER html %]">
@@ -180,7 +180,7 @@
                 [% END %]
               </td>
               <td align="left">
-                <input type="submit" value="刪除"
+                <input type="submit" value="删除"
                        name="remove_schedule_[% schedule.id %]"
                        id="remove_schedule_[% schedule.id %]">
               </td>
@@ -206,16 +206,16 @@
 
     <tr>
       <td valign="top" align="right">
-        搜尋：
+        搜索：
       </td>
       <td align="left">
-        無搜尋<br>
-        <input type="submit" value="新增搜尋"
+        无搜索<br>
+        <input type="submit" value="新增搜索"
                name="add_query_[% event.key %]"
                id="add_query_[% event.key %]">
       </td>
       <td align="right" valign="bottom">
-        <input type="submit" value="更新／送出" name="commit" id="update">
+        <input type="submit" value="更新／提交" name="commit" id="update">
       </td>
     </tr>
 
@@ -223,15 +223,15 @@
 
     <tr>
       <td valign="top" align="right">
-        搜尋：
+        搜索：
       </td>
       <td align="left" colspan="2">
 
         <table>
           <tr>
             <th>排序</th>
-            <th>搜尋</th>
-            <th>標題</th>
+            <th>搜索</th>
+            <th>标题</th>
             <th></th>
             <th></th>
           </tr>
@@ -263,10 +263,10 @@
                 <input type="checkbox" [% IF query.onemailperbug == 1 %] checked [% END %]
                        id="query_onemailperbug_[% query.id %]"
                        name="query_onemailperbug_[% query.id %]">
-                <label for="query_onemailperbug_[% query.id %]">每個 [% terms.bug %] 送出一封信</label>
+                <label for="query_onemailperbug_[% query.id %]">每个 [% terms.bug %] 送出一封信</label>
               </td>
               <td align="right">
-                <input type="submit" value="刪除"
+                <input type="submit" value="删除"
                        name="remove_query_[% query.id %]"
                        id="remove_query_[% query.id %]">
               </td>
@@ -276,12 +276,12 @@
 
           <tr>
             <td colspan="3">
-              <input type="submit" value="新增搜尋"
+              <input type="submit" value="新增搜索"
                      name="add_query_[% event.key %]"
                      id="add_query_[% event.key %]">
             </td>
             <td align="right" colspan="2">
-              <input type="submit" value="更新／送出" name="commit" id="update">
+              <input type="submit" value="更新／提交" name="commit" id="update">
             </td>
           </tr>
         </table>
@@ -316,7 +316,7 @@
     </select>
 
   [% ELSE %]
-    請瀏覽<a href="query.cgi">搜尋</a>頁面並儲存搜尋結果
+    请浏览<a href="query.cgi">搜索</a>页面并存储搜索结果
   [% END %]
 
 [%+ END %]
@@ -365,7 +365,7 @@
             ['29',   '每月29日',     ],
             ['30',   '每月30日',     ],
             ['31',   '每月31日',     ],
-            ['last', '每月最後一日', ],
+            ['last', '每月最后一天', ],
         ]
       %]
 
@@ -408,9 +408,9 @@
         [ '21',    '21:00',    ],
         [ '22',    '22:00',    ],
         [ '23',    '23:00',    ],
-        [ '60min', '每小時',   ],
-        [ '30min', '每30分鐘', ],
-        [ '15min', '每15分鐘', ],
+        [ '60min', '每小时',   ],
+        [ '30min', '每30分钟', ],
+        [ '15min', '每15分钟', ],
     ]
   %]
 

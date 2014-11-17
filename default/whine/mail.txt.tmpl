@@ -20,10 +20,10 @@
 [% body %]
 
 [% IF author.login == recipient.login %]
-  如要編輯你的訂閱排程，點選以下網址：
+  如要编辑你的订阅日程，点击以下网址：
   [%+ urlbase %]editwhines.cgi
 [% ELSE %]
-  此搜尋由[% author.login %]排定。
+  此搜索由[% author.login %]排定。
 [% END %]
 
 
@@ -52,10 +52,10 @@
   [% END %]
 
   [% IF author.login == recipient.login %]
-以 [% terms.bug %] 清單檢視： [% urlbase %]buglist.cgi?cmdtype=runnamed&namedcmd=[% query.name FILTER uri %]
+以 [% terms.bug %] 清单检查： [% urlbase %]buglist.cgi?cmdtype=runnamed&namedcmd=[% query.name FILTER uri %]
   [% END %]
   [% END %]
 [% ELSE %]
 
-  找不到符合搜尋標準的 [% terms.bugs %] 。
+  找不到符合搜索标准的 [% terms.bugs %] 。
 [% END %]

@@ -33,9 +33,9 @@
 
     <p align="left">
       [% IF author.login == recipient.login %]
-        <a href="[%+ urlbase FILTER html %]editwhines.cgi">點選此處以編輯你的訂閱排程</a>
+        <a href="[%+ urlbase FILTER html %]editwhines.cgi">点击此处以编辑你的订阅日程</a>
       [% ELSE %]
-        此搜尋結果由 [% author.login FILTER html %] 排定。
+        此搜索结果由 [% author.login FILTER html %] 排定。
       [% END %]
     </p>
 
@@ -46,7 +46,7 @@
 
     <table width="100%">
       <tr>
-        <th align="left">編號</th>
+        <th align="left">编号</th>
         [% FOREACH col = query.columnlist %]
           [% NEXT IF col == 'bug_id' %]
           <th align="left">[% field_descs.$col FILTER html %]</th>
@@ -73,7 +73,7 @@
   [% END %]
 [% ELSE %]
 
-  <h3>找不到符合搜尋標準的 [% terms.bugs %] 。</h3>
+  <h3>找不到符合搜索标准的 [% terms.bugs %] 。</h3>
 [% END %]
 
   </body>
