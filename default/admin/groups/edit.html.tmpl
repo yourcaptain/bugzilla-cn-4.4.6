@@ -14,7 +14,7 @@
   #               available values for each grant.
   #%]
 
-[% title = BLOCK %]變更群組： [% group.name FILTER html %][% END %]
+[% title = BLOCK %]变更群组： [% group.name FILTER html %][% END %]
 
 [% PROCESS global/header.html.tmpl
   title = title
@@ -37,7 +37,7 @@
 
   <table border="1" cellpadding="4">
     <tr>
-      <th>群組：</th>
+      <th>群组：</th>
       <td>
         [% IF group.is_bug_group %]
           <input type="text" name="name" size="60" value="[% group.name FILTER html %]"> [% ELSE %]
@@ -59,7 +59,7 @@
     </tr>
 
     <tr>
-      <th>使用者正規表達式：</th>
+      <th>使用者正则表达式：</th>
       <td>
         <input type="text" name="regexp" size="40"
                value="[% group.user_regexp FILTER html %]">
@@ -68,7 +68,7 @@
 
     <tr>
       <th>
-        圖示網址：
+        图标网址：
         [% IF group.icon_url %]
           <img src="[% group.icon_url FILTER html %]" alt="[% group.name FILTER html %]">
         [% END %]
@@ -81,7 +81,7 @@
 
     [% IF group.is_bug_group %]
       <tr>
-        <th>使用於 [% terms.Bugs %]：</th>
+        <th>使用于 [% terms.Bugs %]：</th>
         <td>
           <input type="checkbox" name="isactive"
                  value="1" [% 'checked="checked"' IF group.is_active %]>
@@ -91,16 +91,16 @@
     [% Hook.process('field') %]
   </table>
 
-  <h4>群組權限</h4>
+  <h4>群组权限</h4>
 
   <table class="grant_table">
     <tr>
-      <th class="one">屬於此群組成員的群組<br>
-        （以 <var>X</var> 標記的使用者已自動加入群組
+      <th class="one">属于此群组成员的群组<br>
+        （以 <var>X</var> 标记的使用者已自动加入群组
           [%+ group.name FILTER html %] ）</th>
-      <th>此群組屬於哪些群組的成員<br>
-        （如果你屬於群組 [% group.name FILTER html %]
-          ，你就自動屬於這些群組…）</th>
+      <th>此群组属于哪些群组的成员<br>
+        （如果你属于群组 [% group.name FILTER html %]
+          ，你就自动属于这些群组…）</th>
     </tr>
     <tr>
       <td class="one">
@@ -118,13 +118,13 @@
   <table class="grant_table">
     <tr>
       <th class="one">
-        可以授權成員加入此群組的群組<br>
-        （以 <var>X</var> 標記的用者可以將其他使用者加到
+        可以授权成员加入此群组的群组<br>
+        （以 <var>X</var> 标记的使用者可以将其他使用者加到
           [%+ group.name FILTER html %] ）
 
       </th>
-     <th>此群組可以授權成員加入其他群組<br>
-         （在 [% group.name FILTER html %] 群組的使用者可以加其他使用者到…）
+     <th>此群组可以授权成员加入其他群组<br>
+         （在 [% group.name FILTER html %] 群组的使用者可以加其他使用者到…）
      </th>
     </tr>
     <tr>
@@ -144,12 +144,12 @@
     <table class="grant_table">
       <tr>
         <th class="one">
-          可以看見此群組的群組<br>
-          （以 <var>X</var> 標記的使用者可以看見
-            [%+ group.name FILTER html %] 群組中的使用者）
+          可以看见此群组的群组<br>
+          （以 <var>X</var> 标记的使用者可以看见
+            [%+ group.name FILTER html %] 群组中的使用者）
         </th>
-       <th>此群組可以看見的群組<br>
-           （在 [% group.name FILTER html %] 群組中的使用者可以看見這些群組中的使用者…）
+       <th>此群组可以看见的群组<br>
+           （在 [% group.name FILTER html %] 群组中的使用者可以看见这些群组中的使用者…）
        </th>
       </tr>
       <tr>
@@ -166,23 +166,23 @@
     </table>
   [% END %]
 
-  <input type="submit" id="update-group" value="更新群組">
+  <input type="submit" id="update-group" value="更新群组">
   <input type="hidden" name="token" value="[% token FILTER html %]">
 </form>
 
 <h4>大量搬移</h4>
 
-<p>你可以用此表格來對群組中的使用者做大量搬移。
-   <br>如果你從 [% terms.Bugzilla %] 2.16 升級的話，這通常很有用。</p>
+<p>你可以用此表格来对群组中的使用者做大量搬移。
+   <br>如果你从 [% terms.Bugzilla %] 2.16 升级的话，这通常很有用。</p>
 
 <table><tr><td>
 <form method="post" action="editgroups.cgi">
   <fieldset>
-    <legend>刪除所有帳號符合下列正規表達式的使用者：</legend>
+    <legend>删除所有账号符合下列正则表达式的使用者：</legend>
     <input type="text" size="20" name="regexp">
-    <input type="submit" id="remove-membership" value="刪除">
+    <input type="submit" id="remove-membership" value="删除">
 
-    <p>如果不填，此群組所有的成員都會被刪除。</p>
+    <p>如果不填，此群组所有的成员都会被删除。</p>
 
     <input type="hidden" name="action" value="confirm_remove">
     <input type="hidden" name="group_id" value="[% group.id FILTER html %]">
@@ -190,7 +190,7 @@
 </form>
 </td></tr></table>
 
-<p>回到<a href="editgroups.cgi">群組清單</a>。</p>
+<p>回到<a href="editgroups.cgi">群组清单</a>。</p>
 
 [% PROCESS global/footer.html.tmpl %]
 
@@ -198,9 +198,9 @@
   <table class="select_pair">
     <tr>
       <th><label for="[% "${name}_add" FILTER html %]">新增<br>
-        （選擇要新增的）</label></th>
-      <th><label for="[% "${name}_remove" FILTER html %]">現有的群組<br>
-        （選擇要刪除的）</label></th>
+        （选择要新增的）</label></th>
+      <th><label for="[% "${name}_remove" FILTER html %]">现有的群组<br>
+        （选择要删除的）</label></th>
     </tr>
     <tr>
       <td>

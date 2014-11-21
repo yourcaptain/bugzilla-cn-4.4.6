@@ -15,14 +15,14 @@
 
 
 [% PROCESS global/header.html.tmpl
-  title = "刪除群組"
+  title = "删除群组"
   doc_section = "groups.html"
 %]
 
 <table border="1">
   <tr>
-    <th>編號</th>
-    <th>名稱</th>
+    <th>编号</th>
+    <th>名称</th>
     <th>描述</th>
   </tr>
   <tr>
@@ -35,15 +35,15 @@
 <form method="post" action="editgroups.cgi">
   [% IF group.members_non_inherited.size %]
     <p><b>[% group.members_non_inherited.size FILTER html %]
-      位使用者直屬於此群組。你無法在群組中還有使用者時刪除它。</b>
+      位使用者只属于此群组。你无法在群组中还有使用者时删除它。</b>
 
     <br><a href="editusers.cgi?action=list&amp;groupid=
-                 [%- group.id FILTER uri %]&amp;grouprestrict=1">顯示有哪些使用者</a>
-    - <label><input type="checkbox" name="removeusers">刪除此群組中的所有使用者。</label></p>
+                 [%- group.id FILTER uri %]&amp;grouprestrict=1">显示有哪些使用者</a>
+    - <label><input type="checkbox" name="removeusers">删除此群组中的所有使用者。</label></p>
   [% END %]
 
   [% IF group.granted_by_direct(constants.GROUP_MEMBERSHIP).size %]
-    <p><b>此群組的成員繼承了下列群組的成員資格：</b></p>
+    <p><b>此群组的成员继承了下列群组的成员资格：</b></p>
     <ul>
       [% FOREACH grantor = group.granted_by_direct(constants.GROUP_MEMBERSHIP) %]
         <li>[% grantor.name FILTER html %]</li>
@@ -52,19 +52,19 @@
   [% END %]
 
   [% IF group.bugs.size %]
-    <p><b>[% group.bugs.size FILTER html %] 個 [% terms.bug %] 回報屬於只有此群組可瀏覽。
-     你無法在群組中還有[% terms.bugs %]時刪除它。</b>
+    <p><b>[% group.bugs.size FILTER html %] 个 [% terms.bug %] 报告属于只有此群组可浏览。
+     你无法在群组中还有[% terms.bugs %]时删除它。</b>
 
     <br><a href="buglist.cgi?field0-0-0=bug_group&amp;type0-0-0=equals&amp;value0-0-0=
-                 [%- group.name FILTER uri %]">顯示有哪些 [% terms.bugs %]</a>
-    - <label><input type="checkbox" name="removebugs">刪除此群組中所有的[% terms.bugs %]限制。</label><p>
+                 [%- group.name FILTER uri %]">显示有哪些 [% terms.bugs %]</a>
+    - <label><input type="checkbox" name="removebugs">删除此群组中所有的[% terms.bugs %]限制。</label><p>
 
-    <p><b>注意：</b>這可能會使不公開的[% terms.bugs %]變為公開。<br>
-       <b>強烈</b>建議在勾選前，先瀏覽在此群組中的[% terms.bugs %]。</p>
+    <p><b>注意：</b>这可能会使不公开的[% terms.bugs %]变为公开。<br>
+       <b>强烈</b>建议在勾选前，先浏览在此群组中的[% terms.bugs %]。</p>
   [% END %]
 
   [% IF group.products.size %]
-    <p><b>此群組和以下產品仍有關係：</b></p>
+    <p><b>此群组和以下产品仍有关系：</b></p>
     [% SET any_hidden = 0 %]
     <ul>
       [% FOREACH data = group.products %]
@@ -100,42 +100,42 @@
           [%- data.product.name FILTER html %]</a>
           ([% active.join(', ') FILTER html %])
           [% IF hidden %]
-            <strong>警告：此產品目前設定為隱藏。
-            刪除此群組後，若無其他合適的群組時，將導致此產品變為公開。
+            <strong>警告：此产品目前设定为隐藏。
+            删除此群组后，若无其他合适的群组时，将导致此产品变为公开。
             </strong>
           [% END %]</li>
       [% END %]
     </ul>
 
-    <p><label><input type="checkbox" name="unbind">刪除此群組，並移除這些權限控管。</label></p>
+    <p><label><input type="checkbox" name="unbind">删除此群组，并移除这些权限控制。</label></p>
   [% END %]
 
   [% IF group.flag_types.size %]
-    <p><b>此群組限制誰可以對特定類型的旗標做變更。<br>
-       你無法在使用旗標類型時刪除此群組。</b>
+    <p><b>此群组限制谁可以对特定类型的旗标做变更。<br>
+       你无法在使用旗标类型时删除此群组。</b>
 
-    <br><a href="editflagtypes.cgi?action=list&amp;group=[% gid FILTER html %]">顯示有哪些類型</a>
-    - <input type="checkbox" name="removeflags">刪除此群組中的所有旗標類型。</p>
+    <br><a href="editflagtypes.cgi?action=list&amp;group=[% gid FILTER html %]">显示有哪些类型</a>
+    - <input type="checkbox" name="removeflags">删除此群组中的所有旗标类型。</p>
 
     <br><a href="editflagtypes.cgi?action=list&amp;group=
-                 [%- group.id FILTER uri %]">顯示有哪些類型</a>
-    - <label><input type="checkbox" name="removeflags">刪除此群組中的所有旗標類型。</label></p>
+                 [%- group.id FILTER uri %]">显示有哪些类型</a>
+    - <label><input type="checkbox" name="removeflags">删除此群组中的所有旗标类型。</label></p>
   [% END %]
 
   [% IF shared_queries %]
     <p>
-      <b>有 [% shared_queries %] 個已儲存的搜尋分享給此一群組。</b><br>
-      如果你刪除此群組，所有已儲存的搜尋都會再次設定為私人狀態。
+      <b>有 [% shared_queries %] 个已存储的搜索分享给此一群组。</b><br>
+      如果你删除此群组，所有已存储的搜索都会再次设定为私人状态。
     </p>
   [% END %]
 
-  <h2>確認</h2>
+  <h2>确认</h2>
 
-  <p>你確定要刪除此一群組嗎？</p>
+  <p>你确定要删除此群组吗？</p>
   [% IF group.users.size || group.bugs.size || group.products.size
         || group.flags.size
   %]
-    <p><b>你必須勾選以上所有勾選框，或更正已指出的問題後，才能繼續。</b></p>
+    <p><b>你必须勾选以上所有勾选框，或更正已指出的问题后，才能继续。</b></p>
   [% END %]
 
   <p>
@@ -146,6 +146,6 @@
   </p>
 </form>
 
-回到<a href="editgroups.cgi">群組清單</a>。
+回到<a href="editgroups.cgi">群组清单</a>。
 
 [% PROCESS global/footer.html.tmpl %]

@@ -12,9 +12,9 @@
   #%]
 
 [% IF regexp %]
-  [% title = "確認：刪除符合正規表達式的指定成員嗎？" %]
+  [% title = "确认：删除符合正则表达式的指定成员吗？" %]
 [% ELSE %]
-  [% title = "確認：刪除指定的成員嗎？" %]
+  [% title = "确认：删除指定的成员吗？" %]
 [% END %]
 
 [% PROCESS global/header.html.tmpl
@@ -23,16 +23,16 @@
 %]
 
 [% IF regexp %]
-  <p>此選項將會把符合下列正規表達式的所有使用者從
-     '[% group.name FILTER html %]' 群組中移除：<br>
+  <p>此选项将会把符合下列正则表达式的所有使用者从
+     '[% group.name FILTER html %]' 群组中移除：<br>
      '[% regexp FILTER html %]'</p>
 [% ELSE %]
-  <p>此選項將會自 '[% group.name FILTER html %]' 群組中移除所有指定的使用者。</p>
+  <p>此选项将会自 '[% group.name FILTER html %]' 群组中移除所有指定的使用者。</p>
 [% END %]
 
 <p>一般而言，你只有在替以[% terms.Bugzilla %]
-   2.16 或更早版本建立的群組升級時，才會用到這個選項。<br>
-   請<b>小心使用</b>，並閱讀使用說明以獲得更多資訊。
+   2.16 或更早版本建立的群组升級时，才会用到这个选项。<br>
+   请<b>小心使用</b>，并阅读使用说明以获得更多信息。
 </p>
 
 <form method="post" action="editgroups.cgi">
@@ -41,8 +41,8 @@
   <input type="hidden" name="action" value="remove_regexp">
 
   <input name="token" type="hidden" value="[% token FILTER html %]">
-  <input id="confirm" name="confirm" type="submit" value="確認">
-  <p>或<a href="editgroups.cgi">回到編輯群組頁</a>。</p>
+  <input id="confirm" name="confirm" type="submit" value="确认">
+  <p>或<a href="editgroups.cgi">回到编辑群组页</a>。</p>
 </form>
 
 [% PROCESS global/footer.html.tmpl %]
