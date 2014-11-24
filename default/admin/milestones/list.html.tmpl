@@ -15,7 +15,7 @@
 [% USE Bugzilla %]
 [% cgi = Bugzilla.cgi %]
 
-[% title = BLOCK %]選擇產品 '[% product.name FILTER html %]' 的里程碑[% END %]
+[% title = BLOCK %]选择产品 '[% product.name FILTER html %]' 的里程碑[% END %]
 [% PROCESS global/header.html.tmpl
   title = title
 %]
@@ -31,16 +31,16 @@
 [% columns = [
      {
        name => "name"
-       heading => "編輯里程碑…"
+       heading => "编辑里程碑…"
        contentlink => edit_contentlink
      },
      {
        name => "sortkey"
-       heading => "排序鍵"
+       heading => "排序键"
      },
      {
        name => "isactive"
-       heading => "啟用"
+       heading => "启用"
        yesno_field => 1
      }
    ]
@@ -60,8 +60,8 @@
 
 [% columns.push({
        name => "action"
-       heading => "動作"
-       content => "刪除"
+       heading => "动作"
+       content => "删除"
        contentlink => delete_contentlink
      })
 %]
@@ -69,7 +69,7 @@
 [%# We want to override the usual 'Delete' link for the default milestone %]
 [% overrides.action.name.${product.default_milestone} = {
      override_content => 1
-     content => "（預設里程碑）"
+     content => "（预设里程碑）"
      override_contentlink => 1
      contentlink => undef
    }
@@ -86,7 +86,7 @@
 [% IF ! showbugcounts %]
 
   <p><a href="editmilestones.cgi?product=[% product.name FILTER uri %]&amp;showbugcounts=1"
-     >以 [% terms.bug %] 數目重新顯示（較慢）</a></p>
+     >以 [% terms.bug %] 数目重新显示（较慢）</a></p>
 
 [% END %]
 

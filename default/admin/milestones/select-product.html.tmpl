@@ -12,13 +12,13 @@
   #%]
 
 [% PROCESS global/header.html.tmpl
-  title = "編輯哪一項產品的里程碑呢？"
+  title = "编辑哪一项产品的里程碑呢？"
 %]
 
 [% columns = [
      {
        name => "name"
-       heading => "選擇產品…"
+       heading => "选择产品…"
        contentlink => "editmilestones.cgi?product=%%name%%"
      },
      {
@@ -48,7 +48,7 @@
 
 [% IF !showbugcounts %]
   <p><a href="editmilestones.cgi?showbugcounts=1"
-     >以 [% terms.bug %] 數目重新顯示（較慢）</a></p>
+     >以 [% terms.bug %] 数目重新显示（较慢）</a></p>
 [% END %]
 
 [% PROCESS global/footer.html.tmpl %]

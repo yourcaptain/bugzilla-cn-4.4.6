@@ -13,7 +13,7 @@
   #                    milestone the user wants to edit.
   #%]
 
-[% title = BLOCK %]編輯產品 '[%- product.name FILTER html %]' 的里程碑 '[% milestone.name FILTER html %]'[% END %]
+[% title = BLOCK %]编辑产品 '[%- product.name FILTER html %]' 的里程碑 '[% milestone.name FILTER html %]'[% END %]
 [% PROCESS global/header.html.tmpl
   title = title
   onload = "document.forms['f'].milestone.select()"
@@ -28,12 +28,12 @@
       [%- milestone.name FILTER html %]"></td>
     </tr>
     <tr>
-      <th class="field_label"><label for="sortkey">排序鍵：</label></th>
+      <th class="field_label"><label for="sortkey">排序键：</label></th>
       <td><input id="sortkey" size="20" maxlength="20" name="sortkey" value="
       [%- milestone.sortkey FILTER html %]"></td>
     </tr>
     <tr>
-      <th class="field_label"><label for="isactive">開啟回報 [% terms.Bugs %] 功能：</label></th>
+      <th class="field_label"><label for="isactive">开启报告 [% terms.Bugs %] 功能：</label></th>
       <td><input id="isactive" name="isactive" type="checkbox" value="1"
                  [% 'checked="checked"' IF milestone.isactive %]></td>
     </tr>
@@ -42,7 +42,7 @@
   <input type="hidden" name="milestoneold" value="[% milestone.name FILTER html %]">
   <input type="hidden" name="action" value="update">
   <input type="hidden" name="product" value="[% product.name FILTER html %]">
-  <input type="submit" id="update" value="儲存設定">
+  <input type="submit" id="update" value="保存设定">
   <input type="hidden" name="token" value="[% token FILTER html %]">
 </form>
 

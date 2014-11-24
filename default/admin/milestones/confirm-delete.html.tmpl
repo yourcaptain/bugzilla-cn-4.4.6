@@ -13,7 +13,7 @@
   #                    milestone the user wants to delete.
   #%]
 
-[% title = BLOCK %]刪除產品 '[% product.name FILTER html %]' 的里程碑
+[% title = BLOCK %]删除产品 '[% product.name FILTER html %]' 的里程碑
   [% END %]
 
 [% PROCESS global/header.html.tmpl
@@ -23,7 +23,7 @@
 
 <table border="1" cellpadding="4" cellspacing="0">
 <tr bgcolor="#6666FF">
-  <th valign="top" align="left">欄位</th>
+  <th valign="top" align="left">字段</th>
   <th valign="top" align="left">值</th>
 </tr>
 <tr>
@@ -31,39 +31,39 @@
   <td valign="top">[% milestone.name FILTER html %]</td>
 </tr>
 <tr>
-  <td valign="top">產品名稱：</td>
+  <td valign="top">产品名称：</td>
   <td valign="top">[% product.name FILTER html %]</td>
 </tr>
 <tr>
   <td valign="top">[% terms.Bugs %] ：</td>
   <td valign="top">
 [% IF milestone.bug_count %]
-  <a title="列出里程碑在 '[% milestone.name FILTER html %]' 的 [% terms.bugs %] 清單"
+  <a title="列出里程碑在 '[% milestone.name FILTER html %]' 的 [% terms.bugs %] 清单"
      href="buglist.cgi?target_milestone=[% milestone.name FILTER uri %]&amp;product=
           [%- product.name FILTER uri %]"
           >[% milestone.bug_count FILTER none %]</a>
 [% ELSE %]
-  無
+  无
 [% END %]
   </td>
 </tr>
 </table>
 
-<h2>確認</h2>
+<h2>确认</h2>
 
 [% IF milestone.bug_count %]
 
   <p class="confirmation">
-    在此里程碑中還有 [% milestone.bug_count FILTER none %] 個 [%+ terms.bugs %] ！
-    <br>當你刪除此里程碑時，<b>所有</b> [% terms.bugs %] 的里程碑將會被指到
-    '[% product.name FILTER html %]' 產品的預設里程碑 [% product.default_milestone FILTER html %] 。
+    在此里程碑中还有 [% milestone.bug_count FILTER none %] 个 [%+ terms.bugs %] ！
+    <br>当你删除此里程碑时，<b>所有</b> [% terms.bugs %] 的里程碑将会被指到
+    '[% product.name FILTER html %]' 产品的预设里程碑 [% product.default_milestone FILTER html %] 。
   </p>
 [% END %]
 
-<p>你確定要刪除此里程碑嗎？</p>
+<p>你确定要删除此里程碑吗？</p>
 
 <form method="post" action="editmilestones.cgi">
-  <input type="submit" id="delete" value="是的，刪除">
+  <input type="submit" id="delete" value="是的，删除">
   <input type="hidden" name="action" value="delete">
   <input type="hidden" name="product" value="[% product.name FILTER html %]">
   <input type="hidden" name="milestone" value="[% milestone.name FILTER html %]">
