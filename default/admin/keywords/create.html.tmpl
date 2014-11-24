@@ -11,14 +11,14 @@
   #%]
 
 [% PROCESS global/header.html.tmpl
-  title = "新增關鍵字"
-  subheader = "此頁面允許你新增關鍵字。"
+  title = "新增关键字"
+  subheader = "此页面允许你新增关键字。"
 %]
 
 <form method="post" action="editkeywords.cgi">
   <table border="0" cellpadding="4" cellspacing="0">
     <tr>
-      <th align="right">名稱：</th>
+      <th align="right">名称：</th>
       <td><input size="64" maxlength="64" name="name" value=""></td>
     </tr>
     <tr>
@@ -40,6 +40,6 @@
   <input type="hidden" name="token" value="[% token FILTER html %]">
 </form>
 
-<p><a href="editkeywords.cgi">編輯其他關鍵字</a>。</p>
+<p><a href="editkeywords.cgi">编辑其他关键字</a>。</p>
 
 [% PROCESS global/footer.html.tmpl %]

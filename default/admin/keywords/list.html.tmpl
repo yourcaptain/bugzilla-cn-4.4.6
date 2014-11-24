@@ -15,13 +15,13 @@
   #%]
 
 [% PROCESS global/header.html.tmpl
-  title = "選擇關鍵字"
+  title = "选择关键字"
 %]
 
 [% columns = [
      {
        name => "name"
-       heading => "編輯關鍵字…"
+       heading => "编辑关键字…"
        contentlink => "editkeywords.cgi?action=edit&amp;id=%%id%%"
      },
      {
@@ -36,8 +36,8 @@
        contentlink => "buglist.cgi?keywords=%%name%%"
      },
      {
-       heading => "動作"
-       content => "刪除"
+       heading => "动作"
+       content => "删除"
        contentlink => "editkeywords.cgi?action=del&amp;id=%%id%%"
      }
    ]
@@ -49,6 +49,6 @@
      footer = footer_row
 %]
 
-<p><a href="editkeywords.cgi?action=add">新增一個關鍵字</a></p>
+<p><a href="editkeywords.cgi?action=add">新增一个关键字</a></p>
 
 [% PROCESS global/footer.html.tmpl %]

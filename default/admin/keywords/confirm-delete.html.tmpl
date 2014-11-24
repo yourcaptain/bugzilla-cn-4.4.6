@@ -11,13 +11,13 @@
   #%]
 
 [% PROCESS global/header.html.tmpl
-  title = "刪除關鍵字"
+  title = "删除关键字"
 %]
 
 <p>
-  在此組關鍵字中還有 [% keyword.bug_count FILTER html %] 個 [% terms.bugs %] 。
+  在此组关键字中海油 [% keyword.bug_count FILTER html %] 个 [% terms.bugs %] 。
 
-  你<b>確定</b>要刪除 <code>[% keyword.name FILTER html %]</code> 此關鍵字嗎？
+  你<b>确定</b>要删除 <code>[% keyword.name FILTER html %]</code> 此关键字吗？
 </p>
 
 <form method="post" action="editkeywords.cgi">
@@ -25,9 +25,9 @@
   <input type="hidden" name="action" value="delete">
   <input type="hidden" name="token" value="[% token FILTER html %]">
   <input type="submit" id="delete"
-         value="是的，確認刪除該關鍵字">
+         value="是的，确认删除该关键字">
 </form>
 
-<p><a href="editkeywords.cgi">編輯其他關鍵字</a>。</p>
+<p><a href="editkeywords.cgi">编辑其他关键字</a>。</p>
 
 [% PROCESS global/footer.html.tmpl %]
