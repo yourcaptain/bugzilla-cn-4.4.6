@@ -14,13 +14,13 @@
 
 [% IF Param('useclassification') %]
   <tr>
-    <th align="right">分類：</th>
+    <th align="right">分类：</th>
     <td><b>[% classification.name FILTER html %]</b></td>
   </tr>
 [% END %]
 
 <tr>
-  <th align="right">產品：</th>
+  <th align="right">产品：</th>
   <td><input size="64" maxlength="64" name="product"
              value="[% product.name FILTER html %]">
   </td>
@@ -33,15 +33,15 @@
 </tr>
 
 <tr>
-  <th align="right">允許回報 [% terms.bug %] ：</th>
+  <th align="right">允许报告 [% terms.bug %] ：</th>
   <td><input type="checkbox" name="is_active" value="1"
        [% ' checked="checked"' IF product.is_active %]>
   </td>
 </tr>
 <tr>
   <th align="right">
-    <label for="allows_unconfirmed">在此產品中允許
-      [%+ display_value('bug_status', 'UNCONFIRMED') FILTER html %] 狀態：
+    <label for="allows_unconfirmed">在此产品中允许
+      [%+ display_value('bug_status', 'UNCONFIRMED') FILTER html %] 状态：
       </label>
   </th>
   <td><input type="checkbox" id="allows_unconfirmed" name="allows_unconfirmed"
@@ -51,7 +51,7 @@
 
 [% IF Param('usetargetmilestone') -%]
   <tr>
-    <th align="right">預設里程碑：</th>
+    <th align="right">预设里程碑：</th>
     <td>
       [% IF product.milestones.size %]
         <select name="defaultmilestone">

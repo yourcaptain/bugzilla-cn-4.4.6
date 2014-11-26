@@ -20,18 +20,18 @@
     [%- classification.name FILTER uri %]
   [%- END %]
   [% classification_title = BLOCK %]
-    分類 '[% classification.name FILTER html %]' 中的
+    分类 '[% classification.name FILTER html %]' 中的
   [% END %]
 [% END %]
 
 [% PROCESS global/header.html.tmpl
-  title = "選擇${classification_title}產品"
+  title = "选择${classification_title}产品"
 %]
 
 [% columns = [
      {
        name => "name"
-       heading => "編輯產品…"
+       heading => "编辑产品…"
        contentlink => 'editproducts.cgi?action=edit&amp;product=%%name%%'
      },
      {
@@ -41,7 +41,7 @@
      },
      {
        name => "is_active"
-       heading => "允許回報新的 $terms.bugs"
+       heading => "允许报告新的 $terms.bugs"
        yesno_field => 1
      }
 ] %]
@@ -50,7 +50,7 @@
 
   [% columns.push({
        name => "bug_count"
-       heading => "$terms.Bug 數目"
+       heading => "$terms.Bug ·数目"
        align => 'right'
        contentlink => 'buglist.cgi?product=%%name%%'
      })
@@ -59,8 +59,8 @@
 [% END %]
 
 [% columns.push({
-       heading => "動作"
-       content => "刪除"
+       heading => "动作"
+       content => "删除"
        contentlink => 'editproducts.cgi?action=del&amp;product=%%name%%'
      })
 %]
@@ -75,7 +75,7 @@
 [% IF !showbugcounts %]
 
   <p><a href="editproducts.cgi?showbugcounts=1[% classification_url_part %]"
-     >以 [% terms.bug %] 數目重新顯示（較慢）</a></p>
+     >以 [% terms.bug %] 数目重新显示（较慢）</a></p>
 
 [% END %]
 

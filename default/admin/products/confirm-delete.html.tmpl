@@ -16,7 +16,7 @@
   #
   #%]
 
-[% title = BLOCK %]刪除產品 '[% product.name FILTER html %]'
+[% title = BLOCK %]删除产品 '[% product.name FILTER html %]'
 [% END %]
 
 [% PROCESS global/header.html.tmpl
@@ -26,30 +26,30 @@
 
 <table border="1" cellpadding="4" cellspacing="0">
   <tr bgcolor="#6666FF">
-    <th valign="top" align="left">欄位</th>
+    <th valign="top" align="left">字段</th>
     <th valign="top" align="left">值</th>
   </tr>
 
   [% IF Param('useclassification') %]
     <tr>
-      <td>分類：</td>
+      <td>分类：</td>
       <td>[% classification.name FILTER html %]</td>
     </tr>
     <tr>
-      <td>分類描述：</td>
+      <td>分类描述：</td>
       [%# descriptions are intentionally not filtered to allow html content %]
       <td>
         [% IF classification.description %]
           [% classification.description FILTER html_light %]
         [% ELSE %]
-          <span style="color: red">無</span>
+          <span style="color: red">无</span>
         [% END %]
       </td>
     </tr>
   [% END %]
 
   <tr>
-    <td valign="top">產品：</td>
+    <td valign="top">产品：</td>
     <td valign="top">
       <a href="editproducts.cgi?product=[% product.name FILTER uri %]">
         [%- product.name FILTER html %]</a>
@@ -62,7 +62,7 @@
       [% IF product.description %]
         [% product.description FILTER html_light %]
       [% ELSE %]
-        <span style="color: red">無</span>
+        <span style="color: red">无</span>
       [% END %]
     </td>
   </tr>

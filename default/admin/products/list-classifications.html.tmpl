@@ -15,13 +15,13 @@
   #%]
 
 [% PROCESS global/header.html.tmpl
-  title = "選擇分類"
+  title = "选择分类"
 %]
 
 [% columns = [
      {
        name => "name"
-       heading => "選擇分類…"
+       heading => "选择分类…"
        contentlink => 'editproducts.cgi?classification=%%name%%'
      },
      {
@@ -32,15 +32,15 @@
      {
        name => "product_count"
        align => "right"
-       heading => "產品數"
+       heading => "产品数"
      }
    ]
 %]
 
 [% IF user.in_group('editcomponents') %]
   [% columns.push({
-       heading => "動作…"
-       content => "新增產品"
+       heading => "动作…"
+       content => "新增产品"
        contentlink => 'editproducts.cgi?action=add&amp;classification=%%name%%' })
   %]
 [% END %]
