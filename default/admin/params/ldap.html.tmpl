@@ -8,29 +8,29 @@
 
 [%
    title = "LDAP"
-   desc = "在選擇 LDAP 做為認證方式前，請先設定"
+   desc = "在选择 LDAP 作为认证方式前，请先设定"
 %]
 
 [% param_descs = {
-  LDAPserver => "你的 LDAP 伺服器的位址（以及連接埠）。" _
+  LDAPserver => "你的 LDAP 服务器的位址（以及连接埠）。" _
                 "例如： <code>ldap.company.com</code> 或 <code>ldap.company.com:portnum</code> 。<br>" _
-                "也可以使用 URI 語法，例如 ldaps://ldap.company.com （安全連線）或 " _
-                "ldapi://%2fvar%2flib%2fldap_sock （以 socket 為基礎的本機連線）。<br>" _
-                "若有多筆伺服器名稱或 URI ，可以用半形逗號 (,) 分隔；會輪流試到連上為止。",
+                "也可以使用 URI 语法，例如 ldaps://ldap.company.com （安全连接）或 " _
+                "ldapi://%2fvar%2flib%2fldap_sock （以 socket 为基础的本机连接）。<br>" _
+                "若有多个服务器名称或 URI ，可以用半角逗号 (,) 分隔；轮流试到连上为止。",
 
-  LDAPstarttls => "當可以接受 LDAP 正常連線到伺服器時，是否要求通訊加密。",
+  LDAPstarttls => "当可以接受 LDAP 正常连接到服务器时，是否要求通信加密。",
 
-  LDAPbinddn => "如果你的 LDAP 伺服器需要你使用 binddn 及密碼，而非匿名使用 bind 時，在此輸入。" _
+  LDAPbinddn => "如果你的 LDAP 服务器需要你使用 binddn 及密码，而非匿名使用 bind 时，在此输入。" _
                 "例如： cn=default,cn=user:password 。<br>" _
-                "若為匿名使用 bind 時，請設為空白。",
+                "若为匿名使用 bind 时，请设为空白。",
 
-  LDAPBaseDN => "認證使用者所使用的 BaseDN 。例如 ou=People,o=Company 。",
+  LDAPBaseDN => "认证使用者所使用的 BaseDN 。例如 ou=People,o=Company 。",
 
   LDAPuidattribute => "包括使用者帳號的屬性名稱。",
 
-  LDAPmailattribute => "在目錄中包含電子郵件地址，做為 $terms.Bugzilla 帳號使用的使用者的屬性名稱。<br>" _
-                       "若設為空白，則 $terms.Bugzilla 會使用 LDAP 的使用者名稱做為 $terms.Bugzilla 的使用者名稱。" _
-                       "你可能也會想要設定 'emailsuffix' 參數。",
+  LDAPmailattribute => "在目录中包含电子邮件地址，作为 $terms.Bugzilla 账号使用的使用者的属性名称。<br>" _
+                       "若设为空白，则 $terms.Bugzilla 会使用 LDAP 的使用者名称作为 $terms.Bugzilla 的使用者名称。" _
+                       "你可能也会想要设定 'emailsuffix' 参数。",
 
-  LDAPfilter => "過濾有效的使用者清單所使用，到 AND 的過濾條件；和 <tt>LDAPuidattribute</tt> 一併使用。" }
+  LDAPfilter => "过滤有效的使用者清单所使用，到 AND 的过滤条件；和 <tt>LDAPuidattribute</tt> 一并使用。" }
 %]

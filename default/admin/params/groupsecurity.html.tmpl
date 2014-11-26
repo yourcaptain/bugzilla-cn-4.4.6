@@ -7,31 +7,31 @@
   #%]
 
 [%
-   title = "群組安全性"
-   desc = "設定群組安全性"
+   title = "群组安全性"
+   desc = "设定群组安全性"
 %]
 
 [% param_descs = {
-  makeproductgroups => "若設為開， $terms.Bugzilla 將會對資料庫中的每項產品做出 $terms.bug 的群組關連，" _
-                       "並用於查詢 $terms.bugs 中。",
+  makeproductgroups => "若设为开， $terms.Bugzilla 将会对数据库中的每项产品做出 $terms.bug 的群组关联，" _
+                       "并用于查询 $terms.bugs 中。",
 
-  chartgroup => "設定可以使用「新圖表」功能的使用者群組名稱。" _
-                "在對不受信任的大眾啟用此功能前，管理者應該確認所有公開的分類及系列定義並不會洩漏機密資訊。" _
-                "若設為空白，則不允許任何使用者使用該功能。",
+  chartgroup => "设定可以使用「新图表」功能的使用者群组名称。" _
+                "在对不受信任的大众启用此功能前，管理者应该确认所有公开的分类及系列定义并不会泄露机密信息。" _
+                "若设为空白，则不允许任何使用者使用该功能。",
 
-  insidergroup => "設定可以看見並更改不公開的意見及附件的使用者群組名稱。",
+  insidergroup => "设定可以看见并更改不公开的意见及附件的使用者群组名称。",
 
-  timetrackinggroup => "設定可以看見並更改時間追蹤資訊的使用者群組名稱。",
+  timetrackinggroup => "设定可以看见并更改时间追踪信息的使用者群组名称。",
 
-  querysharegroup => "設定可以分享己儲存的搜尋給其他人的使用者群組名稱。",
+  querysharegroup => "设定可以分享已存储的搜索给他人的使用者群组名称。",
 
-  debug_group => "在查看 $terms.bug 清單和報告時，可以看見實際產生的 SQL 內容的使用者群組名稱。",
+  debug_group => "在查看 $terms.bug 清单和报告时，可以看见实际产生的 SQL 內容的使用者群组名称。",
 
   usevisibilitygroups => "是否要限制特定群組的成員才能看見使用者？",
 
-  strict_isolation => "當使用者被禁止編輯一項產品中的 $terms.bug 時，" _
-                      "也不允許使用者被分配、被設為 QA 連絡人、被加入寄件副本清單、變更依賴關係" _
-                      "或其他任何和 $terms.bug 有關的活動。",
+  strict_isolation => "当使用者被禁止编辑一项产品中的 $terms.bug 时，" _
+                      "也不允许使用者被分配、被设为 QA 联络人、被加入邮件抄送清单、变更依賴关系" _
+                      "或其他任何和 $terms.bug 有关的活动。",
 
  }
 %]

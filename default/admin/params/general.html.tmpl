@@ -8,50 +8,50 @@
 
 [%
    title = "一般"
-   desc = "非必要的一般雜項設定。"
+   desc = "非必要的一般杂项设定。"
 %]
 
 [% param_descs = {
-  maintainer => "安裝 $terms.Bugzilla 機器的維護者的電子郵件地址。",
+  maintainer => "安装 $terms.Bugzilla 机器的维护者的电子邮件地址。",
 
   docs_urlbase =>
-    "所有 $terms.Bugzilla 說明文件的網址。"
-    _ "可以是絕對路徑，也可以是相對於 <tt>urlbase</tt> 參數的相對路徑。"
-    _ "若設為空白，則不允許連結說明文件。"
-    _ " '%lang%' 會被取代為使用者喜好的語言（如果有的話）。",
+    "所有 $terms.Bugzilla 说明文件的网址。"
+    _ "可以是绝对路径，也可以是相对于 <tt>urlbase</tt> 参数的相对路径。"
+    _ "若设为空白，则不允许关联说明文件。"
+    _ " '%lang%' 会被取代为使用者喜好的语言（如果有的话）。",
 
   utf8 =>
-    "在 $terms.Bugzilla 裡所有的文字均使用 UTF-8 (Unicode) 編碼。"
-    _ "新安裝的 $terms.Bugzilla 應該設為「開」，以避免字元編碼問題。<br>"
-    _ "<strong>已存在的資料庫只有在資料從現有編碼執行 "
-    _ "<kbd>contrib/recode.pl</kbd> 轉換為 UTF-8 之後，"
-    _ "才可以設為「開」。</strong>"
-    _ "<p>注意：若你將此參數從「關」設為「開」，則設定完後必須立刻執行 <kbd>checksetup.pl</kbd> 。</p>",
+    "在 $terms.Bugzilla 里所有的文字均使用 UTF-8 (Unicode) 编码。"
+    _ "新安装的 $terms.Bugzilla 应该设为「开」，以避免字符编码问题。<br>"
+    _ "<strong>已存在的数据库只有在文件从现有编码执行 "
+    _ "<kbd>contrib/recode.pl</kbd> 转换为 UTF-8 之后，"
+    _ "才可以设为「开」。</strong>"
+    _ "<p>注意：若你將此参数从「关」设为「开」，则设定完后必须立刻执行 <kbd>checksetup.pl</kbd> 。</p>",
 
   shutdownhtml =>
-    "如果此欄位並非空白，那麼將會完全停用 $terms.Bugzilla ，"
-    _ "並在每一個 $terms.Bugzilla 頁面顯示以下的訊息。",
+    "如果此字段并非空白，那么将会完全停用 $terms.Bugzilla ，"
+    _ "并在每一个 $terms.Bugzilla 页面显示以下的信息。",
 
   announcehtml =>
-    "如果此欄位並非空白，那麼 $terms.Bugzilla 將在每個 HTML"
-    _ " 頁面上方顯示此欄位內容。在此欄位中的 HTML 將不會自動斷行，"
-    _ "因此如需斷行，可以將需斷行的文字放在 <tt>&lt;div&gt;</tt> 中。"
-    _ "使用 <em>id=message</em> 可以得到紅框包圍的綠色文字，"
-    _ "而 <em>class=bz_private</em> 則是紅色背景的暗紅色字。"
+    "如果此字段并非空白，那么 $terms.Bugzilla 将在每个 HTML"
+    _ " 页面上方显示此字段內容。在此字段中的 HTML 将不会自动换行，"
+    _ "因此如需换行，可以将需换行的文字放在 <tt>&lt;div&gt;</tt> 中。"
+    _ "使用 <em>id=message</em> 可以得到红框包围的了绿文字，"
+    _ "而 <em>class=bz_private</em> 则是红色背景的暗红色字。"
     _ "所有在 <tt>skins/standard/global.css</tt> 或"
-    _ " <tt>skins/custom/global.css</tt> 中定義的樣式將會生效。"
-    _ "若要將文字置中，請使用 <em>style=\"text-align: center;\"</em> 。",
+    _ " <tt>skins/custom/global.css</tt> 中定义的样式将会生效。"
+    _ "若要将文字居中，请使用 <em>style=\"text-align: center;\"</em> 。",
 
   upgrade_notification =>
-    "<p>$terms.Bugzilla 可以通知你是否有新釋出的版本可用。"
-    _ "此通知將會顯示於 $terms.Bugzilla 的首頁，僅供管理者參考。</p>"
-    _ "<ul><li>development_snapshot ：在 trunk 有最新釋出時通知，也就是"
+    "<p>$terms.Bugzilla 可以通知你是否有新发布的版本可用。"
+    _ "此通知将会显示于 $terms.Bugzilla 的首页，仅供管理员参考。</p>"
+    _ "<ul><li>development_snapshot ：在 trunk 有最新发布时通知，也就是"
     _ " development snapshot 。</li>"
-    _ "<li>latest_stable_release ：在最新的穩定 branch 版本上有最新釋出可用。"
-    _ "這個 branch 的版本可能和你安裝的版本不同。</li>"
-    _ "<li>stable_branch_release ：根據你目前安裝的 branch 版本通知相關更新。"
-    _ "如果你安裝的是 release candidate (RC) 版本，在有新的 RC 時也會通知你。</li>"
-    _ "<li>停用 (disabled) ：不會通知有新版本，也不會連線到遠端伺服器。</li></ul>"
-    _ "<p>注意：如果你的 $terms.Bugzilla 伺服器需要代理伺服器才能連線至網路，"
-    _ "你也需要在「進階」選項裡設定 <tt>proxy_url</tt> 此參數。</p>",
+    _ "<li>latest_stable_release ：在最新的稳定 branch 版本上有最新发布可用。"
+    _ "这个 branch 的版本可能和你安装的版本不同。</li>"
+    _ "<li>stable_branch_release ：根据你目前安装的 branch 版本通知相关更新。"
+    _ "如果你安装的是 release candidate (RC) 版本，在有新的 RC 时也会通知你。</li>"
+    _ "<li>停用 (disabled) ：不会通知有新版本，也不会连接到远程服务器。</li></ul>"
+    _ "<p>注意：如果你的 $terms.Bugzilla 服务器需要代理服务器才能连接至网络，"
+    _ "你也需要在「高级」选项里设定 <tt>proxy_url</tt> 此参数。</p>",
 } %]

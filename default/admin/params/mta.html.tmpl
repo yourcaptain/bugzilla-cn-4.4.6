@@ -7,50 +7,50 @@
   #%]
 
 [%
-   title = "電子郵件"
-   desc = "電子郵件將如何寄出？"
+   title = "电子邮件"
+   desc = "电子邮件将如何发送？"
 %]
 
 [% param_descs = {
-  mail_delivery_method => "定義電子郵件如何寄送。<br>
+  mail_delivery_method => "定义电子邮件将如何发送。<br>
                            <ul>
                              <li>
                                'Sendmail'、'SMTP' 以及 'Qmail' 都是 MTA 。如果你想在
-                               windows 上使用 sendmail 功能，你必須安裝第三方的 sendmail 軟體。
+                               windows 上使用 sendmail 功能，你必须安装第三方的 sendmail 软件。
                              </li>
                              <li>
-                               測試 (Test) 在 debug 時很有用，所有的電子郵件都儲存在
-                               'data/mailer.testfile' 而不寄送。
+                               测试 (Test) 在 debug 时很有用，所有的电子邮件都存储在
+                               'data/mailer.testfile' 而不发送。
                              </li>
                              <li>
-                               無 (none)：不寄送郵件。 $terms.Bugzilla
-                               仍會視為將相關動作視為寄送郵件，但實際上並未寄送或儲存任何郵件。
+                               无 (none)：不发送邮件。 $terms.Bugzilla
+                               仍会视为将相关动作视为发送邮件，但实际上并未发送或存储任何邮件。
                              </li>
                            </ul>",
 
-  mailfrom => "$terms.Bugzilla mail daemon 的電子郵件地址。有些電子郵件系統要求這必須是有效的電子郵件地址。",
+  mailfrom => "$terms.Bugzilla mail daemon 的电子邮件地址。有些电子邮件系统要求这必须是有效的电子邮件地址。",
 
-  use_mailer_queue => "在一個大型的 $terms.Bugzilla 專案上，由於 $terms.Bugzilla 會一次寄送所有信件的緣故，導致更新 $terms.bugs 可能會很慢。<br>" _
-                      "如果你開啟此參數， $terms.Bugzilla 會把所有的信件排程後，於背景執行寄送程序。<br>" _
-                      "開啟此參數前，請確認你已經安裝了在 <kbd>checksetup.pl</kbd> 中列出的特定 Perl 模組，並且已執行 <code>jobqueue.pl</code> daemon ，否則 $terms.Bugzilla 並不會寄信。<br>" _
-                      "此參數不是只會影響送出的 $terms.bug 通知信，而是會影響所有 $terms.Bugzilla 的信件。",
+  use_mailer_queue => "在一个大型的 $terms.Bugzilla 专案上，由于 $terms.Bugzilla 会一次发送所有信件的缘故，导致更新 $terms.bugs 可能会很慢。<br>" _
+                      "如果你开启此参数， $terms.Bugzilla 会把所有的信件排程后，于后台执行发送程序。<br>" _
+                      "开启此参数前，请确认你已经安装了在 <kbd>checksetup.pl</kbd> 中列出的特定 Perl 模块，并且已执行 <code>jobqueue.pl</code> daemon ，否则 $terms.Bugzilla 并不会发送邮件。<br>" _
+                      "此参数不是只会影响发出的 $terms.bug 通知邮件，而是会影响所有 $terms.Bugzilla 的邮件。",
 
-  smtpserver => "若使用 SMTP 做為郵件傳遞方式時， SMTP 的伺服器地址。",
+  smtpserver => "若使用 SMTP 作为邮件传送方式時， SMTP 的服务器地址。",
 
-  smtp_username => "使用於 SMTP 伺服器，供 SMTP 認證用的使用者名稱。" _
-                   "如果你的 SMTP 伺服器無需認證，則此欄位留白。",
+  smtp_username => "使用于 SMTP 服务器，供 SMTP 认证用的使用者名称。" _
+                   "如果你的 SMTP 服务器需要认证，则此字段留白。",
 
-  smtp_password => "使用於 SMTP 伺服器，供 SMTP 認證用的密碼。" _
-                   "如果 smtp_username 參數留白時，此欄位無作用。",
+  smtp_password => "使用於 SMTP 服务器，供 SMTP 认证用的密码。" _
+                   "如果 smtp_username 参数留白時，此字段无作用。",
 
-  smtp_ssl => "啟用 SMTP 的 SSL 支援。",
+  smtp_ssl => "启用 SMTP 的 SSL 支持。",
 
-  smtp_debug => "若設為「開」，則將會在 $terms.Bugzilla 和 SMTP 伺服器連線發生錯誤時，" _
-                "會將詳細資訊記錄在網頁伺服器的 log 檔。你可以用此功能來對電子郵件的問題進行故障排除。",
+  smtp_debug => "若设为「开」，则将会在 $terms.Bugzilla 和 SMTP 服务器连接发生错误时，" _
+                "会将详细信息记录在网页服务器的 log 文件。你可以用此功能来对电子邮件的问题进行故障排除。",
 
-  whinedays => "在系統的 cronjob 提醒擁有 $terms.bug 的人之前，系統允許一個 $terms.bug 處於確認的 (CONFIRMED)狀態且仍未被處理的天數。<br>" _
-               "若設為 0 ，則會停用訂閱功能。",
+  whinedays => "在系统的 cronjob 提醒拥有 $terms.bug 的人之前，系统允许一个 $terms.bug 处于确认的 (CONFIRMED)状态且仍未被处理的天数。<br>" _
+               "若设为 0 ，则会停用订阅功能。",
 
-  globalwatchers => "以半形逗號 (,) 分隔的清單。此清單將會收到系統所寄出的每一封通知信。" }
+  globalwatchers => "以半角逗号 (,) 分隔的清单。此清单将会收到系统所发出的每一封通知邮件。" }
 
 %]

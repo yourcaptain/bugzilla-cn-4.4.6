@@ -7,24 +7,24 @@
   #%]
 
 [%
-   title = "Shadow 資料庫"
-   desc = "增加資料庫效能的選項"
+   title = "Shadow 数据库"
+   desc = "增加数据库性能的选项"
 %]
 
 [% param_descs = {
-  shadowdbhost => "Shadow 資料庫在的主機。",
+  shadowdbhost => "Shadow 数据库在的主机。",
 
-  shadowdbport => "Shadow 資料庫所在的連接埠。若 <tt>shadowdbhost</tt> 設為空白，則會忽略此設定。" _
-                  "注意：如果主機是本地的機器，那麼 MySQL 會忽略此設定，因此你必須在下方指定 socket 。",
+  shadowdbport => "Shadow 数据库所在的连接埠。若 <tt>shadowdbhost</tt> 设为空白，则会忽略此设定。" _
+                  "注意：如果主机是本地的机器，那么 MySQL 会忽略此设定，因此你必须在下方指定 socket 。",
 
-  shadowdbsock => "如果主機是本地的機器的話，此選項用來指定連線到 shadow 資料庫的 socket 。" _
-                  "因為在從客戶端連線到本地伺服器時， MySQL 會忽略客戶端所指定的連接埠，" _
-                  "而使用它內建（在 unix 機器上）的 socket 路徑連線。" _
-                  "如果設為空白，並且在 localhost 安裝資料庫的話， " _
-                  "<tt>shadowdbport</tt> 參數將被忽略。",
+  shadowdbsock => "如果主机是本地的机器的話，此选项用来指定连接到 shadow 数据库的 socket 。" _
+                  "因此在从客户端连到本地服务器时， MySQL 会忽略客户端所指定的连接埠，" _
+                  "而使用它內建（在 unix 机器上）的 socket 路径连接。" _
+                  "如果设为空白，并且在 localhost 安装数据库的话， " _
+                  "<tt>shadowdbport</tt> 参数将被忽略。",
 
-  shadowdb => "如果不設為空白，那麼這就是另一個資料庫的名稱，並且被 $terms.Bugzilla 用來做唯讀的複製備份。" _
-              "這麼做的好處是在執行又長又慢的唯讀程序時，可以使用此一資料庫，而不會讓其他人因此鎖死。" _
-              "這個資料庫必須設在 <tt>shadowdbhost</tt> 上，且必須存在。 " _
-              "$terms.Bugzilla 並不會更新它，因此如果你使用此一參數，那麼你必須替你的資料庫設定複製。" }
+  shadowdb => "如果不设为空白，那么这就是另一个资料库的名称，并且被 $terms.Bugzilla 用来做只读的复制备份。" _
+              "这么做的好处是在执行又长又慢的只读程序时，可以使用此一数据库，而不会让其他人因此锁死。" _
+              "这个数据库必须设在 <tt>shadowdbhost</tt> 上，且必须存在。 " _
+              "$terms.Bugzilla 并不会更新它，因此如果你使用此一参数，那么你必须替你的数据库设定复制。" }
 %]

@@ -7,49 +7,49 @@
   #%]
 
 [%
-   title = "預設查詢值"
-   desc = "預設的查詢值和 $terms.bug 清單"
+   title = "预设查询值"
+   desc = "预设查询值和 $terms.bug 清单"
 %]
 
 [% param_descs = {
-  quip_list_entry_control => "控制使用者加入智語的容易度。
+  quip_list_entry_control => "控制使用者加入智语的容易度。
                               <ul>
                                 <li>
-                                  開啟 (open) ：使用者可以輸入智語，並會立即顯示。
+                                  开启 (open) ：使用者可以输入智语，并会立即显示。
                                 </li>
                                 <li>
-                                  認證 (moderated) ：可以輸入智語，但必須經由可認證者認證後才會顯示。
+                                  认证 (moderated) ：可以输入智语，但必须经由可认证者认证后才会显示。
                                 </li>
                                 <li>
-                                  關閉 (closed) ：不允許輸入新的智語。
+                                  关闭 (closed) ：不允许输入新的智语。
                                 </li>
                               </ul>",
 
-  mostfreqthreshold => "一個 $terms.bug 最少要重複幾次才會出現在" _
-                       "<a href=\"duplicates.cgi\">最常回報的 $terms.bugs 頁面</a>中。" _
-                       "如果你的資料庫十分龐大，讓此頁面需以較長的時間載入，" _
-                       "試著增加此數值。",
+  mostfreqthreshold => "一个 $terms.bug 最少要重复几次才会出现在" _
+                       "<a href=\"duplicates.cgi\">最常报告的 $terms.bugs 页面</a>中。" _
+                       "如果你的数据库十分庞大，让此页面需以较长的时间载入，" _
+                       "试着增加此数值。",
 
-  mybugstemplate => "這是讓使用者簡單列出「我所有的 $terms.bugs 」清單的網址。" _
-                    " %userid% 會被取代為該使用者的帳號。",
+  mybugstemplate => "这是让使用者简单列出「我所有的 $terms.bugs 」清单的网址。" _
+                    " %userid% 会被取代为该使用者的账号。",
 
-  defaultquery => "當使用者瀏覽「進階搜尋」頁時的預設查詢。這是網址的參數格式，因此較為難以閱讀，十分抱歉。",
+  defaultquery => "当使用者浏览「高级查询」页时的预设查询。这是网址的参数格式，因此较为难以阅读，十分抱歉。",
 
   search_allow_no_criteria =>
-    "除非程式裡明確允許傳回所有的 $terms.bugs ，否則這個選項將可阻擋沒有條件 (criteria) 的搜尋。" _
-    "當設為「關」，搜尋都必須指定一些條件，以限制傳給使用者的 $terms.bugs 數量。" _
-    "當設為「開」，使用者將可以不帶任何條件進行搜尋，並傳回他所能看到的所有 $terms.bugs 的清單。" _
-    "在資料庫較大的 $terms.Bugzilla 上不建議將此選項開啟。",
+    "除非程序里明确允许回传所有的 $terms.bugs ，否则这个选项将可阻止没有条件 (criteria) 的查询。" _
+    "当设为「关」，查询都必须指定一些条件，以限制传给使用者的 $terms.bugs 数量。" _
+    "当设为「开」，使用者将可以不带任何条件进行查询，并回传他所能看到的所有 $terms.bugs 的清单。" _
+    "在数据库较大的 $terms.Bugzilla 上不建议将此选项开启。",
 
   default_search_limit =>
-    "因為效能因素， $terms.Bugzilla 預設限制在網頁介面的搜尋只回傳這麼多筆數。" _
-    "（此參數只影響 HTML 格式的搜尋結果； CSV 、 XML 和其他格式不在此限。）" _
-    "使用者可以在搜尋頁點一個連結查看所有結果。" _
-    "<p>通常你不需要更改這個設定－－" _
-    "預設值對大多數安裝 $terms.Bugzilla 的使用者而言都應該可以接受。</p>",
+    "因为性能因素， $terms.Bugzilla 预设限制在网页界面的查询只回传这么多笔数。" _
+    "（此参数只影响 HTML 格式的查询结果； CSV 、 XML 和其他格式不在此限。）" _
+    "使用者可以在查询页面点一个链接查看所有结果。" _
+    "<p>通常你不需要更改这个设定－－" _
+    "与设值对大多数安装 $terms.Bugzilla 的使用者而言都应该可以接受。</p>",
 
   max_search_results =>
-    "搜尋可以回傳的最大 $terms.bugs 筆數。" _
-    "表格式和圖形式報告不在此限。",
+    "搜索可以回传的最大 $terms.bugs 笔数。" _
+    "表格式和图形式报告不在此限。",
 
 } %]
