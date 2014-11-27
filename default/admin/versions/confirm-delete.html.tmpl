@@ -13,7 +13,7 @@
   #                    version the user wants to delete.
   #%]
 
-[% title = BLOCK %]刪除產品 '[% product.name FILTER html %]' 的版本
+[% title = BLOCK %]删除产品 '[% product.name FILTER html %]' 的版本
   [% END %]
 
 [% PROCESS global/header.html.tmpl
@@ -23,7 +23,7 @@
 
 <table border="1" cellpadding="4" cellspacing="0">
 <tr bgcolor="#6666FF">
-  <th valign="top" align="left">欄位</th>
+  <th valign="top" align="left">字段</th>
   <th valign="top" align="left">值</th>
 </tr>
 <tr>
@@ -31,7 +31,7 @@
   <td valign="top">[% version.name FILTER html %]</td>
 </tr>
 <tr>
-  <td valign="top">產品：</td>
+  <td valign="top">产品：</td>
   <td valign="top">[% product.name FILTER html %]</td>
 </tr>
 <tr>
@@ -42,22 +42,22 @@
      href="buglist.cgi?version=[% version.name FILTER uri %]&amp;product=
           [%- product.name FILTER uri %]">[%- version.bug_count FILTER none %]</a>
 [% ELSE %]
-  無
+  无
 [% END %]
   </td>
 </tr>
 </table>
 
-<h2>確認</h2>
+<h2>确认</h2>
 
 [% IF version.bug_count %]
   <p class="confirmation">
-  很抱歉，在此版本中還有 [% version.bug_count FILTER none %] 個未解決的 [%+ terms.bugs %] 。<br>
-  在刪除這個版本之前，你必須將它[% '們' IF version.bug_count > 1 %]移動至另一個版本。
+  很抱歉，在此版本中还有 [% version.bug_count FILTER none %] 个未解決的 [%+ terms.bugs %] 。<br>
+  在删除这个版本之前，你必须将它[% '們' IF version.bug_count > 1 %]移动至另一个版本。
   </p>
 [% ELSE %]
 
-  <p>你確定要刪除此一版本嗎？</p>
+  <p>你确定要删除此一版本吗？</p>
 
   <form method="post" action="editversions.cgi">
     <input type="submit" id="delete" value="是的，刪除">

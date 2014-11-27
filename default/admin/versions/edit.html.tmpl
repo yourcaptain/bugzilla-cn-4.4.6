@@ -13,7 +13,7 @@
   #                    version the user wants to edit.
   #%]
 
-[% title = BLOCK %]編輯產品 '[%- product.name FILTER html %]' 的版本 '[% version.name FILTER html %]'[% END %]
+[% title = BLOCK %]编辑产品 '[%- product.name FILTER html %]' 的版本 '[% version.name FILTER html %]'[% END %]
 [% PROCESS global/header.html.tmpl
   title = title
 %]
@@ -27,7 +27,7 @@
       [%- version.name FILTER html %]"></td>
     </tr>
     <tr>
-      <th class="field_label"><label for="isactive">開啟回報 [% terms.Bugs %] 功能：</label></th>
+      <th class="field_label"><label for="isactive">开启报告 [% terms.Bugs %] 功能：</label></th>
       <td><input id="isactive" name="isactive" type="checkbox" value="1"
                  [% 'checked="checked"' IF version.isactive %]></td>
     </tr>
@@ -37,7 +37,7 @@
   <input type="hidden" name="action" value="update">
   <input type="hidden" name="product" value="[% product.name FILTER html %]">
   <input type="hidden" name="token" value="[% token FILTER html %]">
-  <input type="submit" id="update" value="儲存設定">
+  <input type="submit" id="update" value="保存设定">
 </form>
 
 [% PROCESS admin/versions/footer.html.tmpl
