@@ -16,21 +16,21 @@
   #%]
 
 [% PROCESS global/header.html.tmpl
-   title = "預設的使用偏好"
+   title = "预设的使用偏好"
  %]
 
 [% PROCESS "global/setting-descs.none.tmpl" %]
 
 <p>
-此頁面可讓你編輯預設的使用偏好值。
+此页面可让你编辑预设的使用偏好值。
 </p>
 <p>
-每項偏好的「預設值」將會適用於所有未選擇自己的偏好設定的使用者，以及未登入的訪客。
+每项偏好的「预设值」将会适用于所有未选择自己的偏好设定的使用者，以及未登录的访客。
 </p>
 <p>
-「啟用」的勾選框控制此一偏好值是否可供使用者選用。<br>
-如果勾選，使用者可以在他們的偏好設定頁面看見此一偏好設定，並可以選擇是否變更。<br>
-如果不勾選，此一偏好設定將不會顯示在偏好設定頁面上，所有使用者將會使用預設值。
+「启用」的勾选框控制此一偏好值是否可供使用者选用。<br>
+如果勾选，使用者可以在他们的偏好设定页面看见此偏好设定，并可以选择是否变更。<br>
+如果不勾选，此一偏好设定将不会显示在偏好设定页面上，所有使用者将会使用预设值。
 </p>
 <hr>
 
@@ -39,8 +39,8 @@
       <table border="1" cellpadding="4">
       <tr>
         <th>偏好</th>
-        <th>預設值</th>
-        <th>啟用</th>
+        <th>预设值</th>
+        <th>启用</th>
       </tr>
 
       [% FOREACH name = settings.keys %]
@@ -76,14 +76,14 @@
       <tr>
         <td width="150"></td>
         <td>
-          <input type="submit" id="update" value="儲存設定">
+          <input type="submit" id="update" value="保存设定">
         </td>
       </tr>
     </table>
 
   </form>
 [% ELSE %]
-  沒有使用偏好可以編輯。
+  没有使用偏好可以编辑。
 [% END %]
 
 [% PROCESS global/footer.html.tmpl %]
