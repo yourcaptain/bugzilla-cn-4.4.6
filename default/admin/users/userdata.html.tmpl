@@ -18,7 +18,7 @@
 </script>
 
 <tr>
-  <th><label for="login">帳號：</label></th>
+  <th><label for="login">账号：</label></th>
   <td>
     [% IF editusers %]
       <input size="64" maxlength="255" name="login"
@@ -37,7 +37,7 @@
 </tr>
 [% IF default_authorizer.extern_id_used %]
   <tr>
-    <th><label for="extern_id">外部登入帳號：</label></th>
+    <th><label for="extern_id">外部登录账号：</label></th>
     <td>
       [% IF editusers %]
         <input size="64" maxlength="64" name="extern_id"
@@ -49,7 +49,7 @@
   </tr>
 [% END %]
 <tr>
-  <th><label for="name">真實姓名：</label></th>
+  <th><label for="name">真实姓名：</label></th>
   <td>
     [% IF editusers %]
       <input size="64" maxlength="255" name="name"
@@ -69,27 +69,27 @@
 [% IF editusers %]
   [% IF user.authorizer.can_change_password %]
   <tr>
-    <th><label for="password">密碼：</label></th>
+    <th><label for="password">密码：</label></th>
     <td>
       <input type="password" size="16" name="password" id="password"
              value="" autocomplete="off" />
       [% IF editform %]<br />
-        （輸入新密碼進行變更。）
+        （输入新密码进行变更。）
       [% END %]
     </td>
   </tr>
   [% END %]
   <tr>
-    <th><label for="disable_mail">不允許寄發 [% terms.Bug %] 通知信：</label></th>
+    <th><label for="disable_mail">不允许发送 [% terms.Bug %] 通知邮件：</label></th>
     <td>
       <input type="checkbox" name="disable_mail" id="disable_mail" value="1"
              [% IF otheruser.email_disabled %] checked="checked" [% END %]
              onchange="disable_mail_manually_set=1;">
-      （僅對 [% terms.bug %] 通知信及訂閱信有效，對重設密碼信或其他和 [% terms.bug %] 不相關的信無效）
+      （仅对 [% terms.bug %] 通知邮件及订阅邮件有效，对重设密码邮件或其他和 [% terms.bug %] 不相关的邮件无效）
     </td>
   </tr>
   <tr>
-    <th><label for="disabledtext">停用說明：</label></th>
+    <th><label for="disabledtext">停用说明：</label></th>
     <td>
       [% INCLUDE global/textarea.html.tmpl
          name           = 'disabledtext'
@@ -101,7 +101,7 @@
          defaultcontent = otheruser.disabledtext
          onchange       = "userDisabledTextOnChange(this);"
        %]<br>
-      （只要不留白，此帳號就無法登入，而此說明應解釋原因為何。）
+      （只要不留白，此账号就无法登录，而此说明应解释原因为何。）
     </td>
   </tr>
 [% END %]

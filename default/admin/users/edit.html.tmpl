@@ -17,7 +17,7 @@
   #                      canbless) for viewed user.
   #%]
 
-[% title = BLOCK %]編輯使用者 [% otheruser.identity FILTER html %][% END %]
+[% title = BLOCK %]编辑使用者 [% otheruser.identity FILTER html %][% END %]
 
 [% PROCESS global/header.html.tmpl
   title = title
@@ -40,13 +40,13 @@
   %]
   [% IF groups.size %]
     <tr>
-      <th>瀏覽群組：</th>
+      <th>浏览群组：</th>
       <td>
         <table class="groups">
           <tr>
             [% IF editusers %]
               <th colspan="3">
-                可替其他使用者設定這些權限
+                可替其他使用者设定这些权限
               </th>
             [% END %]
           </tr>
@@ -54,7 +54,7 @@
             [% IF editusers %]
               <td style="text-align: center; font-weight: bold">|</td>
             [% END %]
-            <th colspan="2">使用者是下列群組的成員</th>
+            <th colspan="2">使用者是下列群组的成员</th>
           </tr>
           [% FOREACH group = groups %]
             [% perms = permissions.${group.id} %]
@@ -92,12 +92,12 @@
   [% END %]
 
   <tr>
-    <th>產品負責數：</th>
+    <th>产品负责数：</th>
     <td>
       [% IF otheruser.product_responsibilities.size %]
         [% PROCESS admin/users/responsibilities.html.tmpl otheruser = otheruser %]
       [% ELSE %]
-        <em>無</em>
+        <em>无</em>
       [% END %]
     </td>
   </tr>
@@ -108,37 +108,37 @@
       [% IF otheruser.last_seen_date %]
         [% otheruser.last_seen_date FILTER html %]
       [% ELSE %]
-        <em>從未登入</em>
+        <em>从未登陆</em>
       [% END %]
     </td>
   </tr>
 </table>
 
 <p>
-  <input type="submit" id="update" value="儲存變更" />
+  <input type="submit" id="update" value="保存变更" />
   <input type="hidden" name="userid" value="[% otheruser.id %]" />
   <input type="hidden" name="action" value="update" />
   <input type="hidden" name="token" value="[% token FILTER html %]">
   [% INCLUDE listselectionhiddenfields %]
 
   或者<a href="editusers.cgi?action=activity&amp;userid=[% otheruser.id %]"
-        title="瀏覽'
-        [%- otheruser.login FILTER html %]'的帳號歷史">瀏覽帳號歷史</a>
+        title="浏览'
+        [%- otheruser.login FILTER html %]'的账号历史">浏览账号历史</a>
 </p>
 </form>
 <p>
-  屬於任何群組的使用者以打勾或灰色線條顯示。灰色線條代表非直接的成員，可能是來自其他群組（以中括號 [] 標記），或是來自正規表達式（以星號 * 標記）。
+  属于任何群组的使用者以打勾或灰色线条显示。灰色线条代表非直接的成员，可能是来自其他群组（以中括号 [] 标记），或是来自正则表达式（以星号 * 标记）。
 </p>
 [% IF editusers %]
   <p>
-    在「可替其他使用者設定這些權限」勾選框旁的中括號指出因屬於另一群組的成員，而有 bless 使用者（在群組中新增成員）的能力。
+    在「可替其他使用者设定这些权限」勾选框旁的中括号指出因属于另一群组的成员，而有 bless 使用者（在群组中新增成员）的能力。
   </p>
 [% END %]
 
 [% IF Param('allowuserdeletion') && editusers %]
   <form method="post" action="editusers.cgi">
   <p>
-    <input type="submit" id="delete" value="刪除使用者" />
+    <input type="submit" id="delete" value="删除使用者" />
     <input type="hidden" name="action" value="del" />
     <input type="hidden" name="userid" value="[% otheruser.id %]" />
     [% INCLUDE listselectionhiddenfields %]
@@ -152,7 +152,7 @@
   [% IF listselectionvalues.matchtype != 'exact' %]回到<a
   href="editusers.cgi?action=list[% INCLUDE listselectionurlparams %]">使用者列表</a>，[% END %]
   [% IF editusers OR listselectionvalues %]或是[% END %]<a
-  href="editusers.cgi">搜尋其他使用者</a>。
+  href="editusers.cgi">搜索其他使用者</a>。
 </p>
 
 [% PROCESS global/footer.html.tmpl %]

@@ -15,7 +15,7 @@
   #%]
 
 [% PROCESS global/header.html.tmpl
-  title = "選擇使用者"
+  title = "选择使用者"
   style_urls = ['skins/standard/editusers.css']
   doc_section = "useradmin.html"
 %]
@@ -28,18 +28,18 @@
 
 [% columns =
   [{name               => 'login_name'
-    heading            => '編輯使用者…'
+    heading            => '编辑使用者…'
     contentlink        => 'editusers.cgi?action=edit&amp;userid=%%userid%%' _
                           listselectionurlparams
    }
    {name               => 'realname'
-    heading            => '真實姓名'
+    heading            => '真实姓名'
    }
    {name               => 'last_seen_date'
-    heading            => '上次登入'
+    heading            => '上次登录'
    }
-   {heading            => '帳號歷史'
-    content            => '瀏覽'
+   {heading            => '账号历史'
+    content            => '浏览'
     contentlink        => 'editusers.cgi?action=activity' _
                                   '&amp;userid=%%userid%%' _
                                   listselectionurlparams
@@ -48,8 +48,8 @@
 %]
 
 [% IF Param('allowuserdeletion') && editusers %]
-  [% columns.push({heading     => '動作'
-                   content     => '刪除'
+  [% columns.push({heading     => '动作'
+                   content     => '删除'
                    contentlink => 'editusers.cgi?action=del' _
                                   '&amp;userid=%%userid%%' _
                                   listselectionurlparams
@@ -99,7 +99,7 @@
 %]
 
 <p>
-  如果你並不想要在此時修改使用者帳號，你可以<a href="editusers.cgi">搜尋其他使用者</a>[% IF editusers %]，或者<a
+  如果你并不想要在此时修改使用者账号，你可以<a href="editusers.cgi">搜索其他使用者</a>[% IF editusers %]，或者<a
   href="editusers.cgi?action=add[% INCLUDE listselectionurlparams %]">新增使用者</a>[% END %]。
 </p>
 
